@@ -66,9 +66,10 @@ public class Reserve {
     }
 
     public Reserve(Joueur j){
+        new Reserve();
         for (int i =0; i < 6; i++){
-            int r = new Random().nextInt();
-            j.tas.piocher();
+            ajouterLettre(lettre.get(i));
+            remove(lettre.get(i));
         }
     }
 
