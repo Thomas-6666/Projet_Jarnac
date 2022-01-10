@@ -5,69 +5,71 @@ import java.util.*;
 public class Reserve {
     private ArrayList<String> lettre;
 
-    public Reserve(){
+    public Reserve(){ //Ce constructeur permet l'implémentation des lettres de l'alphabet dans la liste
         lettre = new ArrayList();
 
-        //Ce constructeur permet l'implémentation des lettres de l'alphabet dans la liste
         //Chaque boucle va ajouter n fois une lettre en fonction de sa quantité dans le jeu
         for (int i = 0; i < 14; i++){
-            lettre.add("A");
-        } for (int i = 0; i < 4; i++){
-            lettre.add("A");
+            ajouterLettre("A");
         } for (int i = 0; i < 6; i++){
-            lettre.add("B");
+            ajouterLettre("B");
         } for (int i = 0; i < 5; i++){
-            lettre.add("C");
+            ajouterLettre("C");
         } for (int i = 0; i < 19; i++){
-            lettre.add("D");
+            ajouterLettre("D");
         } for (int i = 0; i < 2; i++){
-            lettre.add("F");
-        } for (int i = 0; i < 4; i++){
-            lettre.add("G");
+            ajouterLettre("E");
         } for (int i = 0; i < 2; i++){
-            lettre.add("H");
-        } for (int i = 0; i < 10; i++){
-            lettre.add("I");
-        } for (int i = 0; i < 1; i++){
-            lettre.add("J");
-        } for (int i = 0; i < 1; i++){
-            lettre.add("K");
+            ajouterLettre("F");
         } for (int i = 0; i < 4; i++){
-            lettre.add("L");
-        } for (int i = 0; i < 4; i++){
-            lettre.add("M");
+            ajouterLettre("G");
+        } for (int i = 0; i < 2; i++){
+            ajouterLettre("H");
         } for (int i = 0; i < 10; i++){
-            lettre.add("N");
+            ajouterLettre("I");
+        } for (int i = 0; i < 1; i++){
+            ajouterLettre("J");
+        } for (int i = 0; i < 1; i++){
+            ajouterLettre("K");
+        } for (int i = 0; i < 4; i++){
+            ajouterLettre("L");
+        } for (int i = 0; i < 4; i++){
+            ajouterLettre("M");
+        } for (int i = 0; i < 10; i++){
+            ajouterLettre("N");
         } for (int i = 0; i < 9; i++) {
-            lettre.add("O");
+            ajouterLettre("O");
         } for (int i = 0; i < 4; i++){
-            lettre.add("P");
+            ajouterLettre("P");
         } for (int i = 0; i < 2; i++){
-            lettre.add("Q");
+            ajouterLettre("Q");
         } for (int i = 0; i < 10; i++){
-            lettre.add("R");
+            ajouterLettre("R");
         } for (int i = 0; i < 10; i++){
-            lettre.add("S");
+            ajouterLettre("S");
         } for (int i = 0; i < 10; i++){
-            lettre.add("T");
+            ajouterLettre("T");
         } for (int i = 0; i < 6; i++){
-            lettre.add("U");
+            ajouterLettre("U");
         } for (int i = 0; i < 2; i++){
-            lettre.add("V");
+            ajouterLettre("V");
         } for (int i = 0; i < 1; i++){
-            lettre.add("W");
+            ajouterLettre("W");
         } for (int i = 0; i < 1; i++){
-            lettre.add("X");
+            ajouterLettre("X");
         } for (int i = 0; i < 1; i++){
-            lettre.add("Y");
+            ajouterLettre("Y");
         } for (int i = 0; i < 2; i++){
-            lettre.add("Z");
+            ajouterLettre("Z");
         }
         Collections.shuffle(lettre);
     }
 
-    public Reserver(Joueur j){
-
+    public Reserve(Joueur j){
+        for (int i =0; i < 6; i++){
+            int r = new Random().nextInt();
+            j.tas.piocher();
+        }
     }
 
     //Cette méthode va servir pour effectuer des tests
@@ -85,6 +87,10 @@ public class Reserve {
     public String piocher(){
         int r = new Random().nextInt();
         return lettre.get(r);
+    }
+
+    public void remove(String l){
+        lettre.remove(l);
     }
 
     public void ajouterLettre(String l){
