@@ -38,11 +38,45 @@ public class Partie {
             System.out.println("Saisir le mot à jouer:");
             String mot = in.next();
             j1.jouer(mot);
+            i +=1;
         }
-
+        j2.getReserve().piocher(6);
+        System.out.println("C'est au tour de "+j2.getNom());
+        choix = in.next();
+        if (choix.equalsIgnoreCase("jouer")){
+            System.out.println("Saisir le mot à jouer:");
+            String mot = in.next();
+            j2.jouer(mot);
+            i +=1;
+        }
+        
         while(!fini){
+            if (i %2 ==0){
+                j1.getReserve().piocher();
+                System.out.println("C'est au tour de "+j1.getNom());
+                choix = in.next();
+                if (choix.equalsIgnoreCase("jouer")){
+                    System.out.println("Saisir le mot à jouer:");
+                    String mot = in.next();
+                    j1.jouer(mot);
+                    i +=1;
+                }
+
+            }
+            else {
+                j2.getReserve().piocher();
+                System.out.println("C'est au tour de "+j2.getNom());
+                choix = in.next();
+                if (choix.equalsIgnoreCase("jouer")){
+                    System.out.println("Saisir le mot à jouer:");
+                    String mot = in.next();
+                    j2.jouer(mot);
+                    i +=1;
+                }
+            }
 
         }
+
     }
 
     public void arreter(){
