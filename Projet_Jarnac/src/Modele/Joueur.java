@@ -24,4 +24,10 @@ public class Joueur{
         reserve.ajouterLettre(partie.getReserve().piocher());
     }
 
+    @Override
+    public String toString() {
+        return "Joueur{" +
+                "nom='" + nom + '\'' +
+                '}';
+    }
 }
