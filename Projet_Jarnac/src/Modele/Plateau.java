@@ -18,7 +18,7 @@ public class Plateau {
 
 
     public void jarnac(){
-
+        
     }
 
 
