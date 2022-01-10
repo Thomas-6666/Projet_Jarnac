@@ -66,6 +66,10 @@ public class Reserve {
         Collections.shuffle(lettre);
     }
 
+    public Reserver(Joueur j){
+
+    }
+
     //Cette méthode va servir pour effectuer des tests
     public String toString(){
         String string = "Taille de la reserve : " + lettre.size();
