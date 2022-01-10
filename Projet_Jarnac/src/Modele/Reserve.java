@@ -87,7 +87,9 @@ public class Reserve {
 
     public String piocher(){
         int r = new Random().nextInt();
-        return lettre.get(r);
+        String l = lettre.get(r);
+        remove(l);
+        return l;
     }
 
     public void remove(String l){
