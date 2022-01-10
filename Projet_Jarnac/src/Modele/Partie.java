@@ -31,6 +31,15 @@ public class Partie {
     public void lancer(){
         int i = 0;
         j1.getReserve().piocher(6);
+        System.out.println("C'est au tour de "+j1.getNom());
+        Scanner in = new Scanner(System.in);
+        String choix = in.next();
+        if (choix.equalsIgnoreCase("jouer")){
+            System.out.println("Saisir le mot à jouer:");
+            String mot = in.next();
+            j1.jouer(mot);
+        }
+
         while(!fini){
 
         }
@@ -38,5 +47,9 @@ public class Partie {
 
     public void arreter(){
         //TODO
+    }
+
+    public Reserve getReserve() {
+        return reserve;
     }
 }

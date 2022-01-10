@@ -30,4 +30,12 @@ public class Joueur{
                 "nom='" + nom + '\'' +
                 '}';
     }
+
+    public Reserve getReserve() {
+        return reserve;
+    }
+
+    public String getNom() {
+        return nom;
+    }
 }
