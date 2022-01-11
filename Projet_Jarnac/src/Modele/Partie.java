@@ -33,6 +33,9 @@ public class Partie {
         int i = 0;
         j1.piocher(6);
         System.out.println("C'est au tour de "+j1.getNom());
+        System.out.println("Voici vos lettres:");
+        System.out.println(j1.getReserve());
+        System.out.println("Ecrire jouer pour jouer un mot");
         Scanner in = new Scanner(System.in);
         String choix = in.next();
         if (choix.equalsIgnoreCase("jouer")){
@@ -41,6 +44,9 @@ public class Partie {
         }
         j2.piocher(6);
         System.out.println("C'est au tour de "+j2.getNom());
+        System.out.println("Voici vos lettres:");
+        System.out.println(j2.getReserve());
+        System.out.println("Ecrire jouer pour jouer un mot");
         choix = in.next();
         if (choix.equalsIgnoreCase("jouer")){
             play(j2, in, choix);
@@ -51,6 +57,9 @@ public class Partie {
             if (i %2 ==0){
                 j1.piocher(1);
                 System.out.println("C'est au tour de "+j1.getNom());
+                System.out.println("Voici vos lettres:");
+                System.out.println(j1.getReserve());
+                System.out.println("Ecrire jouer pour jouer un mot");
                 choix = in.next();
                 if (choix.equalsIgnoreCase("jouer")){
                     play(j1,in,choix);
@@ -62,6 +71,9 @@ public class Partie {
                 j2.piocher(1);
                 System.out.println("C'est au tour de "+j2.getNom());
                 choix = in.next();
+                System.out.println("Voici vos lettres:");
+                System.out.println(j2.getReserve());
+                System.out.println("Ecrire jouer pour jouer un mot");
                 if (choix.equalsIgnoreCase("jouer")){
                     play(j2,in,choix);
                     i +=1;
@@ -78,6 +90,8 @@ public class Partie {
             String mot = in.next();
             while (!j.jouer(mot)) {
                 System.out.println("Mot non valable");
+                System.out.println("Voici vos lettres:");
+                System.out.println(j.getReserve());
                 System.out.println("Saisir le mot à jouer:");
                 mot = in.next();
             }
