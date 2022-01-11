@@ -25,7 +25,7 @@ public class Plateau {
         return joueur;
     }
 
-    public List<BaseDeDonnee> getMot() {
+    public List<String> getMot() {
         return mot;
     }
 }
