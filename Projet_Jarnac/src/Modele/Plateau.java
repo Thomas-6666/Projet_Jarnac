@@ -18,8 +18,14 @@ public class Plateau {
 
 
     public void jarnac(){
-        
+        joueur.crierJarnac();
     }
 
+    public Joueur getJoueur() {
+        return joueur;
+    }
 
+    public List<BaseDeDonnee> getMot() {
+        return mot;
+    }
 }
