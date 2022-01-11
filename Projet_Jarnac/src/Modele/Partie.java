@@ -35,22 +35,28 @@ public class Partie {
         System.out.println("C'est au tour de "+j1.getNom());
         System.out.println("Voici vos lettres:");
         System.out.println(j1.getReserve());
-        System.out.println("Ecrire jouer pour jouer un mot");
+        System.out.println("Ecrire jouer pour jouer un mot ou bien arreter pour stopper la partie ");
         Scanner in = new Scanner(System.in);
         String choix = in.next();
         if (choix.equalsIgnoreCase("jouer")){
             play(j1, in, choix);
             i +=1;
         }
+        else if (choix.equalsIgnoreCase("arreter")){
+            arreter();
+        }
         j2.piocher(6);
         System.out.println("C'est au tour de "+j2.getNom());
         System.out.println("Voici vos lettres:");
         System.out.println(j2.getReserve());
-        System.out.println("Ecrire jouer pour jouer un mot");
+        System.out.println("Ecrire jouer pour jouer un mot ou bien arreter pour stopper la partie ");
         choix = in.next();
         if (choix.equalsIgnoreCase("jouer")){
             play(j2, in, choix);
             i +=1;
+        }
+        else if (choix.equalsIgnoreCase("arreter")){
+            arreter();
         }
         
         while(!fini){
@@ -59,11 +65,14 @@ public class Partie {
                 System.out.println("C'est au tour de "+j1.getNom());
                 System.out.println("Voici vos lettres:");
                 System.out.println(j1.getReserve());
-                System.out.println("Ecrire jouer pour jouer un mot");
+                System.out.println("Ecrire jouer pour jouer un mot ou bien arreter pour stopper la partie");
                 choix = in.next();
                 if (choix.equalsIgnoreCase("jouer")){
                     play(j1,in,choix);
                     i +=1;
+                }
+                else if (choix.equalsIgnoreCase("arreter")){
+                    arreter();
                 }
 
             }
@@ -73,10 +82,13 @@ public class Partie {
                 choix = in.next();
                 System.out.println("Voici vos lettres:");
                 System.out.println(j2.getReserve());
-                System.out.println("Ecrire jouer pour jouer un mot");
+                System.out.println("Ecrire jouer pour jouer un mot ou bien arreter pour stopper la partie");
                 if (choix.equalsIgnoreCase("jouer")){
                     play(j2,in,choix);
                     i +=1;
+                }
+                else if (choix.equalsIgnoreCase("arreter")){
+                    arreter();
                 }
             }
 
@@ -99,7 +111,7 @@ public class Partie {
     }
 
     public void arreter(){
-        //TODO
+        this.fini = true;
     }
 
     public Reserve getReserve() {
