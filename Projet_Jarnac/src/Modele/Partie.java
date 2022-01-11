@@ -30,7 +30,7 @@ public class Partie {
 
     public void lancer(){
         int i = 0;
-        j1.getReserve().piocher(6);
+        j1.piocher(6);
         System.out.println("C'est au tour de "+j1.getNom());
         Scanner in = new Scanner(System.in);
         String choix = in.next();
@@ -40,7 +40,7 @@ public class Partie {
             j1.jouer(mot);
             i +=1;
         }
-        j2.getReserve().piocher(6);
+        j2.piocher(6);
         System.out.println("C'est au tour de "+j2.getNom());
         choix = in.next();
         if (choix.equalsIgnoreCase("jouer")){
@@ -52,7 +52,7 @@ public class Partie {
         
         while(!fini){
             if (i %2 ==0){
-                j1.getReserve().piocher();
+                j1.piocher(1);
                 System.out.println("C'est au tour de "+j1.getNom());
                 choix = in.next();
                 if (choix.equalsIgnoreCase("jouer")){
@@ -64,7 +64,7 @@ public class Partie {
 
             }
             else {
-                j2.getReserve().piocher();
+                j2.piocher(1);
                 System.out.println("C'est au tour de "+j2.getNom());
                 choix = in.next();
                 if (choix.equalsIgnoreCase("jouer")){

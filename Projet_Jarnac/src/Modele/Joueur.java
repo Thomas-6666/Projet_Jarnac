@@ -24,6 +24,12 @@ public class Joueur{
         reserve.ajouterLettre(partie.getReserve().piocher());
     }
 
+    public void piocher(int i){
+        for (int j = 0; j < i; j++){
+            reserve.ajouterLettre(partie.getReserve().piocher());
+        }
+    }
+
     @Override
     public String toString() {
         return "Joueur{" +
