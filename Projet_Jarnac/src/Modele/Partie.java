@@ -10,16 +10,17 @@ public class Partie {
 
     public Partie(){
         fini = false;
+        BaseDeDonnee DB = new BaseDeDonnee();
         System.out.println("Nom joueur 1:");
         Scanner in = new Scanner(System.in);
 
         String j1name = in.next();
-        j1 = new Joueur(j1name, this);
+        j1 = new Joueur(j1name, this, DB);
 
         System.out.println("Nom joueur 2:");
 
         String j2name = in.next();
-        j2 = new Joueur(j2name, this);
+        j2 = new Joueur(j2name, this, DB);
 
         reserve = new Reserve();
 

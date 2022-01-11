@@ -7,15 +7,22 @@ public class Plateau {
 
     public List<String> mot;
     public Joueur joueur;
+    private BaseDeDonnee BDD;
 
-    public Plateau(){
+    public Plateau(BaseDeDonnee DB){
        mot = new ArrayList<>();
+       BDD = DB;
+
     }
 
     public boolean ajouterMot(String m){
-        //verifier dans la BDD si mot valable avant ajouter
-        mot.add(m);
-        return true;
+        if (BDD.verification(m)){
+            mot.add(m);
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 

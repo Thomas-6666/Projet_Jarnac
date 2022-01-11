@@ -7,11 +7,11 @@ public class Joueur{
     private Partie partie;
     private Plateau plateau;
 
-    public Joueur(String n, Partie p){
+    public Joueur(String n, Partie p, BaseDeDonnee DB){
         nom = n;
         partie = p;
         reserve = new Reserve(this);
-        plateau = new Plateau();
+        plateau = new Plateau(DB);
     }
 
     public void setScore(int s){
