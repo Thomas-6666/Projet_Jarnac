@@ -21,5 +21,11 @@ public class Plateau {
         
     }
 
+    public Joueur getJoueur() {
+        return joueur;
+    }
 
+    public List<BaseDeDonnee> getMot() {
+        return mot;
+    }
 }
