@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Plateau {
 
-    public List<BaseDeDonnee> mot;
+    public List<String> mot;
     public Joueur joueur;
 
     public Plateau(){
-       List<BaseDeDonnee> M = new ArrayList<>();
+       List<String> M = new ArrayList<>();
     }
 
-    public void ajouterMot(){
-        joueur.jouer(mot);
+    public void ajouterMot(String m){
+        mot.add(m);
     }
 
 
