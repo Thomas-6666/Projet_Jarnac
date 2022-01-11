@@ -9,11 +9,13 @@ public class Plateau {
     public Joueur joueur;
 
     public Plateau(){
-       List<String> M = new ArrayList<>();
+       mot = new ArrayList<>();
     }
 
-    public void ajouterMot(String m){
+    public boolean ajouterMot(String m){
+        //verifier dans la BDD si mot valable avant ajouter
         mot.add(m);
+        return true;
     }
 
 

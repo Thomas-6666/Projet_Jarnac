@@ -30,6 +30,14 @@ public class Joueur{
         }
     }
 
+    public boolean jouer(String mot){
+        if (plateau.ajouterMot(mot)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return "Joueur{" +
