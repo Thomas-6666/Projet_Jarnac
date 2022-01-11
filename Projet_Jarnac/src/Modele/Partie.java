@@ -35,18 +35,14 @@ public class Partie {
         Scanner in = new Scanner(System.in);
         String choix = in.next();
         if (choix.equalsIgnoreCase("jouer")){
-            System.out.println("Saisir le mot à jouer:");
-            String mot = in.next();
-            j1.jouer(mot);
+            play(j1, in, choix);
             i +=1;
         }
         j2.piocher(6);
         System.out.println("C'est au tour de "+j2.getNom());
         choix = in.next();
         if (choix.equalsIgnoreCase("jouer")){
-            System.out.println("Saisir le mot à jouer:");
-            String mot = in.next();
-            j2.jouer(mot);
+            play(j2, in, choix);
             i +=1;
         }
         
@@ -56,9 +52,7 @@ public class Partie {
                 System.out.println("C'est au tour de "+j1.getNom());
                 choix = in.next();
                 if (choix.equalsIgnoreCase("jouer")){
-                    System.out.println("Saisir le mot à jouer:");
-                    String mot = in.next();
-                    j1.jouer(mot);
+                    play(j1,in,choix);
                     i +=1;
                 }
 
@@ -68,15 +62,25 @@ public class Partie {
                 System.out.println("C'est au tour de "+j2.getNom());
                 choix = in.next();
                 if (choix.equalsIgnoreCase("jouer")){
-                    System.out.println("Saisir le mot à jouer:");
-                    String mot = in.next();
-                    j2.jouer(mot);
+                    play(j2,in,choix);
                     i +=1;
                 }
             }
 
         }
 
+    }
+
+    private void play(Joueur j, Scanner in, String choix){
+        if (choix.equalsIgnoreCase("jouer")) {
+            System.out.println("Saisir le mot à jouer:");
+            String mot = in.next();
+            while (!j.jouer(mot)) {
+                System.out.println("Mot non valable");
+                System.out.println("Saisir le mot à jouer:");
+                mot = in.next();
+            }
+        }
     }
 
     public void arreter(){
