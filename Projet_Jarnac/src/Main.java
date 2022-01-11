@@ -4,6 +4,8 @@ public class Main {
     public static void main(String args[]){
         BaseDeDonnee bdd = new BaseDeDonnee();
         //bdd.liretoutlefichier();
-        bdd.verification("zythums");
+        if(bdd.verification("zythums")){
+            System.out.println("Vrai");
+        }
     }
 }
