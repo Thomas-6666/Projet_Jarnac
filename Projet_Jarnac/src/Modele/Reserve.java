@@ -66,11 +66,8 @@ public class Reserve {
     }
 
     public Reserve(Joueur j){
-        new Reserve();
-        for (int i =0; i < 6; i++){
-            ajouterLettre(lettre.get(i));
-            remove(lettre.get(i));
-        }
+        lettre = new ArrayList<>();
+
     }
 
     //Cette méthode va servir pour effectuer des tests
@@ -86,7 +83,7 @@ public class Reserve {
     }
 
     public String piocher(){
-        int r = new Random().nextInt();
+        int r = new Random().nextInt(lettre.size());
         String l = lettre.get(r);
         remove(l);
         return l;

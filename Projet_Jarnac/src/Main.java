@@ -1,11 +1,8 @@
 import Modele.BaseDeDonnee;
+import Modele.Partie;
 
 public class Main {
     public static void main(String args[]){
-        BaseDeDonnee bdd = new BaseDeDonnee();
-        //bdd.liretoutlefichier();
-        if(bdd.verification("zythums")){
-            System.out.println("Vrai");
-        }
+        Partie p = new Partie();
     }
 }
