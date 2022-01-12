@@ -44,6 +44,7 @@ public class Partie {
         }
         else if (choix.equalsIgnoreCase("arreter")){
             arreter();
+            return;
         }
         j2.piocher(6);
         System.out.println("C'est au tour de "+j2.getNom());
