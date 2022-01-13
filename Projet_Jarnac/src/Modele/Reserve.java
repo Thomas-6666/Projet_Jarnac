@@ -65,12 +65,13 @@ public class Reserve {
         Collections.shuffle(lettre);
     }
 
+    //constructeur réserve des joueurs (vide)
     public Reserve(Joueur j){
         lettre = new ArrayList<>();
 
     }
 
-    //Cette méthode va servir pour effectuer des tests
+    //Cette méthode permet d'afficher les lettres que le joueurs possède
     public String toString(){
         String string = "Taille de la reserve : " + lettre.size();
         string += "\n[";
@@ -82,6 +83,7 @@ public class Reserve {
         return string;
     }
 
+    //pioche une lettre aléatoire dans la réserve
     public String piocher(){
         int r = new Random().nextInt(lettre.size());
         String l = lettre.get(r);
@@ -95,5 +97,17 @@ public class Reserve {
 
     public void ajouterLettre(String l){
         lettre.add(l);
+    }
+
+    public int size(){
+        return lettre.size();
+    }
+
+    public List<String> getLettres(){
+        return lettre;
+    }
+
+    public void setLettre(ArrayList<String> l){
+        lettre = l;
     }
 }

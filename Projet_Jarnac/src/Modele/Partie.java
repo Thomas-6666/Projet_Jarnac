@@ -30,7 +30,9 @@ public class Partie {
     }
 
     public void lancer(){
-        int i = 0;
+        int i = 0; //permet de savoir si le tour est pair ou impaire (J1 ou j2)
+
+        //premier tour, les joueurs piochent 6 lettres
         j1.piocher(6);
         System.out.println("C'est au tour de "+j1.getNom());
         System.out.println("Voici vos lettres:");
@@ -46,6 +48,7 @@ public class Partie {
             arreter();
             return;
         }
+
         j2.piocher(6);
         System.out.println("C'est au tour de "+j2.getNom());
         System.out.println("Voici vos lettres:");
@@ -59,7 +62,8 @@ public class Partie {
         else if (choix.equalsIgnoreCase("arreter")){
             arreter();
         }
-        
+
+        //boucle pour les autres tours
         while(!fini){
             if (i %2 ==0){
                 j1.piocher(1);
@@ -97,6 +101,8 @@ public class Partie {
 
     }
 
+
+    //fonction qui réalise le choix du joueur
     private void play(Joueur j, Scanner in, String choix){
         if (choix.equalsIgnoreCase("jouer")) {
             System.out.println("Saisir le mot à jouer:");

@@ -1,5 +1,8 @@
 package Modele;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Joueur{
     private String nom;
     private int score = 0;
@@ -31,6 +34,17 @@ public class Joueur{
     }
 
     public boolean jouer(String mot){
+        /*ArrayList<String> listelettres = new ArrayList<>();
+        listelettres.addAll(reserve.getLettres());
+        for (int i = 0; i < mot.length(); i++){
+            String curChar = String.valueOf(mot.charAt(i));
+            if (listelettres.contains(curChar)){
+                listelettres.remove(curChar);
+            } else {
+                return false;
+            }
+        }
+        reserve.setLettre(listelettres);*/
         if (plateau.ajouterMot(mot)){
             return true;
         } else {
