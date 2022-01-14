@@ -34,17 +34,24 @@ public class Joueur{
     }
 
     public boolean jouer(String mot){
-        /*ArrayList<String> listelettres = new ArrayList<>();
+        ArrayList<String> listelettres = new ArrayList<>();
         listelettres.addAll(reserve.getLettres());
         for (int i = 0; i < mot.length(); i++){
             String curChar = String.valueOf(mot.charAt(i));
-            if (listelettres.contains(curChar)){
-                listelettres.remove(curChar);
-            } else {
+            System.out.println(curChar);
+            System.out.println(listelettres);
+            if(curChar.equalsIgnoreCase("/") || curChar == "/"){
                 return false;
             }
+            else {
+                if (listelettres.contains(curChar)) {
+                    listelettres.remove(curChar);
+                } else {
+                    return false;
+                }
+            }
         }
-        reserve.setLettre(listelettres);*/
+        reserve.setLettre(listelettres);
         if (plateau.ajouterMot(mot)){
             return true;
         } else {

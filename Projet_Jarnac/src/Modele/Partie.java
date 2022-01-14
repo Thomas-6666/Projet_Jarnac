@@ -144,9 +144,9 @@ public class Partie {
                     return;
                 }
 
-                else if (choix.equalsIgnoreCase("/passer")){
+                else if (mot.equalsIgnoreCase("/passer")){
                     System.out.println("Vous passez votre tour");
-                    break;
+                    return;
                 }
 
                 System.out.println("Mot non valable");
