@@ -37,16 +37,23 @@ public class Partie {
         System.out.println("C'est au tour de "+j1.getNom());
         System.out.println("Voici vos lettres:");
         System.out.println(j1.getReserve());
-        System.out.println("Ecrire jouer pour jouer un mot ou bien arreter pour stopper la partie ");
+        System.out.println("Ecrire /jouer pour jouer un mot");
+        System.out.println("Ecrire /arreter pour arreter la partie");
+        System.out.println("Ecrire /passer pour passer votre tour");
         Scanner in = new Scanner(System.in);
         String choix = in.next();
-        if (choix.equalsIgnoreCase("jouer")){
+        if (choix.equalsIgnoreCase("/jouer")){
             play(j1, in, choix);
             i +=1;
         }
-        else if (choix.equalsIgnoreCase("arreter")){
+        else if (choix.equalsIgnoreCase("/arreter")){
             arreter();
             return;
+        }
+
+        else if (choix.equalsIgnoreCase("/passer")){
+            i = i+1;
+            System.out.println("Vous passez votre tour");
         }
 
         if (!fini){
@@ -54,14 +61,20 @@ public class Partie {
             System.out.println("C'est au tour de "+j2.getNom());
             System.out.println("Voici vos lettres:");
             System.out.println(j2.getReserve());
-            System.out.println("Ecrire jouer pour jouer un mot ou bien arreter pour stopper la partie ");
+            System.out.println("Ecrire /jouer pour jouer un mot");
+            System.out.println("Ecrire /arreter pour arreter la partie");
+            System.out.println("Ecrire /passer pour passer votre tour");
             choix = in.next();
-            if (choix.equalsIgnoreCase("jouer")){
+            if (choix.equalsIgnoreCase("/jouer")){
                 play(j2, in, choix);
                 i +=1;
             }
-            else if (choix.equalsIgnoreCase("arreter")){
+            else if (choix.equalsIgnoreCase("/arreter")){
                 arreter();
+            }
+            else if (choix.equalsIgnoreCase("/passer")){
+                i = i+1;
+                System.out.println("Vous passez votre tour");
             }
         }
 
@@ -72,14 +85,20 @@ public class Partie {
                 System.out.println("C'est au tour de "+j1.getNom());
                 System.out.println("Voici vos lettres:");
                 System.out.println(j1.getReserve());
-                System.out.println("Ecrire jouer pour jouer un mot ou bien arreter pour stopper la partie");
+                System.out.println("Ecrire /jouer pour jouer un mot");
+                System.out.println("Ecrire /arreter pour arreter la partie");
+                System.out.println("Ecrire /passer pour passer votre tour");
                 choix = in.next();
-                if (choix.equalsIgnoreCase("jouer")){
+                if (choix.equalsIgnoreCase("/jouer")){
                     play(j1,in,choix);
                     i +=1;
                 }
-                else if (choix.equalsIgnoreCase("arreter")){
+                else if (choix.equalsIgnoreCase("/arreter")){
                     arreter();
+                }
+                else if (choix.equalsIgnoreCase("/passer")){
+                    i = i+1;
+                    System.out.println("Vous passez votre tour");
                 }
 
             }
@@ -89,13 +108,19 @@ public class Partie {
                 choix = in.next();
                 System.out.println("Voici vos lettres:");
                 System.out.println(j2.getReserve());
-                System.out.println("Ecrire jouer pour jouer un mot ou bien arreter pour stopper la partie");
-                if (choix.equalsIgnoreCase("jouer")){
+                System.out.println("Ecrire /jouer pour jouer un mot");
+                System.out.println("Ecrire /arreter pour arreter la partie");
+                System.out.println("Ecrire /passer pour passer votre tour");
+                if (choix.equalsIgnoreCase("/jouer")){
                     play(j2,in,choix);
                     i +=1;
                 }
-                else if (choix.equalsIgnoreCase("arreter")){
+                else if (choix.equalsIgnoreCase("/arreter")){
                     arreter();
+                }
+                else if (choix.equalsIgnoreCase("/passer")){
+                    i = i+1;
+                    System.out.println("Vous passez votre tour");
                 }
             }
 
@@ -106,8 +131,9 @@ public class Partie {
 
     //fonction qui réalise le choix du joueur
     private void play(Joueur j, Scanner in, String choix){
-        if (choix.equalsIgnoreCase("jouer")) {
+        if (choix.equalsIgnoreCase("/jouer")) {
             System.out.println("Pour arrêter la partie, saisir : /arreter");
+            System.out.println("Pour passer votre tour, saisir : /passer");
             System.out.println("Saisir le mot à jouer:");
             String mot = in.next();
             while (!j.jouer(mot)) {
@@ -116,6 +142,11 @@ public class Partie {
                     System.out.println("Partie arrêtée");
                     arreter();
                     return;
+                }
+
+                else if (choix.equalsIgnoreCase("/passer")){
+                    System.out.println("Vous passez votre tour");
+                    break;
                 }
 
                 System.out.println("Mot non valable");
