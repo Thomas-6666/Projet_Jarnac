@@ -55,6 +55,26 @@ public class Partie {
             i = i+1;
             System.out.println("Vous passez votre tour");
         }
+        else {
+            while (!choix.equalsIgnoreCase("/jouer") || !choix.equalsIgnoreCase("/passer") || !choix.equalsIgnoreCase("/arreter")) {
+                System.out.println(choix);
+                System.out.println("Ecrire /jouer pour jouer un mot");
+                System.out.println("Ecrire /arreter pour arreter la partie");
+                System.out.println("Ecrire /passer pour passer votre tour");
+                choix = in.next();
+            }
+            if (choix.equalsIgnoreCase("/jouer")) {
+                play(j1, in, choix);
+                i += 1;
+            } else if (choix.equalsIgnoreCase("/arreter")) {
+                arreter();
+                return;
+            } else if (choix.equalsIgnoreCase("/passer")) {
+                i = i + 1;
+                System.out.println("Vous passez votre tour");
+
+            }
+        }
 
         if (!fini){
             j2.piocher(6);
