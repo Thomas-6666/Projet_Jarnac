@@ -9,14 +9,14 @@ public class Plateau {
     public Joueur joueur;
     private BaseDeDonnee BDD;
 
-    public Plateau(BaseDeDonnee DB){
-       mot = new ArrayList<>();
-       BDD = DB;
+    public Plateau(BaseDeDonnee DB) {
+        mot = new ArrayList<>();
+        BDD = DB;
 
     }
 
-    public boolean ajouterMot(String m){
-        if (BDD.verification(m)){
+    public boolean ajouterMot(String m) {
+        if (BDD.verification(m)) {
             mot.add(m);
             return true;
         } else {
@@ -26,7 +26,7 @@ public class Plateau {
     }
 
 
-    public void jarnac(){
+    public void jarnac() {
         //joueur.crierJarnac();
     }
 

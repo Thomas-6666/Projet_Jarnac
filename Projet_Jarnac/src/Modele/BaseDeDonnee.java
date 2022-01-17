@@ -1,16 +1,18 @@
 package Modele;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseDeDonnee {
     private List<String> mots;
 
-    public BaseDeDonnee(){
+    public BaseDeDonnee() {
         mots = new ArrayList<>();
-        try
-        {
+        try {
             // Le fichier d'entrée
             File file = new File("BDD.txt");
             // Créer l'objet File Reader
@@ -18,25 +20,23 @@ public class BaseDeDonnee {
             // Créer l'objet BufferedReader
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
-            while (line != null){
+            while (line != null) {
                 mots.add(line);
                 line = br.readLine();
             }
             br.close();
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public boolean verification(String mot){
-        for (String motDB : mots){
-            if (motDB.equalsIgnoreCase(mot)){
+    public boolean verification(String mot) {
+        for (String motDB : mots) {
+            if (motDB.equalsIgnoreCase(mot)) {
                 return true;
             }
         }
-        return  false;
+        return false;
     }
 }
 
