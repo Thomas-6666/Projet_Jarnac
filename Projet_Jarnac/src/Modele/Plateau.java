@@ -39,7 +39,7 @@ public class Plateau {
 
 
     public void jarnac() {
-        //joueur.crierJarnac();
+        joueur.crierJarnac();
     }
 
     public Joueur getJoueur() {

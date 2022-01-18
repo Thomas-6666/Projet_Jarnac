@@ -63,7 +63,8 @@ public class Joueur {
         }
     }
 
-    public void crierJarnac(String choix){
+    public void crierJarnac(){
+        String choix = null;
         if (choix.equalsIgnoreCase("/jarnac")) {
             System.out.printf("JARNAC !!!");
             String mot = null;
