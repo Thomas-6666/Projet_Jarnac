@@ -9,9 +9,10 @@ public class Plateau {
     public Joueur joueur;
     private BaseDeDonnee BDD;
 
-    public Plateau(BaseDeDonnee DB) {
+    public Plateau(BaseDeDonnee DB, Joueur j) {
         mot = new ArrayList<>();
         BDD = DB;
+        joueur = j;
 
     }
 

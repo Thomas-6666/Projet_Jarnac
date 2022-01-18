@@ -14,7 +14,7 @@ public class Joueur {
         nom = n;
         partie = p;
         reserve = new Reserve(this);
-        plateau = new Plateau(DB);
+        plateau = new Plateau(DB, this);
     }
 
     public void setScore(int s) {
