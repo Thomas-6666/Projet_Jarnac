@@ -67,28 +67,16 @@ public class Partie {
             choix = in.next();
 
             //Vérification du choix
+
+            while(!choix.equalsIgnoreCase("/jarnac") && (!choix.equalsIgnoreCase("/jouer"))){
+                System.out.println("Pour crier JARNAC : /jarnac");
+                System.out.println("Pour jouer : /jouer");
+                choix = in.next();
+
+                }
             if (choix.equalsIgnoreCase("/jarnac")){
                 System.out.println("JARNAC !!!");
             }
-            else if (!choix.equalsIgnoreCase("/jouer")){
-                //Empêche l'utilisateur d'écrire n'importe quoi
-                while (!flag) {
-                    System.out.println("Pour crier JARNAC : /jarnac");
-                    System.out.println("Pour jouer : /jouer");
-                    choix = in.next();
-                    if (choix.equalsIgnoreCase("/jarnac")) {
-                        System.out.println("JARNAC !!!!!!");
-                        flag = true;
-                    }
-                    else if (!choix.equalsIgnoreCase("/jouer")) {
-
-                        }
-                    else {
-                        flag = true;
-                    }
-                }
-            }
-
 
             j2.piocher(6);
             //On vérifie qu'il a au moins une voyelle
