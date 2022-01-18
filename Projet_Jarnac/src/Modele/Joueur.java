@@ -94,4 +94,5 @@ public class Joueur {
     public Partie getPartie() {
         return partie;
     }
+
 }
