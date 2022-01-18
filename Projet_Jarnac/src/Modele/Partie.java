@@ -135,7 +135,7 @@ public class Partie {
 
 
     //Fonction qui réalise le choix du joueur
-    private void play(Joueur j, Scanner in, String choix, int i) {
+    private int play(Joueur j, Scanner in, String choix, int i) {
         if (choix.equalsIgnoreCase("/jouer")) {
             System.out.println("Pour arrêter la partie, saisir : /arreter");
             System.out.println("Pour passer votre tour, saisir : /passer");
@@ -149,10 +149,11 @@ public class Partie {
                 if (mot.equalsIgnoreCase("/arreter")) {
                     System.out.println("Partie arrêtée");
                     arreter(i);
-                    return;
+                    return i;
                 } else if (mot.equalsIgnoreCase("/passer")) {
                     System.out.println("Vous passez votre tour");
-                    return;
+                    i+=1;
+                    return i;
                 }
 
                 System.out.println("Mot non valable");
@@ -162,6 +163,7 @@ public class Partie {
                 mot = in.next();
             }
         }
+        return i;
     }
 
     public void arreter(int i) {
@@ -192,38 +194,37 @@ public class Partie {
             String choix = in.next();
             if (choix.equalsIgnoreCase("/jouer")) {
                 flag = true;
-                play(j1, in, choix, i);
-                i += 1;
+                i = play(j1, in, choix, i);
             } else if (choix.equalsIgnoreCase("/arreter")) {
                 flag = true;
                 arreter(i);
             } else if (choix.equalsIgnoreCase("/passer")) {
                 flag = true;
-                i = i + 1;
                 System.out.println("Vous passez votre tour");
+                i +=1;
 
             }
 
         }
-        return i + 1;
+        return i;
     }
 
     //Cette fonction (on peut changer le nom) permet juste d'alléger le code en l'appelant plutôt qu'en réecrivant son contenu.
     //Elle permet de connaître le choix du joueur
     public int verifchoix(String choix, int i, Scanner in) {
         if (choix.equalsIgnoreCase("/jouer")) {
-            play(j1, in, choix, i);
+            i = play(j1, in, choix, i);
             i += 1;
         } else if (choix.equalsIgnoreCase("/arreter")) {
             arreter(i);
         } else if (choix.equalsIgnoreCase("/passer")) {
-            i = i + 1;
+            i += 1;
             System.out.println("Vous passez votre tour");
         }
 
         //Si le joueur n'a pas écrit /jouer || /passer || /arreter , alors on lui demande de recommencer.
         else {
-            verifcase(i);
+            i = verifcase(i);
         }
         return i;
     }

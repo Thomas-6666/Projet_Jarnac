@@ -1,6 +1,7 @@
 package Modele;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Joueur {
     private String nom;
@@ -27,8 +28,13 @@ public class Joueur {
     }
 
     public void piocher(int i) {
-        for (int j = 0; j < i; j++) {
-            reserve.ajouterLettre(partie.getReserve().piocher());
+        if(partie.getReserve().size() > 0) {
+            for (int j = 0; j < i; j++) {
+                reserve.ajouterLettre(partie.getReserve().piocher());
+            }
+        }
+        else {
+            System.out.println("Vous ne pouvez pas piocher");
         }
     }
 
@@ -37,12 +43,12 @@ public class Joueur {
         listelettres.addAll(reserve.getLettres());
         for (int i = 0; i < mot.length(); i++) {
             String curChar = String.valueOf(mot.charAt(i));
-            System.out.println(curChar);
-            System.out.println(listelettres);
+            //System.out.println(curChar);
+            //System.out.println(listelettres);
             if (curChar.equalsIgnoreCase("/") || curChar == "/") {
                 return false;
             } else {
-                if (listelettres.contains(curChar)) {
+                if (listelettres.contains(curChar.toUpperCase())) {
                     listelettres.remove(curChar);
                 } else {
                     return false;
