@@ -63,6 +63,15 @@ public class Joueur {
         }
     }
 
+    public void crierJarnac(String choix){
+        if (choix.equalsIgnoreCase("/jarnac")) {
+            System.out.printf("JARNAC !!!");
+            String mot = null;
+            plateau.ajouterMot(mot);
+            reserve.ajouterLettre(partie.getReserve().piocher());
+        }
+    }
+
     @Override
     public String toString() {
         return "Joueur{" +
