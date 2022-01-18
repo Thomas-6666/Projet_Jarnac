@@ -29,9 +29,34 @@ public class Joueur {
 
     public void piocher(int i) {
         if(partie.getReserve().size() > 0) {
-            for (int j = 0; j < i; j++) {
+
+            for (int j = 0; j < i-1; j++) {
                 reserve.ajouterLettre(partie.getReserve().piocher());
             }
+
+
+            //La dernière lettre sera une voyelle ou une consonne selon les besoin
+
+            //La joueur possède des voyelles et consonne donc il pioche au hasard
+            if (reserve.containsVoyelle() && reserve.containsConsonne()){
+                reserve.ajouterLettre(partie.getReserve().piocher());
+
+            //Le joueur ne possède pas de consonne, Si la réserve commune possède des consonnes alors le joueur aura une consonne. Sinon il aura une lettre au hasard
+            }if (reserve.containsVoyelle() && !reserve.containsConsonne()){
+                if (partie.getReserve().containsConsonne()){
+                    reserve.ajouterLettre(partie.getReserve().piocherConsonne());
+                } else {
+                    reserve.ajouterLettre(partie.getReserve().piocher());
+                }
+            //Même chose que précédemment mais pour les voyelles.
+            } if (!reserve.containsVoyelle() && reserve.containsConsonne()){
+                if (partie.getReserve().containsVoyelle()){
+                    reserve.ajouterLettre(partie.getReserve().piocherVoyelle());
+                } else {
+                    reserve.ajouterLettre(partie.getReserve().piocher());
+                }
+            }
+
         }
         else {
             System.out.println("Vous ne pouvez pas piocher");
@@ -39,28 +64,29 @@ public class Joueur {
     }
 
     public boolean jouer(String mot) {
-        ArrayList<String> listelettres = new ArrayList<>();
-        listelettres.addAll(reserve.getLettres());
-        for (int i = 0; i < mot.length(); i++) {
-            String curChar = String.valueOf(mot.charAt(i));
-            //System.out.println(curChar);
-            //System.out.println(listelettres);
-            if (curChar.equalsIgnoreCase("/") || curChar == "/") {
-                return false;
+        mot = mot.toUpperCase();
+        ArrayList<String> reserveTemp = new ArrayList<>(reserve.getLettres());
+        for (int i = 0; i < mot.length(); i++){
+            String lettre = String.valueOf(mot.charAt(i));
+            if (reserveTemp.contains(lettre)){
+                reserveTemp.remove(lettre);
             } else {
-                if (listelettres.contains(curChar.toUpperCase())) {
-                    listelettres.remove(curChar);
+                if (mot.startsWith("/")){
+                    System.out.println("Impossible d'éxécuter cette commande");
                 } else {
-                    return false;
+                    System.out.println("Vous n'avez pas les lettres");
                 }
+                return false;
             }
         }
-        reserve.setLettre(listelettres);
-        if (plateau.ajouterMot(mot)) {
+        if (plateau.ajouterMot(mot)){
+            reserve.setLettre(reserveTemp);
             return true;
         } else {
+            System.out.println("Le mot n'existe pas");
             return false;
         }
+        
     }
 
     public void crierJarnac(){

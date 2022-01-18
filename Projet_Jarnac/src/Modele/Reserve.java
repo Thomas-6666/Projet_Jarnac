@@ -1,12 +1,11 @@
 package Modele;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Reserve {
     private ArrayList<String> lettre;
+    private List<String> voyelles = Arrays.asList("A","E","I","O","U", "Y");
+    private List<String> consonnes = Arrays.asList("B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Z");
 
     public Reserve() { //Ce constructeur permet l'implémentation des lettres de l'alphabet dans la liste
         lettre = new ArrayList();
@@ -119,8 +118,31 @@ public class Reserve {
         return l;
     }
 
-    public void remove(String l) {
-        lettre.remove(l);
+    public String piocherVoyelle() {
+        String l = ".";
+        while (!remove(l)){
+            int r = new Random().nextInt(voyelles.size());
+            l = voyelles.get(r);
+        }
+        return l;
+    }
+
+    public String piocherConsonne() {
+        String l = ".";
+        while (!remove(l)){
+            int r = new Random().nextInt(consonnes.size());
+            l = consonnes.get(r);
+        }
+        return l;
+    }
+
+    public boolean remove(String l) {
+        if (lettre.contains(l)){
+            lettre.remove(l);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void ajouterLettre(String l) {
@@ -151,5 +173,23 @@ public class Reserve {
 
     public void clear(){
         lettre.clear();
+    }
+
+    public boolean containsVoyelle(){
+        for (String voyelle : voyelles){
+            if (lettre.contains(voyelle)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsConsonne(){
+        for (String consonne : consonnes){
+            if (lettre.contains(consonne)){
+                return true;
+            }
+        }
+        return false;
     }
 }
