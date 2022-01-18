@@ -1,5 +1,8 @@
 package Modele;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Partie {
@@ -7,6 +10,7 @@ public class Partie {
     private Joueur j2;
     private Reserve reserve;
     private boolean fini;
+    private List<String> voyelles = Arrays.asList("A","E","I","O","U");
 
     public Partie() {
         fini = false;
@@ -35,6 +39,11 @@ public class Partie {
 
         //Premier tour, les joueurs piochent 6 lettres
         j1.piocher(6);
+        //On vérifie qu'il a au moins une voyelle
+        while (!j1.getReserve().contains(voyelles)){
+            j1.getReserve().clear();
+            j1.piocher(6);
+        }
         System.out.println("C'est au tour de " + j1.getNom());
         System.out.println("Voici vos lettres:");
         System.out.println(j1.getReserve());
@@ -50,7 +59,25 @@ public class Partie {
 
         //Si la partie n'est pas finie
         if (!fini) {
+            System.out.println("J2, veuillez choisir ce que vous allez faire :");
+            System.out.println("Pour crier JARNAC : /jarnac");
+            System.out.println("Pour jouer : /jouer");
+            choix = in.next();
+            while (!choix.equalsIgnoreCase("/jarnac") || choix.equalsIgnoreCase("/jouer")){
+                System.out.println("Pour crier JARNAC : /jarnac");
+                System.out.println("Pour jouer : /jouer");
+                choix = in.next();
+            }
+            if (choix.equalsIgnoreCase("/jarnac")){
+                System.out.println("JARNAC !!!!!!");
+            }
+
             j2.piocher(6);
+            //On vérifie qu'il a au moins une voyelle
+            while (!j2.getReserve().contains(voyelles)){
+                j2.getReserve().clear();
+                j2.piocher(6);
+            }
             System.out.println("C'est au tour de " + j2.getNom());
             System.out.println("Voici vos lettres:");
             System.out.println(j2.getReserve());

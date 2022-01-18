@@ -138,4 +138,18 @@ public class Reserve {
     public void setLettre(ArrayList<String> l) {
         lettre = l;
     }
+
+    public boolean contains(List<String> str) {
+        for (int i = 0; i < str.size(); i++) {
+            if (lettre.contains(str.get(i))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void clear(){
+        lettre.clear();
+    }
 }
