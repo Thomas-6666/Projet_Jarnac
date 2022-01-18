@@ -229,6 +229,17 @@ public class Partie {
         return i;
     }
 
+    public void annoncerGagnant(){
+        fini = true;
+        if (j1.getScore() == j2.getScore()){
+            System.out.println("Match nul !");
+        } else if (j1.getScore() > j2.getScore()){
+            System.out.println(j1.getNom() + "à gagner avec: "+j1.getScore() + "points !");
+        } else {
+            System.out.println(j2.getNom() + "à gagner avec: "+j2.getScore() + "points !");
+        }
+    }
+
 }
 
 

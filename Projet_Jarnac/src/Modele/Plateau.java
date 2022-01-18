@@ -18,11 +18,23 @@ public class Plateau {
     public boolean ajouterMot(String m) {
         if (BDD.verification(m)) {
             mot.add(m);
+            joueur.setScore(compterScore());
+            if (mot.size() == 8){
+                joueur.getPartie().annoncerGagnant();
+            }
             return true;
         } else {
             return false;
         }
 
+    }
+
+    private int compterScore(){
+        int score = 0;
+        for (String curmot : mot){
+            score += curmot.length() * curmot.length();
+        }
+        return score;
     }
 
 
