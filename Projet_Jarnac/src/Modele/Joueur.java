@@ -122,4 +122,7 @@ public class Joueur {
         return partie;
     }
 
+    public Plateau getPlateau() {
+        return plateau;
+    }
 }

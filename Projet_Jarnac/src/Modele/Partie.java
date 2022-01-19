@@ -41,6 +41,7 @@ public class Partie {
         j1.piocher(6);
         j2.piocher(6);
         Joueur currentPlayer;
+        Joueur otherPlayer;
 
         System.out.println("La partie commence");
 
@@ -48,12 +49,16 @@ public class Partie {
 
             if (i % 2 == 0) {
                 currentPlayer = j1;
+                otherPlayer = j2;
             } else {
                 currentPlayer = j2;
+                otherPlayer = j1;
             }
 
             System.out.println("C'est au tour de " + currentPlayer.getNom());
             System.out.println("Lettres : " + currentPlayer.getReserve());
+            afficherPlateau(currentPlayer);
+            afficherPlateau(otherPlayer);
             play(currentPlayer);
             currentPlayer.piocher(1);
             i+=1;
@@ -126,6 +131,22 @@ public class Partie {
             System.out.println(j1.getNom() + "à gagner avec: "+j1.getScore() + "points !");
         } else {
             System.out.println(j2.getNom() + "à gagner avec: "+j2.getScore() + "points !");
+        }
+    }
+
+    private void afficherPlateau(Joueur j){
+        Plateau p  = j.getPlateau();
+        System.out.println("Plateau de "+j.getNom());
+        System.out.println("\t\t\t9\t16\t25\t36\t49\t64\t81");
+        for (int i = 0; i < 8; i++){
+            StringBuilder line = new StringBuilder("L" + (i + 1) + "\t");
+            if (p.getMot().size() > i){
+                String mot = p.getMot().get(i);
+                for (char lettre : mot.toCharArray()){
+                    line.append(lettre).append("\t");
+                }
+            }
+            System.out.println(line);
         }
     }
 
