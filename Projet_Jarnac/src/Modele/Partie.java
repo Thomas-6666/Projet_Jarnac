@@ -74,9 +74,10 @@ public class Partie {
 
         while (!flag) {
 
-            System.out.println("Ecrire /jouer pour jouer un mot");
+            System.out.println("Ecrire /jouer pour créer un mot");
             System.out.println("Ecrire /arreter pour arreter la partie");
             System.out.println("Ecrire /passer pour passer votre tour");
+            System.out.println("Ecrire /modif pour modifier un mot");
             String choix = in.next();
 
             if (choix.equalsIgnoreCase("/jouer")) {
@@ -103,6 +104,8 @@ public class Partie {
             } else if (choix.equalsIgnoreCase("/passer")) {
                 flag = true;
                 break;
+            } else if (choix.equalsIgnoreCase("/modif")){
+                flag = modifier(in, j);
             }
 
         }
@@ -148,6 +151,38 @@ public class Partie {
             }
             System.out.println(line);
         }
+    }
+
+    private boolean modifier(Scanner in, Joueur j){
+        while (true){
+            System.out.println("Donner le numéro de la ligne à modifier");
+            System.out.println("Ecrire /retour pour annuler l'action");
+            String ligne = in.next();
+
+            if (ligne.equalsIgnoreCase("/retour")){
+                return false;
+            }
+            try{
+                int ligneNb = Integer.parseInt(ligne) - 1;
+                String lignePlateau = j.getPlateau().getMot().get(ligneNb);
+                for (char lettre : lignePlateau.toCharArray()){
+                    j.getReserve().ajouterLettre(String.valueOf(lettre));
+                }
+                j.getPlateau().getMot().remove(ligneNb);
+                String nouveauMot = ".";
+                while (!j.jouer(nouveauMot)){
+                    System.out.println("Ecrire le nouveau mot");
+                    nouveauMot = in.next();
+                    if (ligne.equalsIgnoreCase("/retour")){
+                        return false;
+                    }
+                }
+                return true;
+            } catch (Exception e){
+                System.out.println("Impossible de modifier cette ligne");
+            }
+        }
+
     }
 
 }
