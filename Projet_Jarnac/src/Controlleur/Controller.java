@@ -3,9 +3,6 @@ package Controlleur;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
@@ -86,6 +83,10 @@ public class Controller {
         assert plateau_j2 != null : "fx:id=\"plateau_j2\" was not injected: check your FXML file 'Maquettage.fxml'.";
         assert points_j1 != null : "fx:id=\"points_j1\" was not injected: check your FXML file 'Maquettage.fxml'.";
         assert points_j2 != null : "fx:id=\"points_j2\" was not injected: check your FXML file 'Maquettage.fxml'.";
+    }
+
+    public void start(Stage stage){
+
     }
 
 }
