@@ -120,20 +120,30 @@ public class Reserve {
 
     public String piocherVoyelle() {
         String l = ".";
-        while (!remove(l)){
-            int r = new Random().nextInt(voyelles.size());
-            l = voyelles.get(r);
+        for (String voyelle : voyelles){
+            if (lettre.contains(voyelle)){
+                while (!remove(l)){
+                    int r = new Random().nextInt(voyelles.size());
+                    l = voyelles.get(r);
+                }
+                return l;
+            }
         }
-        return l;
+        return piocher();
     }
 
     public String piocherConsonne() {
         String l = ".";
-        while (!remove(l)){
-            int r = new Random().nextInt(consonnes.size());
-            l = consonnes.get(r);
+        for (String consonne : consonnes){
+            if (lettre.contains(consonne)){
+                while (!remove(l)){
+                    int r = new Random().nextInt(consonnes.size());
+                    l = consonnes.get(r);
+                }
+                return l;
+            }
         }
-        return l;
+        return piocher();
     }
 
     public boolean remove(String l) {
@@ -146,7 +156,7 @@ public class Reserve {
     }
 
     public void ajouterLettre(String l) {
-        lettre.add(l);
+        lettre.add(l.toUpperCase());
     }
 
     public int size() {
@@ -186,7 +196,7 @@ public class Reserve {
 
     public boolean containsConsonne(){
         for (String consonne : consonnes){
-            if (lettre.contains(consonne)){
+            if (lettre.contains(consonne.toUpperCase())){
                 return true;
             }
         }

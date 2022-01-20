@@ -32,6 +32,11 @@ public class Partie {
 
     }
 
+    //constructeur pour test
+    public Partie(int i){
+
+    }
+
     public void lancer() {
 
         //Permet de savoir si le tour est pair ou impair (J1 ou j2)
