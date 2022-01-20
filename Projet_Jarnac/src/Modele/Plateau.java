@@ -30,7 +30,7 @@ public class Plateau {
 
     }
 
-    private int compterScore(){
+    public int compterScore(){
         int score = 0;
         for (String curmot : mot){
             score += curmot.length() * curmot.length();
