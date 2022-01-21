@@ -45,11 +45,18 @@ public class Ia {
         int size = reserve.size();
         String word = reserve.get(0);
         //TODO
-        //Trouver un moyen de calculer les combinaisons possibles et empêcher d'avoir deux fois les mêmes
-        //Exemple : ['a','b',c'], ['b','a','c'], etc
+        //Il faut tester les arranegements à chaque fois
+        //Si ma réserve est de taille 5
+        //Je teste tous les arrangements pour faire un mot de 3 lettres, puis je trouve les nouveaux arrangements pour 4 lettres et enfin 5 lettres.
         //Mettre ça dans un while pour tester toutes les possibilités
-        //A la fin du while, si la liste qui sera rempli dans le if (found) est vide alors faire /passer
-        //Si non, parcourir la liste et jouer le mot le plus grand
+        //Remplir quoi qu'il arrive la liste wordsGenerated
+        //Remplir wordsPlayable uniquement si play la vérification passe
+        //A la fin du while, si wordsPlayable /passer
+        //Si non, parcourir wordsPlayble et jouer le mot le plus grand
+        int nbArrangements = arrangement(size,size);
+        System.out.println("Il y a "+ nbArrangements+" arrangements possible");
+        List<String> wordsPlayable;
+        List<String> wordsGenerated;
         for (int i = 1; i < size; i++) {
             word += reserve.get(i);
             if (word.length() > 2) {
@@ -65,5 +72,23 @@ public class Ia {
 
 
         return word;
+    }
+
+    public int arrangement(int n, int k){
+        /*n! / (n-k)!
+        n = Nombre d'éléments dans l'ensemble
+        k = Nombre d'élement qu'on pioche
+        */
+        int resultat = factorial(n) / factorial(n-k);
+        return resultat;
+    }
+
+    public int factorial(int f){
+        if (f <= 1){
+            return 1;
+        }
+        else {
+            return f * factorial(f-1);
+        }
     }
 }
