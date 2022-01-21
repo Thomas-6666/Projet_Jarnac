@@ -38,5 +38,10 @@ public class BaseDeDonnee {
         }
         return false;
     }
+
+    //RAJOUTER PAR MOI POUR TEST IA
+    public List<String> getBdd(){
+        return mots;
+    }
 }
 
