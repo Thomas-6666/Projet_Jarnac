@@ -37,9 +37,42 @@ public class Ia {
     public static void main(String[] args) {
         Ia ia = new Ia();
         ia.generateWord(ia.reserve);
+        String reserveAsString = "";
+        for (String s : ia.reserve) {
+            reserveAsString+= s;
+        }
+        ia.generateArrangement(reserveAsString, "");
 
     }
 
+    //Fonction pour afficher tous les arranegemnets (pour l'instant void mais retournera une liste de str)
+    public void generateArrangement(String str, String ans) {
+
+        // If string is empty
+        if (str.length() == 0) {
+            System.out.print(ans + " ");
+            return;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+
+            // ith character of str
+            char ch = str.charAt(i);
+
+            // Rest of the string after excluding
+            // the ith character
+            String ros = str.substring(0, i) +
+                    str.substring(i + 1);
+
+            // Recurvise call
+            generateArrangement(ros, ans + ch);
+        }
+    }
+
+
+    public ArrayList getReserve() {
+        return reserve;
+    }
 
     public String generateWord(ArrayList<String> reserve) {
         int size = reserve.size();
@@ -53,8 +86,13 @@ public class Ia {
         //Remplir wordsPlayable uniquement si play la vérification passe
         //A la fin du while, si wordsPlayable /passer
         //Si non, parcourir wordsPlayble et jouer le mot le plus grand
-        int nbArrangements = arrangement(size,size);
-        System.out.println("Il y a "+ nbArrangements+" arrangements possible");
+        int nbArrangements = arrangement(size, size);
+
+        //Permet de savoir combien de fois on va devoir changer d'arrangements.
+        // Taille 3 = 1 fois || Taille 4 = 2 fois || etc...
+        int nbTryNewArrangements = size - 2;
+        System.out.println("Il y a " + nbArrangements + " arrangements possible");
+        System.out.println("Pour une taille de " + size + " il faut tester " + nbTryNewArrangements + " arrangement(s) différent()s");
         List<String> wordsPlayable;
         List<String> wordsGenerated;
         for (int i = 1; i < size; i++) {
@@ -74,21 +112,20 @@ public class Ia {
         return word;
     }
 
-    public int arrangement(int n, int k){
+    public int arrangement(int n, int k) {
         /*n! / (n-k)!
         n = Nombre d'éléments dans l'ensemble
         k = Nombre d'élement qu'on pioche
         */
-        int resultat = factorial(n) / factorial(n-k);
+        int resultat = factorial(n) / factorial(n - k);
         return resultat;
     }
 
-    public int factorial(int f){
-        if (f <= 1){
+    public int factorial(int f) {
+        if (f <= 1) {
             return 1;
-        }
-        else {
-            return f * factorial(f-1);
+        } else {
+            return f * factorial(f - 1);
         }
     }
 }
