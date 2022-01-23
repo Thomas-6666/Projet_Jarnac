@@ -1,7 +1,9 @@
 package Modele;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Ia {
     public BaseDeDonnee bdd = new BaseDeDonnee();
@@ -41,32 +43,42 @@ public class Ia {
         for (String s : ia.reserve) {
             reserveAsString+= s;
         }
-        ia.generateArrangement(reserveAsString, "");
+        System.out.println(ia.generateArrangement(reserveAsString));
 
     }
 
-    //Fonction pour afficher tous les arranegemnets (pour l'instant void mais retournera une liste de str)
-    public void generateArrangement(String str, String ans) {
+    public Set<String> generateArrangement(String str) {
 
-        // If string is empty
-        if (str.length() == 0) {
-            System.out.print(ans + " ");
-            return;
+        // On stock dans un Set pour éviter les doublons
+        Set<String> permutations = new HashSet<String>();
+
+        // On regarde si le string est nul pour éviter les bugs
+        if (str == null) {
+            return null;
+        } else if (str.length() == 0) {
+            // La récursivité s'arrête à cette condition
+            permutations.add("");
+            return permutations;
         }
 
-        for (int i = 0; i < str.length(); i++) {
+        // On récupère le premier caractère
+        char first = str.charAt(0);
 
-            // ith character of str
-            char ch = str.charAt(i);
+        // get the remaining substring
+        String sub = str.substring(1);
 
-            // Rest of the string after excluding
-            // the ith character
-            String ros = str.substring(0, i) +
-                    str.substring(i + 1);
+        // On fait l'appel récursif
+        Set<String> words = generateArrangement(sub);
 
-            // Recurvise call
-            generateArrangement(ros, ans + ch);
+        // access each element from words
+        for (String strNew : words) {
+            for (int i = 0;i<=strNew.length();i++){
+
+                // On insère dans le Set
+                permutations.add(strNew.substring(0, i) + first + strNew.substring(i));
+            }
         }
+        return permutations;
     }
 
 
@@ -127,5 +139,9 @@ public class Ia {
         } else {
             return f * factorial(f - 1);
         }
+    }
+
+    public List<String> getAllArrangements(List<String> str){
+        return str;
     }
 }
