@@ -8,32 +8,12 @@ import java.util.Set;
 public class Ia {
     public BaseDeDonnee bdd = new BaseDeDonnee();
     public ArrayList<String> reserve = new ArrayList<>() {{
-        add("p");
         add("u");
         add("i");
+        add("o");
     }};
 
     public Ia() {
-    }
-
-    public static boolean containsWords(String inputString, List<String> items) {
-        boolean found = false;
-        int compteur = 0;
-        inputString = inputString.toUpperCase();
-        //J'ai un doute sur l'utilité du while
-        while (compteur < items.size() || compteur < inputString.length()) {
-            for (String item : items) {
-                if (inputString.contains(item)) {
-                    compteur += 1;
-                    if (compteur == inputString.length()) {
-                        found = true;
-                        return found;
-                    }
-                }
-            }
-            break;
-        }
-        return found;
     }
 
     public static void main(String[] args) {
@@ -41,7 +21,7 @@ public class Ia {
         ia.generateWord(ia.reserve);
         String reserveAsString = "";
         for (String s : ia.reserve) {
-            reserveAsString+= s;
+            reserveAsString += s;
         }
         System.out.println(ia.generateArrangement(reserveAsString));
 
@@ -72,7 +52,7 @@ public class Ia {
 
         // access each element from words
         for (String strNew : words) {
-            for (int i = 0;i<=strNew.length();i++){
+            for (int i = 0; i <= strNew.length(); i++) {
 
                 // On insère dans le Set
                 permutations.add(strNew.substring(0, i) + first + strNew.substring(i));
@@ -88,9 +68,13 @@ public class Ia {
 
     public String generateWord(ArrayList<String> reserve) {
         int size = reserve.size();
-        String word = reserve.get(0);
-        //TODO
+        String word = "";
+        for (int i = 0; i < size; i++) {
+            word += reserve.get(i);
+        }
+        //TODO CORRIGER LE CODE
         //Il faut tester les arranegements à chaque fois
+        //Trouver un moyen de gérer si la réserve à une taille supérieure à 9
         //Si ma réserve est de taille 5
         //Je teste tous les arrangements pour faire un mot de 3 lettres, puis je trouve les nouveaux arrangements pour 4 lettres et enfin 5 lettres.
         //Mettre ça dans un while pour tester toutes les possibilités
@@ -98,6 +82,8 @@ public class Ia {
         //Remplir wordsPlayable uniquement si play la vérification passe
         //A la fin du while, si wordsPlayable /passer
         //Si non, parcourir wordsPlayble et jouer le mot le plus grand
+
+        //Je pense que ça ce n'est plus utile avec ma nouvelle façon de faire les arrangements mais je laisse dans le doute
         int nbArrangements = arrangement(size, size);
 
         //Permet de savoir combien de fois on va devoir changer d'arrangements.
@@ -105,24 +91,32 @@ public class Ia {
         int nbTryNewArrangements = size - 2;
         System.out.println("Il y a " + nbArrangements + " arrangements possible");
         System.out.println("Pour une taille de " + size + " il faut tester " + nbTryNewArrangements + " arrangement(s) différent()s");
-        List<String> wordsPlayable;
-        List<String> wordsGenerated;
-        for (int i = 1; i < size; i++) {
-            word += reserve.get(i);
-            if (word.length() > 2) {
+        List<String> wordsPlayable = new ArrayList<>();
+        List<String> wordsGenerated = new ArrayList<>();
+
+        //Changer ce fonctionnement avec les nouvelles méthodes
+        for (int i = 0; i < nbTryNewArrangements; i++) {
+            Set<String> arrangements = generateArrangement(word);
+            for (String wordsToTest : arrangements) {
+
                 //Vérifier que le mot est dans la bdd
-                boolean found = containsWords(word, bdd.getBdd());
+                boolean found = bdd.verification(wordsToTest);
                 if (found) {
-                    System.out.println("C'est dedans l'IA peut jouer : " + word);
+
+                    wordsPlayable.add(wordsToTest);
+                    wordsGenerated.add(wordsToTest);
+
                 } else {
-                    System.out.println("C'est pas dedans, l'IA voulait jouer : " + word);
+                    wordsGenerated.add(wordsToTest);
                 }
             }
         }
-
-
+        System.out.println("Mots générés : "+ wordsGenerated);
+        System.out.println("Mots jouables : "+ wordsPlayable);
+        //Ici je return word mais je retournerai un mot au hasard dans wordPlayable (donc ne pas prendre en compte)
         return word;
     }
+
 
     public int arrangement(int n, int k) {
         /*n! / (n-k)!
@@ -141,7 +135,7 @@ public class Ia {
         }
     }
 
-    public List<String> getAllArrangements(List<String> str){
+    public List<String> getAllArrangements(List<String> str) {
         return str;
     }
 }
