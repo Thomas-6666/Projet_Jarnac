@@ -24,7 +24,7 @@ public class Joueur {
     public void echangerLettre(String l) {
         reserve.remove(l);
         partie.getReserve().ajouterLettre(l);
-        reserve.ajouterLettre(partie.getReserve().piocher());
+        piocher(1);
     }
 
     public void piocher(int i) {
