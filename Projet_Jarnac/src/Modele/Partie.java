@@ -73,7 +73,7 @@ public class Partie {
     }
 
     //Fonction qui réalise le choix du joueur
-    private void play(Joueur j) {
+    public void play(Joueur j) {
         boolean flag = false;
         Scanner in = new Scanner(System.in);
 
@@ -188,6 +188,20 @@ public class Partie {
             }
         }
 
+    }
+
+    public boolean getFini(){
+        return fini;
+    }
+
+    public void setJoueur(Joueur j, int nb){
+        if (nb == 1){
+            j1 = j;
+        } else if (nb == 2){
+            j2 = j;
+        } else {
+            System.out.println("Impossible de changer ce joueur");
+        }
     }
 
 }

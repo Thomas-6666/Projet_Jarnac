@@ -38,5 +38,5 @@ public class JoueurTest {
         joueur.getReserve().ajouterLettre("n");
         assertFalse(joueur.jouer("oui"));
     }
-    
+
 }
