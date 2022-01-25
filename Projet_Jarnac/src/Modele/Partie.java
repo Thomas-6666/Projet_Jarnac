@@ -142,7 +142,7 @@ public class Partie {
         }
     }
 
-    private void afficherPlateau(Joueur j){
+    public void afficherPlateau(Joueur j){
         Plateau p  = j.getPlateau();
         System.out.println("Plateau de "+j.getNom());
         System.out.println("\t\t\t9\t16\t25\t36\t49\t64\t81");

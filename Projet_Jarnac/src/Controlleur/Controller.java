@@ -2,6 +2,9 @@ package Controlleur;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import Modele.*;
+import Vue.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -83,6 +86,18 @@ public class Controller {
         assert points_j1 != null : "fx:id=\"points_j1\" was not injected: check your FXML file 'Interface.fxml'.";
         assert points_j2 != null : "fx:id=\"points_j2\" was not injected: check your FXML file 'Interface.fxml'.";
 
+    }
+
+    public void AppelRegles(View v){
+        v.afficherRegles();
+    }
+
+    public void AppelPartie(View v, Joueur j1, Joueur j2, Reserve r, Partie p, Plateau pl1, Plateau pl2){
+        v.afficherPartie(j1, j2, r, p, pl1, pl2);
+    }
+
+    public void AppelResultat(View v, Partie p){
+        v.afficherResultat(p);
     }
 
 }
