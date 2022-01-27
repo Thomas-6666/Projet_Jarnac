@@ -83,6 +83,7 @@ public class Partie {
             System.out.println("Ecrire /arreter pour arreter la partie");
             System.out.println("Ecrire /passer pour passer votre tour");
             System.out.println("Ecrire /modif pour modifier un mot");
+            System.out.println("Ecrire /jarnac pour voler un mot");
             String choix = in.next();
 
             if (choix.equalsIgnoreCase("/jouer")) {
@@ -110,7 +111,13 @@ public class Partie {
                 flag = true;
                 break;
             } else if (choix.equalsIgnoreCase("/modif")){
-                flag = modifier(in, j);
+                if(modifier(in, j) != -1){
+                    flag = true;
+                    break;
+                }
+                flag = false;
+            } else if (choix.equalsIgnoreCase("/jarnac")){
+                flag = j.crierJarnac();
             }
 
         }
@@ -158,14 +165,14 @@ public class Partie {
         }
     }
 
-    private boolean modifier(Scanner in, Joueur j){
+    public int modifier(Scanner in, Joueur j){
         while (true){
             System.out.println("Donner le numéro de la ligne à modifier");
             System.out.println("Ecrire /retour pour annuler l'action");
             String ligne = in.next();
 
             if (ligne.equalsIgnoreCase("/retour")){
-                return false;
+                return -1;
             }
             try{
                 int ligneNb = Integer.parseInt(ligne) - 1;
@@ -179,10 +186,10 @@ public class Partie {
                     System.out.println("Ecrire le nouveau mot");
                     nouveauMot = in.next();
                     if (ligne.equalsIgnoreCase("/retour")){
-                        return false;
+                        return -1;
                     }
                 }
-                return true;
+                return ligneNb;
             } catch (Exception e){
                 System.out.println("Impossible de modifier cette ligne");
             }
@@ -204,6 +211,9 @@ public class Partie {
         }
     }
 
+    public List<Joueur> getJoueurs(){
+        return List.of(j1, j2);
+    }
 }
 
 

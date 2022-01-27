@@ -1,7 +1,9 @@
 package Modele;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class Joueur {
     private String nom;
@@ -73,8 +75,6 @@ public class Joueur {
             } else {
                 if (mot.startsWith("/")){
                     System.out.println("Impossible d'éxécuter cette commande");
-                } else {
-                    System.out.println("Vous n'avez pas les lettres");
                 }
                 return false;
             }
@@ -89,15 +89,68 @@ public class Joueur {
         
     }
 
-    public void crierJarnac(){
+    public boolean crierJarnac(){
         System.out.printf("JARNAC !!!");
-        //Joueur choisi une ligne du plateau
-        //Si ligne avec un mot, complete le mot et deplace sur son plateau
-        //Si ligne vide, place mot sur son plateau
-        //pioche dans reserve
-        String mot = null;
-        plateau.ajouterMot(mot);
-        reserve.ajouterLettre(partie.getReserve().piocher());
+
+        Joueur jarnacJ = null;
+
+        List<Joueur> joueurs = partie.getJoueurs();
+        for (Joueur j : joueurs){
+            if (j != this){
+                jarnacJ = j;
+                break;
+            }
+        }
+
+        if (jarnacJ == null){
+            return false;
+        }
+
+        boolean flag = false;
+
+        Scanner in = new Scanner(System.in);
+        String choix = ".";
+
+        while (!flag){
+            System.out.println("/retour");
+            System.out.println("/jouer");
+            System.out.println("/modif");
+            choix = in.next();
+
+            if (choix.equalsIgnoreCase("/retour")){
+                return false;
+            } else if (choix.equalsIgnoreCase("/jouer")){
+                String mot = ".";
+                jouerLoop:
+                while (!jarnacJ.jouer(mot)){
+                    System.out.println("saisir le nouveau mot");
+                    System.out.println("/retour");
+                    mot = in.next();
+                    if (mot.equalsIgnoreCase("/retour")){
+                        break jouerLoop;
+                    }
+                }
+                mot = mot.toUpperCase();
+                jarnacJ.getPlateau().getMot().remove(mot);
+                plateau.ajouterMot(mot);
+                jarnacJ.setScore(jarnacJ.getPlateau().compterScore());
+                setScore(plateau.compterScore());
+                return true;
+            } else if (choix.equalsIgnoreCase("/modif")){
+                int ligne = partie.modifier(in, jarnacJ);
+                if (ligne != -1){
+                    String motjouer = jarnacJ.getPlateau().getMot().get(ligne);
+                    plateau.ajouterMot(motjouer);
+                    jarnacJ.getPlateau().getMot().remove(motjouer);
+                    jarnacJ.setScore(jarnacJ.getPlateau().compterScore());
+                    setScore(plateau.compterScore());
+                    return true;
+                }
+            }
+
+        }
+        return false;
+
     }
 
     @Override
