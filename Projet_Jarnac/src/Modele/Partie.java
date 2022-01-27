@@ -74,6 +74,7 @@ public class Partie {
 
     //Fonction qui réalise le choix du joueur
     public void play(Joueur j) {
+        boolean echange = false;
         boolean flag = false;
         Scanner in = new Scanner(System.in);
 
@@ -83,6 +84,8 @@ public class Partie {
             System.out.println("Ecrire /arreter pour arreter la partie");
             System.out.println("Ecrire /passer pour passer votre tour");
             System.out.println("Ecrire /modif pour modifier un mot");
+            if (!echange)
+            System.out.println("Ecrire /echange pour echanger 3 lettres");
             System.out.println("Ecrire /jarnac pour voler un mot");
             String choix = in.next();
 
@@ -118,6 +121,15 @@ public class Partie {
                 flag = false;
             } else if (choix.equalsIgnoreCase("/jarnac")){
                 flag = j.crierJarnac();
+            } else if (choix.equalsIgnoreCase("/echange") && !echange){
+                System.out.println("Quelles sont les lettre à échanger ?");
+                System.out.println("/retour");
+                String lettres = in.next();
+                 if (!lettres.equalsIgnoreCase("/retour")){
+                     echange = j.echangerLettre(lettres);
+                     System.out.println("echange terminé "+echange);
+                 }
+
             }
 
         }

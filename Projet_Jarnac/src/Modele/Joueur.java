@@ -23,10 +23,29 @@ public class Joueur {
         score = s;
     }
 
-    public void echangerLettre(String l) {
-        reserve.remove(l);
-        partie.getReserve().ajouterLettre(l);
-        piocher(1);
+    public boolean echangerLettre(String l) {
+        List<String> lettres = new ArrayList<>();
+        l = l.toUpperCase();
+        if (l.length() == 3){
+            for (char c : l.toCharArray()){
+                String lettre = String.valueOf(c);
+                if (reserve.remove(lettre)) {
+                    lettres.add(lettre);
+                } else {
+                    for (String lettresave : lettres){
+                        System.out.println("erreur ajouts des lettres");
+                        reserve.ajouterLettre(lettresave);
+                    }
+                    return false;
+                }
+            }
+            for (String lettre : lettres){
+                partie.getReserve().ajouterLettre(lettre);
+            }
+            piocher(3);
+            return true;
+        }
+        return false;
     }
 
     public void piocher(int i) {
