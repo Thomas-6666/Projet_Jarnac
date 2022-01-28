@@ -100,14 +100,18 @@ public class Reserve {
 
     //Cette méthode permet d'afficher les lettres que le joueurs possède
     public String toString() {
-        String string = "Taille de la reserve : " + lettre.size();
-        string += "\n[";
-        for (int i = 0; i < lettre.size() - 1; i++) {
-            string += lettre.get(i) + ",";
+        if (lettre.size() != 0){
+            String string = "Taille de la reserve : " + lettre.size();
+            string += "\n[";
+            for (int i = 0; i < lettre.size()-1; i++) {
+                string += lettre.get(i) + ",";
+            }
+            string += lettre.get(lettre.size()-1);
+            string += "]";
+            return string;
+        } else {
+            return "[]";
         }
-        string += lettre.get(lettre.size() - 1);
-        string += "]";
-        return string;
     }
 
     //pioche une lettre aléatoire dans la réserve
@@ -163,7 +167,7 @@ public class Reserve {
         return lettre.size();
     }
 
-    public List<String> getLettres() {
+    public ArrayList<String> getLettres() {
         return lettre;
     }
 

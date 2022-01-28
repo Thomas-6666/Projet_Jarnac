@@ -18,13 +18,20 @@ public class Partie {
         Scanner in = new Scanner(System.in);
 
         String j1name = in.next();
-        j1 = new Joueur(j1name, this, DB);
+        if (j1name.equalsIgnoreCase("ia")){
+            j1 = new Ia("IA1", this, DB);
+        } else {
+            j1 = new Joueur(j1name, this, DB);
+        }
 
         System.out.println("Nom joueur 2:");
 
         String j2name = in.next();
-        j2 = new Joueur(j2name, this, DB);
-
+        if (j2name.equalsIgnoreCase("ia")){
+            j2 = new Ia("IA2", this, DB);
+        }else {
+            j2 = new Joueur(j2name, this, DB);
+        }
         reserve = new Reserve();
 
 
@@ -34,7 +41,10 @@ public class Partie {
 
     //constructeur pour test
     public Partie(int i){
-
+        reserve = new Reserve();
+        BaseDeDonnee DB = new BaseDeDonnee();
+        j1 = new Joueur("j1", this, DB);
+        j2 = new Joueur("j2", this, DB);
     }
 
     public void lancer() {
@@ -64,9 +74,19 @@ public class Partie {
             System.out.println("Lettres : " + currentPlayer.getReserve());
             afficherPlateau(currentPlayer);
             afficherPlateau(otherPlayer);
-            play(currentPlayer);
-            currentPlayer.piocher(1);
-            i+=1;
+            if (currentPlayer instanceof  Ia) {
+                //jouerIA
+                String motJouer = ((Ia) currentPlayer).generateWord();
+                if  (!motJouer.equalsIgnoreCase("/passer")){
+                    currentPlayer.jouer(motJouer);
+                }
+                currentPlayer.piocher(1);
+                i +=1 ;
+            }else{
+                play(currentPlayer);
+                currentPlayer.piocher(1);
+                i += 1;
+            }
 
         }
 
