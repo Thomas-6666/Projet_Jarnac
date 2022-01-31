@@ -3,10 +3,11 @@ import Modele.Partie;
 import Vue.View;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import javafx.scene.*;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.*;
+import javafx.stage.*;
+import javafx.scene.text.*;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -18,6 +19,15 @@ public class Main extends Application {
             primaryStage.setTitle("Jarnac");
             primaryStage.setScene(scene);
             primaryStage.show();
+
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(primaryStage);
+            VBox dialogVbox = new VBox(20);
+            dialogVbox.getChildren().add(new Text("Insérer nom du Joueur 1"));
+            Scene dialogScene = new Scene(dialogVbox, 300, 200);
+            dialog.setScene(dialogScene);
+            dialog.show();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
