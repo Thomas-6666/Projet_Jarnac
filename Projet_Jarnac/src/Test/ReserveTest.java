@@ -18,7 +18,7 @@ public class ReserveTest {
 
     @BeforeEach
     void setUp(){
-        res = new Reserve(new Joueur("joueur", new Partie(1), new BaseDeDonnee()));
+        res = new Reserve(new Joueur("joueur"));
     }
 
     @AfterEach

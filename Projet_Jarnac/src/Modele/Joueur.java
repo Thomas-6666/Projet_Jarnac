@@ -12,11 +12,11 @@ public class Joueur {
     private Partie partie;
     private Plateau plateau;
 
-    public Joueur(String n, Partie p, BaseDeDonnee DB) {
+    public Joueur(String n) {
         nom = n;
-        partie = p;
+        partie = Partie.getInstance();
         reserve = new Reserve(this);
-        plateau = new Plateau(DB, this);
+        plateau = new Plateau(this);
     }
 
     public void setScore(int s) {

@@ -10,41 +10,49 @@ public class Partie {
     private Joueur j2;
     private Reserve reserve;
     private boolean fini;
+    private static Partie instance;
 
-    public Partie() {
+    private Partie() {
         fini = false;
-        BaseDeDonnee DB = new BaseDeDonnee();
+        reserve = new Reserve();
+        /*
         System.out.println("Nom joueur 1:");
         Scanner in = new Scanner(System.in);
 
         String j1name = in.next();
         if (j1name.equalsIgnoreCase("ia")){
-            j1 = new Ia("IA1", this, DB);
+            j1 = new Ia("IA1");
         } else {
-            j1 = new Joueur(j1name, this, DB);
+            j1 = new Joueur(j1name);
         }
 
         System.out.println("Nom joueur 2:");
 
         String j2name = in.next();
         if (j2name.equalsIgnoreCase("ia")){
-            j2 = new Ia("IA2", this, DB);
+            j2 = new Ia("IA2");
         }else {
-            j2 = new Joueur(j2name, this, DB);
+            j2 = new Joueur(j2name);
         }
-        reserve = new Reserve();
 
 
-        lancer();
 
+        lancer();*/
+
+    }
+
+    public static Partie getInstance(){
+        if (instance == null){
+            instance = new Partie();
+        }
+        return instance;
     }
 
     //constructeur pour test
     public Partie(int i){
         reserve = new Reserve();
-        BaseDeDonnee DB = new BaseDeDonnee();
-        j1 = new Joueur("j1", this, DB);
-        j2 = new Joueur("j2", this, DB);
+        j1 = new Joueur("j1");
+        j2 = new Joueur("j2");
     }
 
     public void lancer() {

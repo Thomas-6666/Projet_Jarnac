@@ -26,10 +26,9 @@ public class PartieTest {
 
     @Test
     void arreterTest(){
-        BaseDeDonnee bdd = new BaseDeDonnee();
-        Joueur j1 = new Joueur("J1", partie, bdd);
+        Joueur j1 = new Joueur("J1");
         partie.setJoueur(j1,1);
-        partie.setJoueur(new Joueur("J2", partie, bdd),2);
+        partie.setJoueur(new Joueur("J2"),2);
         partie.arreter(j1);
         assertTrue(partie.getFini());
     }

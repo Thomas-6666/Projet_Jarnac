@@ -18,9 +18,10 @@ import javafx.stage.Stage;
 
 public class Controller {
     private static Controller controller;
+
     private Stage primaryStage;
-    private String j1;
-    private String j2;
+
+
 
     private Controller(){ }
 
@@ -124,21 +125,37 @@ public class Controller {
     }
 
     public boolean Recup(String n, int j){
+        if (n.length() == 0){
+            return false;
+        }
         if (j == 1){
-            j1 = n;
-            System.out.println(j1);
+            Partie p = Partie.getInstance();
+            if (!n.equalsIgnoreCase("ia")){
+                p.setJoueur(new Joueur(n), 1);
+                joueur1.setText(n);
+            } else {
+                p.setJoueur(new Ia("IA1"), 1);
+                joueur1.setText("IA1");
+            }
+
+            System.out.println(n);
             return true;
         }
         else if(j == 2){
-            j2 = n;
-            System.out.println(j2);
+            joueur2.setText(n);
+            System.out.println(n);
             return true;
         }
         return false;
     }
 
-    public void setStage(Stage s){
+    public void setStage(Stage s) {
         primaryStage = s;
+    }
+
+    public static void setInstance(Controller c){
+        controller = c;
+
     }
 
 }

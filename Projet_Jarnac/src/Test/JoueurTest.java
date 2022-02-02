@@ -16,9 +16,9 @@ public class JoueurTest {
 
     @BeforeEach
     void setUp(){
-        Partie p = new Partie(1);
-        joueur = new Joueur("Joueur", p, new BaseDeDonnee());
-        other = new Joueur("Joueur2", p, new BaseDeDonnee());
+        Partie p = Partie.getInstance();
+        joueur = new Joueur("Joueur");
+        other = new Joueur("Joueur2");
         p.setJoueur(joueur, 1);
         p.setJoueur(other, 2);
 

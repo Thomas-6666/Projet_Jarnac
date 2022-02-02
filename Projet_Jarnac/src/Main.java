@@ -12,6 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Interface.fxml"));
             loader.setController(Controller.getInstance());
             Scene scene = loader.load();
@@ -29,8 +30,10 @@ public class Main extends Application {
     public static void main(String[] args) {
         Controlleur.Controller ctrl = Controller.getInstance();
         ctrl.initialize();
+        Partie p = Partie.getInstance();
+        System.out.println("OUI");
+        //ctrl.AppelRegles(new View());
         launch(args);
 
-        Partie p = new Partie();
     }
 }
