@@ -27,12 +27,13 @@ public class Popup extends Stage {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Controller ctrl = Controller.getInstance();
-                ctrl.Recup(input.getText(), j);
-                if (j == 1){
+                if(ctrl.Recup(input.getText(), j)){
+                    if (j == 1){
+                        fermer();
+                        new Popup(primaryStage, 2);
+                    }
                     fermer();
-                    new Popup(primaryStage, 2);
                 }
-                fermer();
             }
         });
         nom.getChildren().addAll(label, input, valider);

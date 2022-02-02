@@ -9,9 +9,9 @@ public class Ia extends Joueur{
     public ArrayList<String> wordsPlayable = new ArrayList<>();
     BaseDeDonnee bdd;
 
-    public Ia(String n, Partie p, BaseDeDonnee DB) {
-        super(n, p, DB);
-        bdd = DB;
+    public Ia(String n) {
+        super(n);
+        bdd = BaseDeDonnee.getInstance();
     }
 
    /* public static void main(String[] args) {

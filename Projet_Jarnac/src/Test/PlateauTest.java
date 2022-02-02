@@ -16,8 +16,7 @@ public class PlateauTest {
 
     @BeforeEach
     void setUp(){
-        BaseDeDonnee bdd = new BaseDeDonnee();
-        p = new Plateau(bdd, new Joueur("joueur", new Partie(1), bdd));
+        p = new Plateau(new Joueur("joueur"));
     }
 
     @AfterEach

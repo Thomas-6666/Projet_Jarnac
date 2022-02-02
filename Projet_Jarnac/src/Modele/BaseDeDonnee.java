@@ -10,7 +10,9 @@ import java.util.List;
 public class BaseDeDonnee {
     private List<String> mots;
 
-    public BaseDeDonnee() {
+    private static BaseDeDonnee instance;
+
+    private BaseDeDonnee() {
         mots = new ArrayList<>();
         try {
             // Le fichier d'entrée
@@ -28,6 +30,13 @@ public class BaseDeDonnee {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static BaseDeDonnee getInstance(){
+        if (instance == null){
+            instance = new BaseDeDonnee();
+        }
+        return instance;
     }
 
     public boolean verification(String mot) {
