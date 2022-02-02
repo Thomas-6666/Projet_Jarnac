@@ -128,25 +128,27 @@ public class Controller {
         if (n.length() == 0){
             return false;
         }
-        if (j == 1){
+        if (j == 1 || j == 2) {
             Partie p = Partie.getInstance();
-            if (!n.equalsIgnoreCase("ia")){
-                p.setJoueur(new Joueur(n), 1);
-                joueur1.setText(n);
+            if (!n.equalsIgnoreCase("ia")) {
+                p.setJoueur(new Joueur(n), j);
+                if (j == 1)
+                    joueur1.setText(n);
+                if (j == 2)
+                    joueur2.setText(n);
+                return true;
             } else {
-                p.setJoueur(new Ia("IA1"), 1);
-                joueur1.setText("IA1");
+                if (j == 1)
+                    joueur1.setText("IA1");
+                if (j == 2) {
+                    joueur2.setText("IA2");
+                    p.setJoueur(new Ia("IA" + j), j);
+                }
+                return true;
             }
-
-            System.out.println(n);
-            return true;
+        }else {
+            return false;
         }
-        else if(j == 2){
-            joueur2.setText(n);
-            System.out.println(n);
-            return true;
-        }
-        return false;
     }
 
     public void setStage(Stage s) {
