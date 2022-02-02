@@ -12,6 +12,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class Controller {
+    private static Controller controller;
+    private String j1;
+    private String j2;
+
+    private Controller(){}
+
+    public static Controller getInstance(){
+        if (controller == null){
+            controller = new Controller();
+        }
+        return controller;
+    }
 
     @FXML
     private ResourceBundle resources;
@@ -88,16 +100,30 @@ public class Controller {
 
     }
 
-    public void AppelRegles(View v){
+    public void AppelRegles(View v) {
         v.afficherRegles();
     }
 
-    public void AppelPartie(View v, Joueur j1, Joueur j2, Reserve r, Partie p, Plateau pl1, Plateau pl2){
+    public void AppelPartie(View v, Joueur j1, Joueur j2, Reserve r, Partie p, Plateau pl1, Plateau pl2) {
         v.afficherPartie(j1, j2, r, p, pl1, pl2);
     }
 
-    public void AppelResultat(View v, Partie p){
+    public void AppelResultat(View v, Partie p) {
         v.afficherResultat(p);
+    }
+
+    public boolean Recup(String n, int j){
+        if (j == 1){
+            j1 = n;
+            System.out.println(j1);
+            return true;
+        }
+        else if(j == 2){
+            j2 = n;
+            System.out.println(j2);
+            return true;
+        }
+        return false;
     }
 
 }
