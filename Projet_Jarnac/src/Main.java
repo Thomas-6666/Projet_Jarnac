@@ -1,6 +1,5 @@
 import Controlleur.Controller;
 import Modele.Partie;
-import Vue.View;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -13,7 +12,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
-            Scene scene = new FXMLLoader(getClass().getResource("Interface.fxml")).load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Interface.fxml"));
+            loader.setController(Controller.getInstance());
+            Scene scene = loader.load();
             primaryStage.setTitle("Jarnac");
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -28,7 +29,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         Controlleur.Controller ctrl = Controller.getInstance();
         ctrl.initialize();
-        ctrl.AppelRegles(new View());
         launch(args);
 
         Partie p = new Partie();

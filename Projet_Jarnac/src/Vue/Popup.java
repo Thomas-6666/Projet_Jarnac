@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 public class Popup extends Stage {
     public Popup(Stage primaryStage, int j) {
         super();
+        Controller c = Controller.getInstance();
+        c.setStage(primaryStage);
         this.initModality(Modality.APPLICATION_MODAL);
         this.initOwner(primaryStage);
         VBox nom = new VBox(20);

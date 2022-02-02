@@ -5,18 +5,24 @@ import java.util.ResourceBundle;
 
 import Modele.*;
 import Vue.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class Controller {
     private static Controller controller;
+    private Stage primaryStage;
     private String j1;
     private String j2;
 
-    private Controller(){}
+    private Controller(){ }
 
     public static Controller getInstance(){
         if (controller == null){
@@ -80,6 +86,11 @@ public class Controller {
     private Label points_j2;
 
     @FXML
+    void show_regles(ActionEvent event) {
+        new Vue.Regles(primaryStage);
+    }
+
+    @FXML
     public void initialize() {
         assert abandonner != null : "fx:id=\"abandonner\" was not injected: check your FXML file 'Interface.fxml'.";
         assert aide != null : "fx:id=\"aide\" was not injected: check your FXML file 'Interface.fxml'.";
@@ -124,6 +135,10 @@ public class Controller {
             return true;
         }
         return false;
+    }
+
+    public void setStage(Stage s){
+        primaryStage = s;
     }
 
 }
