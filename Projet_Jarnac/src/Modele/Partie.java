@@ -1,5 +1,7 @@
 package Modele;
 
+import Controlleur.Controller;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -66,6 +68,9 @@ public class Partie {
         Joueur currentPlayer;
         Joueur otherPlayer;
 
+        Controller ctrl = Controller.getInstance();
+        ctrl.updateReserve(this);
+
         System.out.println("La partie commence");
 
         while (!fini) {
@@ -80,6 +85,7 @@ public class Partie {
 
             System.out.println("C'est au tour de " + currentPlayer.getNom());
             System.out.println("Lettres : " + currentPlayer.getReserve());
+            ctrl.updateReserve(this);
             afficherPlateau(currentPlayer);
             afficherPlateau(otherPlayer);
             if (currentPlayer instanceof  Ia) {

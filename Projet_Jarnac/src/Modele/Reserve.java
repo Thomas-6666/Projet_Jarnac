@@ -114,6 +114,14 @@ public class Reserve {
         }
     }
 
+    public String LettresReserve(){
+        String string = "";
+        for (int i = 0; i < lettre.size(); i++) {
+            string += lettre.get(i) + "\t";
+        }
+        return string;
+    }
+
     //pioche une lettre aléatoire dans la réserve
     public String piocher() {
         int r = new Random().nextInt(lettre.size());

@@ -1,6 +1,8 @@
 package Controlleur;
 
 import java.net.URL;
+import java.sql.SQLOutput;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import Modele.*;
@@ -136,7 +138,6 @@ public class Controller {
                     joueur1.setText(n);
                 if (j == 2)
                     joueur2.setText(n);
-                return true;
             } else {
                 if (j == 1)
                     joueur1.setText("IA1");
@@ -144,8 +145,8 @@ public class Controller {
                     joueur2.setText("IA2");
                     p.setJoueur(new Ia("IA" + j), j);
                 }
-                return true;
             }
+            return true;
         }else {
             return false;
         }
@@ -160,4 +161,11 @@ public class Controller {
 
     }
 
+    public void updateReserve(Partie p) {
+        List<Joueur> listjoueurs = p.getJoueurs();
+        String j1reserve = listjoueurs.get(0).getReserve().LettresReserve();
+        String j2reserve = listjoueurs.get(1).getReserve().LettresReserve();
+        lettres_j1.setText(j1reserve);
+        lettres_j2.setText(j2reserve);
+    }
 }

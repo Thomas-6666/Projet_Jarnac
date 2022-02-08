@@ -1,6 +1,8 @@
 package Vue;
 
 import Controlleur.Controller;
+import Modele.Joueur;
+import Modele.Partie;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

@@ -50,9 +50,9 @@
          </Label>
          <Separator layoutX="277.0" layoutY="100.0" orientation="VERTICAL" prefHeight="315.0" prefWidth="6.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="100.0" />
          <Separator layoutX="550.0" layoutY="120.0" orientation="VERTICAL" prefHeight="275.0" prefWidth="3.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="100.0" />
-         <TextField fx:id="input_j1" layoutX="67.0" layoutY="328.0" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="625.0" />
-         <TextField fx:id="input_j2" layoutX="638.0" layoutY="328.0" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="625.0" AnchorPane.rightAnchor="80.0" />
-         <TableView fx:id="plateau_j1" layoutX="35.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="165.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="115.0">
+         <TextField fx:id="input_j1" layoutX="67.0" layoutY="328.0" maxHeight="1.7976931348623157E308" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="625.0" />
+         <TextField fx:id="input_j2" layoutX="638.0" layoutY="328.0" maxHeight="1.7976931348623157E308" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="625.0" AnchorPane.rightAnchor="80.0" />
+         <TableView fx:id="plateau_j1" layoutX="35.0" layoutY="114.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="165.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="115.0">
            <columns>
              <TableColumn maxWidth="23.0" minWidth="23.0" prefWidth="23.0" />
              <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" />
@@ -65,7 +65,7 @@
                <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" text="96" />
            </columns>
          </TableView>
-         <TableView fx:id="plateau_j2" layoutX="599.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="165.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="115.0">
+         <TableView fx:id="plateau_j2" layoutX="599.0" layoutY="114.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="165.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="115.0">
             <columns>
                <TableColumn maxWidth="23.0" minWidth="23.0" prefWidth="23.0" />
                <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" />
