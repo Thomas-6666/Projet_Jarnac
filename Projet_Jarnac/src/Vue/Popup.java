@@ -33,8 +33,10 @@ public class Popup extends Stage {
                     if (j == 1){
                         fermer();
                         new Popup(primaryStage, 2);
+                    } else if (j == 2){
+                        fermer();
+                        Partie.getInstance().lancer();
                     }
-                    fermer();
                 }
             }
         });

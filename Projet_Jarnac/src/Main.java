@@ -31,7 +31,5 @@ public class Main extends Application {
         Controlleur.Controller ctrl = Controller.getInstance();
         ctrl.initialize();
         launch(args);
-        Partie p = Partie.getInstance();
-        p.lancer();
     }
 }

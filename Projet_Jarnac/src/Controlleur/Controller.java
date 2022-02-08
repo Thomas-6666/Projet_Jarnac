@@ -163,6 +163,7 @@ public class Controller {
 
     public void updateReserve(Partie p) {
         List<Joueur> listjoueurs = p.getJoueurs();
+        System.out.println("TEST");
         String j1reserve = listjoueurs.get(0).getReserve().LettresReserve();
         String j2reserve = listjoueurs.get(1).getReserve().LettresReserve();
         lettres_j1.setText(j1reserve);

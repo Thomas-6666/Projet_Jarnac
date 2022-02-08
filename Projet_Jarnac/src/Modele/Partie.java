@@ -63,17 +63,17 @@ public class Partie {
         int i = 0;
 
         //Premier tour, les joueurs piochent 6 lettres
-        j1.piocher(6);
-        j2.piocher(6);
+        j1.piocher(10);
+        j2.piocher(10);
         Joueur currentPlayer;
         Joueur otherPlayer;
 
         Controller ctrl = Controller.getInstance();
-        ctrl.updateReserve(this);
+        ctrl.updateReserve(instance);
 
         System.out.println("La partie commence");
 
-        while (!fini) {
+        /*while (!fini) {
 
             if (i % 2 == 0) {
                 currentPlayer = j1;
@@ -102,7 +102,7 @@ public class Partie {
                 i += 1;
             }
 
-        }
+        }*/
 
     }
 
