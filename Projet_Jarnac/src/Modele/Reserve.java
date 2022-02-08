@@ -116,8 +116,13 @@ public class Reserve {
 
     public String LettresReserve(){
         String string = "";
-        for (int i = 0; i < lettre.size(); i++) {
-            string += lettre.get(i) + "\t";
+        for (int i = 1; i < lettre.size()-1; i++) {
+            string += lettre.get(i-1);
+            if (i % 5 == 0){
+                string +="\n";
+            } else {
+                string += "\t";
+            }
         }
         return string;
     }
