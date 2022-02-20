@@ -115,16 +115,19 @@ public class Reserve {
     }
 
     public String LettresReserve(){
-        String string = "";
-        for (int i = 1; i < lettre.size()-1; i++) {
-            string += lettre.get(i-1);
+        StringBuilder string = new StringBuilder();
+        System.out.println(lettre.size());
+        for (int i = 1; i < lettre.size()+1; i++) {
+            string.append(lettre.get(i - 1));
             if (i % 5 == 0){
-                string +="\n";
+                System.out.println("oui1");
+                string.append("\n");
             } else {
-                string += "\t";
+                System.out.println("oui2");
+                string.append("\t");
             }
         }
-        return string;
+        return string.toString();
     }
 
     //pioche une lettre aléatoire dans la réserve
