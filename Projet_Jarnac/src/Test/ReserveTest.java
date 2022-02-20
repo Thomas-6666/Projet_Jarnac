@@ -35,14 +35,14 @@ public class ReserveTest {
 
     @Test
     void piocherTest2(){
-        res.ajouterLettre("a");
-        assertEquals("a", res.piocher());
+        res.ajouterLettre("A");
+        assertEquals("A", res.piocher());
     }
 
     @Test
     void piocherVoyelleTest(){
-        res.ajouterLettre("a");
-        assertEquals("a", res.piocherVoyelle());
+        res.ajouterLettre("A");
+        assertEquals("A", res.piocherVoyelle());
     }
 
     @Test
@@ -54,14 +54,14 @@ public class ReserveTest {
 
     @Test
     void piocherVoyelleTest3(){
-        res.ajouterLettre("b");
-        assertEquals("b", res.piocherVoyelle());
+        res.ajouterLettre("B");
+        assertEquals("B", res.piocherVoyelle());
     }
 
     @Test
     void piocherConsonneTest(){
-        res.ajouterLettre("b");
-        assertEquals("b", res.piocherConsonne());
+        res.ajouterLettre("B");
+        assertEquals("B", res.piocherConsonne());
     }
 
     @Test
@@ -73,36 +73,36 @@ public class ReserveTest {
 
     @Test
     void piocherConsonneTest3(){
-        res.ajouterLettre("a");
-        assertEquals("a", res.piocherConsonne());
+        res.ajouterLettre("A");
+        assertEquals("A", res.piocherConsonne());
     }
 
     @Test
     void removeTest1(){
-        res.ajouterLettre("a");
-        assertTrue(res.remove("a"));
+        res.ajouterLettre("A");
+        assertTrue(res.remove("A"));
     }
 
     @Test
     void removeTest2(){
-        res.ajouterLettre("a");
-        assertFalse(res.remove("b"));
+        res.ajouterLettre("A");
+        assertFalse(res.remove("B"));
     }
 
     @Test
     void removeTest3(){
-        assertFalse(res.remove("a"));
+        assertFalse(res.remove("A"));
     }
 
     @Test
     void containsVT1(){
-        res.ajouterLettre("a");
+        res.ajouterLettre("A");
         assertTrue(res.containsVoyelle());
     }
 
     @Test
     void containsVT2(){
-        res.ajouterLettre("b");
+        res.ajouterLettre("B");
         assertFalse(res.containsVoyelle());
     }
 
@@ -113,13 +113,13 @@ public class ReserveTest {
 
     @Test
     void containsCT1(){
-        res.ajouterLettre("b");
+        res.ajouterLettre("B");
         assertTrue(res.containsConsonne());
     }
 
     @Test
     void containsCT2(){
-        res.ajouterLettre("a");
+        res.ajouterLettre("A");
         assertFalse(res.containsConsonne());
     }
 
