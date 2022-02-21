@@ -179,6 +179,7 @@ public class Controller {
             if (j.jouer(mot)){
                 input_j1.setText("");
                 p.setCurrentPlayer(p.getJoueurs().get(1));
+                disableChampMot(2);
             }
         }
     }
@@ -192,6 +193,7 @@ public class Controller {
             if (j.jouer(mot)){
                 input_j2.setText("");
                 p.setCurrentPlayer(p.getJoueurs().get(0));
+                disableChampMot(1);
 
             }
         }
@@ -212,5 +214,16 @@ public class Controller {
         int j2pts = listjoueurs.get(1).getScore();
         points_j1.setText("Points : " + j1pts);
         points_j2.setText("Points : " + j2pts);
+    }
+
+    public void disableChampMot(int i){
+        if (i == 1){
+            input_j1.setDisable(false);
+            input_j2.setDisable(true);
+        }
+        if (i == 2){
+            input_j1.setDisable(true);
+            input_j2.setDisable(false);
+        }
     }
 }
