@@ -10,7 +10,7 @@
       <children>
          <Button fx:id="jarnac" layoutX="339.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="JARNAC" AnchorPane.leftAnchor="320.0" />
          <Button fx:id="passer" layoutX="453.0" layoutY="164.0" mnemonicParsing="false" onAction="#passer" prefHeight="50.0" prefWidth="100.0" text="PASSER" AnchorPane.rightAnchor="320.0" />
-         <Button fx:id="piocher" layoutX="339.0" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="PIOCHER" AnchorPane.leftAnchor="320.0" />
+         <Button fx:id="piocher" layoutX="339.0" layoutY="225.0" mnemonicParsing="false" onAction="#piocher" prefHeight="50.0" prefWidth="100.0" text="PIOCHER" AnchorPane.leftAnchor="320.0" />
          <Button fx:id="echanger" layoutX="453.0" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="ECHANGER" AnchorPane.rightAnchor="320.0" />
          <Button fx:id="abandonner" layoutX="397.0" layoutY="291.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="ABANDONNER" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0" />
          <Button fx:id="aide" alignment="CENTER" layoutX="788.0" layoutY="14.0" mnemonicParsing="false" onAction="#show_regles" onMouseClicked="#show_regles" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="?" textAlignment="CENTER" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -73,7 +73,6 @@
                <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" text="96" />
             </columns>
          </TableView>
-         <Label fx:id="lettres_j1" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="370.0" text="[LETTRES]" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="625.0" AnchorPane.topAnchor="370.0" />
          <Label fx:id="lettres_j2" alignment="CENTER" contentDisplay="CENTER" layoutX="625.0" layoutY="370.0" text="[LETTRES]" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="625.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="370.0" />
          <Separator layoutX="333.0" layoutY="465.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
          <Label alignment="CENTER" layoutX="232.0" layoutY="457.0" text="JARNAC © - Fait par ALLART Kevin, L'HÔTE Basil, PILIA Zoé, SCREVE Thomas" textAlignment="CENTER" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
@@ -83,6 +82,7 @@
          </Label>
          <Button layoutX="223.0" layoutY="329.0" mnemonicParsing="false" onAction="#player1jouer" text="✅" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="600.0" />
          <Button layoutX="773.0" layoutY="329.0" mnemonicParsing="false" onAction="#player2jouer" text="✅" AnchorPane.leftAnchor="773.0" AnchorPane.rightAnchor="52.0" />
+         <TextArea fx:id="lettres_j1" editable="false" layoutX="50.0" layoutY="365.0" prefHeight="90.0" prefWidth="207.0" promptText="[LETTRES]" />
       </children>
     </AnchorPane>
 </Scene>
