@@ -72,6 +72,7 @@ public class Partie {
         ctrl.updateReserve(instance);
         ctrl.updatePoints(instance);
 
+        ctrl.disableChampMot(1);
         System.out.println("La partie commence");
 
         /*while (!fini) {
