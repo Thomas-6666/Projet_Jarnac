@@ -192,7 +192,17 @@ public class Controller {
             if (j.jouer(mot)){
                 input_j2.setText("");
                 p.setCurrentPlayer(p.getJoueurs().get(0));
+
             }
+        }
+    }
+
+    public void passer(){
+        Joueur current = Partie.getInstance().getCurrentPlayer();
+        if (current == Partie.getInstance().getJoueurs().get(0)){
+            Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(1));
+        } else if (current == Partie.getInstance().getJoueurs().get(1)){
+            Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(0));
         }
     }
 

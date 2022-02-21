@@ -9,7 +9,7 @@
     <AnchorPane prefHeight="480.0" prefWidth="853.0">
       <children>
          <Button fx:id="jarnac" layoutX="339.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="JARNAC" AnchorPane.leftAnchor="320.0" />
-         <Button fx:id="passer" layoutX="453.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="PASSER" AnchorPane.rightAnchor="320.0" />
+         <Button fx:id="passer" layoutX="453.0" layoutY="164.0" mnemonicParsing="false" onAction="#passer" prefHeight="50.0" prefWidth="100.0" text="PASSER" AnchorPane.rightAnchor="320.0" />
          <Button fx:id="piocher" layoutX="339.0" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="PIOCHER" AnchorPane.leftAnchor="320.0" />
          <Button fx:id="echanger" layoutX="453.0" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="ECHANGER" AnchorPane.rightAnchor="320.0" />
          <Button fx:id="abandonner" layoutX="397.0" layoutY="291.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="ABANDONNER" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0" />
