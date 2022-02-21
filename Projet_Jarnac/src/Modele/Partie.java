@@ -13,6 +13,7 @@ public class Partie {
     private Reserve reserve;
     private boolean fini;
     private static Partie instance;
+    private Joueur currentPlayer;
 
     private Partie() {
         fini = false;
@@ -65,8 +66,7 @@ public class Partie {
         //Premier tour, les joueurs piochent 6 lettres
         j1.piocher(6);
         j2.piocher(6);
-        Joueur currentPlayer;
-        Joueur otherPlayer;
+        currentPlayer = j1;
 
         Controller ctrl = Controller.getInstance();
         ctrl.updateReserve(instance);
@@ -105,6 +105,14 @@ public class Partie {
 
         }*/
 
+    }
+
+    public Joueur getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Joueur currentPlayer) {
+        this.currentPlayer = currentPlayer;
     }
 
     //Fonction qui réalise le choix du joueur

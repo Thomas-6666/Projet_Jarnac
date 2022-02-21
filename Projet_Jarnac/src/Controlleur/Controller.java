@@ -172,19 +172,27 @@ public class Controller {
 
     public void player1jouer(){
         Partie p = Partie.getInstance();
+        Joueur current = p.getCurrentPlayer();
         Joueur j = p.getJoueurs().get(0);
-        String mot = input_j1.getText();
-        if (j.jouer(mot)){
-            input_j1.setText("");
+        if (j == current){
+            String mot = input_j1.getText();
+            if (j.jouer(mot)){
+                input_j1.setText("");
+                p.setCurrentPlayer(p.getJoueurs().get(1));
+            }
         }
     }
 
     public void player2jouer(){
         Partie p = Partie.getInstance();
+        Joueur current = p.getCurrentPlayer();
         Joueur j = p.getJoueurs().get(1);
-        String mot = input_j2.getText();
-        if (j.jouer(mot)){
-            input_j2.setText("");
+        if (current == j){
+            String mot = input_j2.getText();
+            if (j.jouer(mot)){
+                input_j2.setText("");
+                p.setCurrentPlayer(p.getJoueurs().get(0));
+            }
         }
     }
 
