@@ -23,10 +23,11 @@ public class Controller {
 
     private Stage primaryStage;
 
+
     private Controller(){ }
 
-    public static Controller getInstance(){
-        if (controller == null){
+    public static Controller getInstance() {
+        if (controller == null) {
             controller = new Controller();
         }
         return controller;
@@ -124,8 +125,8 @@ public class Controller {
         v.afficherResultat(p);
     }
 
-    public boolean Recup(String n, int j){
-        if (n.length() == 0){
+    public boolean Recup(String n, int j) {
+        if (n.length() == 0) {
             return false;
         }
         if (j == 1 || j == 2) {
@@ -145,7 +146,7 @@ public class Controller {
                 }
             }
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -154,7 +155,7 @@ public class Controller {
         primaryStage = s;
     }
 
-    public static void setInstance(Controller c){
+    public static void setInstance(Controller c) {
         controller = c;
 
     }
@@ -185,5 +186,13 @@ public class Controller {
         if (j.jouer(mot)){
             input_j2.setText("");
         }
+    }
+
+    public void updatePoints(Partie p) {
+        List<Joueur> listjoueurs = p.getJoueurs();
+        int j1pts = listjoueurs.get(0).getScore();
+        int j2pts = listjoueurs.get(1).getScore();
+        points_j1.setText("Points : " + j1pts);
+        points_j2.setText("Points : " + j2pts);
     }
 }

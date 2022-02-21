@@ -70,6 +70,7 @@ public class Partie {
 
         Controller ctrl = Controller.getInstance();
         ctrl.updateReserve(instance);
+        ctrl.updatePoints(instance);
 
         System.out.println("La partie commence");
 
@@ -108,6 +109,7 @@ public class Partie {
 
     //Fonction qui réalise le choix du joueur
     public void play(Joueur j) {
+        Controller ctrl = Controller.getInstance();
         boolean echange = false;
         boolean flag = false;
         Scanner in = new Scanner(System.in);
@@ -167,6 +169,7 @@ public class Partie {
             }
 
         }
+        ctrl.updatePoints(instance);
     }
 
 
