@@ -177,6 +177,9 @@ public class Controller {
                 input_j1.setText("");
                 j.piocher(1);
             }
+            else{
+                new ErreurMot(primaryStage);
+            }
         }
     }
 
@@ -189,6 +192,9 @@ public class Controller {
             if (j.jouer(mot)){
                 input_j2.setText("");
                 j.piocher(1);
+            }
+            else{
+                new ErreurMot(primaryStage);
             }
         }
     }
