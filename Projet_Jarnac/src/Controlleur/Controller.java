@@ -64,7 +64,7 @@ public class Controller {
     private TextArea lettres_j1;
 
     @FXML
-    private Label lettres_j2;
+    private TextArea lettres_j2;
 
     @FXML
     private Button passer;

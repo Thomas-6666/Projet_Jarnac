@@ -118,7 +118,7 @@ public class Reserve {
         StringBuilder string = new StringBuilder();
         for (int i = 1; i < lettre.size()+1; i++) {
             string.append(lettre.get(i - 1));
-            if (i % 5 == 0){
+            if (i % 7 == 0){
                 string.append("\n");
             } else {
                 string.append("\t");
