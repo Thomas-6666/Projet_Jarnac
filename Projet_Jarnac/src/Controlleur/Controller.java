@@ -207,6 +207,7 @@ public class Controller {
                 disableChampMot(2);
                 if (!Partie.getInstance().isFirstRound()){
                     Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
+                    disable1erTour(false);
                     System.out.println("FIRST: "+ Partie.getInstance().isFirstRound());
                 }
             } else if (current == Partie.getInstance().getJoueurs().get(1)) {
@@ -215,6 +216,7 @@ public class Controller {
                 Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
                 if (Partie.getInstance().isFirstRound()){
                     Partie.getInstance().setFirstRound(false);
+                    disable1erTour(false);
                     System.out.println("FIRST: "+ Partie.getInstance().isFirstRound());
                 }
             }
@@ -247,6 +249,12 @@ public class Controller {
             input_j1.setDisable(true);
             input_j2.setDisable(false);
         }
+    }
+
+    public void disable1erTour(boolean b){
+        jarnac.setDisable(b);
+        piocher.setDisable(b);
+        echanger.setDisable(b);
     }
 
     public void echanger(){

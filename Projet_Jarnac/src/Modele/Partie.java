@@ -80,6 +80,7 @@ public class Partie {
         Controller ctrl = Controller.getInstance();
         ctrl.updateReserve(instance);
         ctrl.updatePoints(instance);
+        ctrl.disable1erTour(true);
 
         ctrl.disableChampMot(1);
         System.out.println("La partie commence");
