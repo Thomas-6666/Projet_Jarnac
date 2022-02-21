@@ -208,6 +208,11 @@ public class Controller {
         }
     }
 
+    public void piocher(){
+        Joueur current = Partie.getInstance().getCurrentPlayer();
+        current.piocher(1);
+    }
+
     public void updatePoints(Partie p) {
         List<Joueur> listjoueurs = p.getJoueurs();
         int j1pts = listjoueurs.get(0).getScore();

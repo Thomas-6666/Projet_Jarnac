@@ -79,6 +79,7 @@ public class Joueur {
                     reserve.ajouterLettre(partie.getReserve().piocher());
                 }
             }
+            Controller.getInstance().updateReserve(partie);
 
         }
         else {
