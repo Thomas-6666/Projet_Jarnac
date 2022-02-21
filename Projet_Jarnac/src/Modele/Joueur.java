@@ -1,5 +1,7 @@
 package Modele;
 
+import Controlleur.Controller;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -100,6 +102,7 @@ public class Joueur {
         }
         if (plateau.ajouterMot(mot)){
             reserve.setLettre(reserveTemp);
+            Controller.getInstance().updateReserve(partie);
             return true;
         } else {
             System.out.println("Le mot n'existe pas");

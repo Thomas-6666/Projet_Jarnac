@@ -63,8 +63,8 @@ public class Partie {
         int i = 0;
 
         //Premier tour, les joueurs piochent 6 lettres
-        j1.piocher(10);
-        j2.piocher(10);
+        j1.piocher(6);
+        j2.piocher(6);
         Joueur currentPlayer;
         Joueur otherPlayer;
 

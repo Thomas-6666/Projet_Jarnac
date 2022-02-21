@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Scene?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Scene xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<Scene xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="480.0" prefWidth="853.0">
       <children>
          <Button fx:id="jarnac" layoutX="339.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="JARNAC" AnchorPane.leftAnchor="320.0" />
@@ -86,8 +81,8 @@
                <Font size="10.0" />
             </font>
          </Label>
-         <Button layoutX="223.0" layoutY="329.0" mnemonicParsing="false" text="✅" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="600.0" />
-         <Button layoutX="773.0" layoutY="329.0" mnemonicParsing="false" text="✅" AnchorPane.leftAnchor="773.0" AnchorPane.rightAnchor="52.0" />
+         <Button layoutX="223.0" layoutY="329.0" mnemonicParsing="false" onAction="#player1jouer" text="✅" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="600.0" />
+         <Button layoutX="773.0" layoutY="329.0" mnemonicParsing="false" onAction="#player2jouer" text="✅" AnchorPane.leftAnchor="773.0" AnchorPane.rightAnchor="52.0" />
       </children>
     </AnchorPane>
 </Scene>

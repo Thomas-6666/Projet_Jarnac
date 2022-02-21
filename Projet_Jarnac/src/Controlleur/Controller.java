@@ -23,8 +23,6 @@ public class Controller {
 
     private Stage primaryStage;
 
-
-
     private Controller(){ }
 
     public static Controller getInstance(){
@@ -163,10 +161,29 @@ public class Controller {
 
     public void updateReserve(Partie p) {
         List<Joueur> listjoueurs = p.getJoueurs();
-        System.out.println("TEST");
         String j1reserve = listjoueurs.get(0).getReserve().LettresReserve();
         String j2reserve = listjoueurs.get(1).getReserve().LettresReserve();
         lettres_j1.setText(j1reserve);
         lettres_j2.setText(j2reserve);
+        System.out.println(j1reserve);
+        System.out.println(j2reserve);
+    }
+
+    public void player1jouer(){
+        Partie p = Partie.getInstance();
+        Joueur j = p.getJoueurs().get(0);
+        String mot = input_j1.getText();
+        if (j.jouer(mot)){
+            input_j1.setText("");
+        }
+    }
+
+    public void player2jouer(){
+        Partie p = Partie.getInstance();
+        Joueur j = p.getJoueurs().get(1);
+        String mot = input_j2.getText();
+        if (j.jouer(mot)){
+            input_j2.setText("");
+        }
     }
 }

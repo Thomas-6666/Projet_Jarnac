@@ -116,14 +116,11 @@ public class Reserve {
 
     public String LettresReserve(){
         StringBuilder string = new StringBuilder();
-        System.out.println(lettre.size());
         for (int i = 1; i < lettre.size()+1; i++) {
             string.append(lettre.get(i - 1));
             if (i % 5 == 0){
-                System.out.println("oui1");
                 string.append("\n");
             } else {
-                System.out.println("oui2");
                 string.append("\t");
             }
         }
