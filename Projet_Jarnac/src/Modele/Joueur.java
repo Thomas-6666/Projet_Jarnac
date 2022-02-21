@@ -4,7 +4,6 @@ import Controlleur.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Joueur {
@@ -13,6 +12,7 @@ public class Joueur {
     private Reserve reserve;
     private Partie partie;
     private Plateau plateau;
+    private boolean firstChoice = false;
 
     public Joueur(String n) {
         nom = n;
@@ -48,6 +48,14 @@ public class Joueur {
             return true;
         }
         return false;
+    }
+
+    public void setFirstChoice(boolean firstChoice) {
+        this.firstChoice = firstChoice;
+    }
+
+    public boolean getFirstChoice() {
+        return firstChoice;
     }
 
     public void piocher(int i) {

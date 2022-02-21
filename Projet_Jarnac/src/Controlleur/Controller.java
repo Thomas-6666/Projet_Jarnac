@@ -171,12 +171,11 @@ public class Controller {
         Partie p = Partie.getInstance();
         Joueur current = p.getCurrentPlayer();
         Joueur j = p.getJoueurs().get(0);
-        if (j == current){
+        if (j == current && !j.getFirstChoice()){
             String mot = input_j1.getText();
             if (j.jouer(mot)){
                 input_j1.setText("");
-                p.setCurrentPlayer(p.getJoueurs().get(1));
-                disableChampMot(2);
+                j.piocher(1);
             }
         }
     }
@@ -185,29 +184,42 @@ public class Controller {
         Partie p = Partie.getInstance();
         Joueur current = p.getCurrentPlayer();
         Joueur j = p.getJoueurs().get(1);
-        if (current == j){
+        if (current == j && !j.getFirstChoice()){
             String mot = input_j2.getText();
             if (j.jouer(mot)){
                 input_j2.setText("");
-                p.setCurrentPlayer(p.getJoueurs().get(0));
-                disableChampMot(1);
-
+                j.piocher(1);
             }
         }
     }
 
     public void passer(){
         Joueur current = Partie.getInstance().getCurrentPlayer();
-        if (current == Partie.getInstance().getJoueurs().get(0)){
-            Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(1));
-        } else if (current == Partie.getInstance().getJoueurs().get(1)){
-            Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(0));
+        if (!current.getFirstChoice()) {
+            if (current == Partie.getInstance().getJoueurs().get(0)) {
+                Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(1));
+                disableChampMot(2);
+                if (!Partie.getInstance().isFirstRound()){
+                    Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
+                }
+            } else if (current == Partie.getInstance().getJoueurs().get(1)) {
+                Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(0));
+                disableChampMot(1);
+                Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
+                if (Partie.getInstance().isFirstRound()){
+                    Partie.getInstance().setFirstRound(false);
+                }
+            }
+            current.setFirstChoice(true);
         }
     }
 
     public void piocher(){
         Joueur current = Partie.getInstance().getCurrentPlayer();
-        current.piocher(1);
+        if (current.getFirstChoice()){
+            current.piocher(1);
+            current.setFirstChoice(false);
+        }
     }
 
     public void updatePoints(Partie p) {

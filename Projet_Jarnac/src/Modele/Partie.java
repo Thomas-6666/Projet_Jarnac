@@ -14,6 +14,7 @@ public class Partie {
     private boolean fini;
     private static Partie instance;
     private Joueur currentPlayer;
+    private boolean firstRound = true;
 
     private Partie() {
         fini = false;
@@ -56,6 +57,14 @@ public class Partie {
         reserve = new Reserve();
         j1 = new Joueur("j1");
         j2 = new Joueur("j2");
+    }
+
+    public boolean isFirstRound() {
+        return firstRound;
+    }
+
+    public void setFirstRound(boolean firstRound) {
+        this.firstRound = firstRound;
     }
 
     public void lancer() {
