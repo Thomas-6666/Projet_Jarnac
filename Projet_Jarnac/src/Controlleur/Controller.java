@@ -115,6 +115,42 @@ public class Controller {
     private Label P1M8;
 
     @FXML
+    private Label P2L0;
+    @FXML
+    private Label P2L1;
+    @FXML
+    private Label P2L2;
+    @FXML
+    private Label P2L3;
+    @FXML
+    private Label P2L4;
+    @FXML
+    private Label P2L5;
+    @FXML
+    private Label P2L6;
+    @FXML
+    private Label P2L7;
+    @FXML
+    private Label P2L8;
+
+    @FXML
+    private Label P2M1;
+    @FXML
+    private Label P2M2;
+    @FXML
+    private Label P2M3;
+    @FXML
+    private Label P2M4;
+    @FXML
+    private Label P2M5;
+    @FXML
+    private Label P2M6;
+    @FXML
+    private Label P2M7;
+    @FXML
+    private Label P2M8;
+
+    @FXML
     private Label points_j1;
 
     @FXML
@@ -148,6 +184,7 @@ public class Controller {
 
     public void initplateau(){
         P1L0.setText("\t\t9\t16\t25\t36\t49\t64\t81");
+        P2L0.setText("\t\t9\t16\t25\t36\t49\t64\t81");
     }
 
     public void AppelRegles(View v) {
@@ -203,8 +240,6 @@ public class Controller {
         String j2reserve = listjoueurs.get(1).getReserve().LettresReserve();
         lettres_j1.setText(j1reserve);
         lettres_j2.setText(j2reserve);
-        System.out.println(j1reserve);
-        System.out.println(j2reserve);
     }
 
     public void player1jouer(){
@@ -233,6 +268,7 @@ public class Controller {
             if (j.jouer(mot)){
                 input_j2.setText("");
                 j.piocher(1);
+                updatePlateau(2);
             }
             else{
                 new ErreurMot(primaryStage);
@@ -252,6 +288,15 @@ public class Controller {
             P1M6.setText(mots.get(5));
             P1M7.setText(mots.get(6));
             P1M8.setText(mots.get(7));
+        } else if (i == 2){
+            P2M1.setText(mots.get(0));
+            P2M2.setText(mots.get(1));
+            P2M3.setText(mots.get(2));
+            P2M4.setText(mots.get(3));
+            P2M5.setText(mots.get(4));
+            P2M6.setText(mots.get(5));
+            P2M7.setText(mots.get(6));
+            P2M8.setText(mots.get(7));
         }
     }
 
@@ -264,7 +309,6 @@ public class Controller {
                 if (!Partie.getInstance().isFirstRound()){
                     Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
                     disable1erTour(false);
-                    System.out.println("FIRST: "+ Partie.getInstance().isFirstRound());
                 }
             } else if (current == Partie.getInstance().getJoueurs().get(1)) {
                 Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(0));
@@ -273,7 +317,6 @@ public class Controller {
                 if (Partie.getInstance().isFirstRound()){
                     Partie.getInstance().setFirstRound(false);
                     disable1erTour(false);
-                    System.out.println("FIRST: "+ Partie.getInstance().isFirstRound());
                 }
             }
             current.setFirstChoice(true);
@@ -317,7 +360,6 @@ public class Controller {
         Joueur current = Partie.getInstance().getCurrentPlayer();
         if (current.getFirstChoice()){
             new Echange(primaryStage, current);
-            current.setFirstChoice(false);
         }
     }
 }

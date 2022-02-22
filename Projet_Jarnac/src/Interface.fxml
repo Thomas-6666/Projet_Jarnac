@@ -47,19 +47,6 @@
          <Separator layoutX="550.0" layoutY="120.0" orientation="VERTICAL" prefHeight="275.0" prefWidth="3.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="100.0" />
          <TextField fx:id="input_j1" layoutX="52.0" layoutY="328.0" maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="630.0" />
          <TextField fx:id="input_j2" layoutX="601.0" layoutY="328.0" maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="601.0" AnchorPane.rightAnchor="81.0" />
-         <TableView fx:id="plateau_j2" layoutX="599.0" layoutY="114.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="165.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="115.0">
-            <columns>
-               <TableColumn maxWidth="23.0" minWidth="23.0" prefWidth="23.0" />
-               <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" />
-               <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" text="9" />
-               <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" text="16" />
-               <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" text="25" />
-               <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" text="36" />
-               <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" text="49" />
-               <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" text="64" />
-               <TableColumn maxWidth="22.0" minWidth="22.0" prefWidth="22.0" text="96" />
-            </columns>
-         </TableView>
          <TextArea fx:id="lettres_j2" editable="false" layoutX="604.0" layoutY="365.0" prefHeight="90.0" prefWidth="200.0" promptText="[LETTRES]" />
          <Separator layoutX="333.0" layoutY="465.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
          <Label alignment="CENTER" layoutX="232.0" layoutY="457.0" text="JARNAC © - Fait par ALLART Kevin, L'HÔTE Basil, PILIA Zoé, SCREVE Thomas" textAlignment="CENTER" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
@@ -87,6 +74,23 @@
          <Label fx:id="P1M6" layoutX="34.0" layoutY="253.0" prefHeight="17.0" prefWidth="248.0" />
          <Label fx:id="P1M7" layoutX="34.0" layoutY="277.0" prefHeight="17.0" prefWidth="246.0" />
          <Label fx:id="P1M8" layoutX="34.0" layoutY="301.0" prefHeight="17.0" prefWidth="253.0" />
+         <Label fx:id="P2L0" layoutX="584.0" layoutY="110.0" text="toInit" />
+         <Label fx:id="P2L1" layoutX="572.0" layoutY="127.0" text="L1" />
+         <Label fx:id="P2L2" layoutX="572.0" layoutY="151.0" text="L2" />
+         <Label fx:id="P2L3" layoutX="572.0" layoutY="175.0" text="L3" />
+         <Label fx:id="P2L4" layoutX="572.0" layoutY="199.0" text="L4" />
+         <Label fx:id="P2L5" layoutX="572.0" layoutY="223.0" text="L5" />
+         <Label fx:id="P2L6" layoutX="572.0" layoutY="247.0" text="L6" />
+         <Label fx:id="P2L7" layoutX="572.0" layoutY="271.0" text="L7" />
+         <Label fx:id="P2L8" layoutX="573.0" layoutY="295.0" text="L8" />
+         <Label fx:id="P2M1" layoutX="583.0" layoutY="127.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="232.0" />
+         <Label fx:id="P2M2" layoutX="584.0" layoutY="151.0" prefHeight="17.0" prefWidth="244.0" />
+         <Label fx:id="P2M3" layoutX="584.0" layoutY="175.0" prefHeight="17.0" prefWidth="244.0" />
+         <Label fx:id="P2M4" layoutX="585.0" layoutY="199.0" prefHeight="17.0" prefWidth="245.0" />
+         <Label fx:id="P2M5" layoutX="584.0" layoutY="223.0" prefHeight="17.0" prefWidth="239.0" />
+         <Label fx:id="P2M6" layoutX="584.0" layoutY="247.0" prefHeight="17.0" prefWidth="248.0" />
+         <Label fx:id="P2M7" layoutX="584.0" layoutY="271.0" prefHeight="17.0" prefWidth="246.0" />
+         <Label fx:id="P2M8" layoutX="584.0" layoutY="295.0" prefHeight="17.0" prefWidth="253.0" />
       </children>
     </AnchorPane>
 </Scene>

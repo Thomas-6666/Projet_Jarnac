@@ -73,14 +73,20 @@ public class Joueur {
                 reserve.ajouterLettre(partie.getReserve().piocher());
 
             //Le joueur ne possède pas de consonne, Si la réserve commune possède des consonnes alors le joueur aura une consonne. Sinon il aura une lettre au hasard
-            }if (reserve.containsVoyelle() && !reserve.containsConsonne()){
+            }else if (reserve.containsVoyelle() && !reserve.containsConsonne()){
                 if (partie.getReserve().containsConsonne()){
                     reserve.ajouterLettre(partie.getReserve().piocherConsonne());
                 } else {
                     reserve.ajouterLettre(partie.getReserve().piocher());
                 }
             //Même chose que précédemment mais pour les voyelles.
-            } if (!reserve.containsVoyelle() && reserve.containsConsonne()){
+            }else if (!reserve.containsVoyelle() && reserve.containsConsonne()){
+                if (partie.getReserve().containsVoyelle()){
+                    reserve.ajouterLettre(partie.getReserve().piocherVoyelle());
+                } else {
+                    reserve.ajouterLettre(partie.getReserve().piocher());
+                }
+            } else {
                 if (partie.getReserve().containsVoyelle()){
                     reserve.ajouterLettre(partie.getReserve().piocherVoyelle());
                 } else {

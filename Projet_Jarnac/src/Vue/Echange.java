@@ -25,11 +25,11 @@ public class Echange extends Stage {
         input.setId("LettreEchange");
         Label label = new Label("Saisir les 3 lettres à échanger: ");
         Button valider = new Button("Valider");
-        System.out.println("ALLO");
         valider.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (j.echangerLettre(input.getText())){
+                    Partie.getInstance().getCurrentPlayer().setFirstChoice(false);
                     fermer();
                 }
             }

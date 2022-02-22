@@ -66,7 +66,6 @@ public class Plateau {
             for (int i = 0; i < 8 - mot.size(); i++){
                 mots.add("");
             }
-            System.out.println(mots.size());
         }
         return mots;
     }
