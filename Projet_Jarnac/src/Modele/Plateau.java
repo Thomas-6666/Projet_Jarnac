@@ -50,4 +50,24 @@ public class Plateau {
     public List<String> getMot() {
         return mot;
     }
+
+    public List<String> getMotEspace(){
+        List<String> mots = new ArrayList<>();
+        for(String curmot : mot){
+            StringBuilder motespace = new StringBuilder();
+            for(char lettre : curmot.toCharArray()){
+                motespace.append(lettre);
+                motespace.append("\t");
+            }
+            motespace.substring(0,motespace.length()-3);
+            mots.add(motespace.toString());
+        }
+        if (mots.size() < 8){
+            for (int i = 0; i < 8 - mot.size(); i++){
+                mots.add("");
+            }
+            System.out.println(mots.size());
+        }
+        return mots;
+    }
 }

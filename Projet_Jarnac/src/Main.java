@@ -19,6 +19,7 @@ public class Main extends Application {
             primaryStage.setTitle("Jarnac");
             primaryStage.setScene(scene);
             primaryStage.show();
+            Controller.getInstance().initplateau();
 
             new Vue.Popup(primaryStage, 1);
 

@@ -72,11 +72,47 @@ public class Controller {
     @FXML
     private Button piocher;
 
-    @FXML
+    /*@FXML
     private TableView<?> plateau_j1;
 
     @FXML
-    private TableView<?> plateau_j2;
+    private TableView<?> plateau_j2;*/
+
+    @FXML
+    private Label P1L0;
+    @FXML
+    private Label P1L1;
+    @FXML
+    private Label P1L2;
+    @FXML
+    private Label P1L3;
+    @FXML
+    private Label P1L4;
+    @FXML
+    private Label P1L5;
+    @FXML
+    private Label P1L6;
+    @FXML
+    private Label P1L7;
+    @FXML
+    private Label P1L8;
+
+    @FXML
+    private Label P1M1;
+    @FXML
+    private Label P1M2;
+    @FXML
+    private Label P1M3;
+    @FXML
+    private Label P1M4;
+    @FXML
+    private Label P1M5;
+    @FXML
+    private Label P1M6;
+    @FXML
+    private Label P1M7;
+    @FXML
+    private Label P1M8;
 
     @FXML
     private Label points_j1;
@@ -103,11 +139,15 @@ public class Controller {
         assert lettres_j2 != null : "fx:id=\"lettres_j2\" was not injected: check your FXML file 'Interface.fxml'.";
         assert passer != null : "fx:id=\"passer\" was not injected: check your FXML file 'Interface.fxml'.";
         assert piocher != null : "fx:id=\"piocher\" was not injected: check your FXML file 'Interface.fxml'.";
-        assert plateau_j1 != null : "fx:id=\"plateau_j1\" was not injected: check your FXML file 'Interface.fxml'.";
-        assert plateau_j2 != null : "fx:id=\"plateau_j2\" was not injected: check your FXML file 'Interface.fxml'.";
+        //assert plateau_j1 != null : "fx:id=\"plateau_j1\" was not injected: check your FXML file 'Interface.fxml'.";
+        //assert plateau_j2 != null : "fx:id=\"plateau_j2\" was not injected: check your FXML file 'Interface.fxml'.";
         assert points_j1 != null : "fx:id=\"points_j1\" was not injected: check your FXML file 'Interface.fxml'.";
         assert points_j2 != null : "fx:id=\"points_j2\" was not injected: check your FXML file 'Interface.fxml'.";
+        //initplateau();
+    }
 
+    public void initplateau(){
+        P1L0.setText("\t\t9\t16\t25\t36\t49\t64\t81");
     }
 
     public void AppelRegles(View v) {
@@ -176,6 +216,7 @@ public class Controller {
             if (j.jouer(mot)){
                 input_j1.setText("");
                 j.piocher(1);
+                updatePlateau(1);
             }
             else{
                 new ErreurMot(primaryStage);
@@ -196,6 +237,21 @@ public class Controller {
             else{
                 new ErreurMot(primaryStage);
             }
+        }
+    }
+
+    public void updatePlateau(int i){
+        Joueur j = Partie.getInstance().getCurrentPlayer();
+        List<String> mots = j.getPlateau().getMotEspace();
+        if (i == 1){
+            P1M1.setText(mots.get(0));
+            P1M2.setText(mots.get(1));
+            P1M3.setText(mots.get(2));
+            P1M4.setText(mots.get(3));
+            P1M5.setText(mots.get(4));
+            P1M6.setText(mots.get(5));
+            P1M7.setText(mots.get(6));
+            P1M8.setText(mots.get(7));
         }
     }
 
