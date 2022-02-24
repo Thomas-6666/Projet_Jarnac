@@ -396,13 +396,30 @@ public class Controller {
     }
 
     public void indicateur(int i){
-        Joueur current = Partie.getInstance().getCurrentPlayer();
+        String current = Partie.getInstance().getCurrentPlayer().getNom();
         List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
-        if (listjoueurs.get(0) == current){
-            Joueur other = listjoueurs.get(1);
+        String other = "";
+        if (listjoueurs.get(0).getNom() == current){
+            other = listjoueurs.get(1).getNom();
         }
         else {
-            Joueur other = listjoueurs.get(0);
+            other = listjoueurs.get(0).getNom();
         }
+        if (i == 1){
+            joueur1.setDisable(false);
+            joueur1.setText("⫸ " + current);
+            joueur2.setDisable(true);
+            joueur2.setText(other);
+        }
+        else if (i == 2){
+            joueur2.setDisable(false);
+            joueur2.setText("⫸ " + current);
+            joueur1.setDisable(true);
+            joueur1.setText(other);
+        }
+    }
+
+    public void disableAll(){
+        //TODO
     }
 }
