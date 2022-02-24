@@ -3,27 +3,18 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<?import java.net.URL?>
-<Scene xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane prefHeight="480.0" prefWidth="853.0"
-                style="-fx-background-image: url(background.jpg);">
+<Scene xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane prefHeight="480.0" prefWidth="853.0" style="-fx-background-image: url(background.jpg);">
         <children>
-            <Button fx:id="jarnac" layoutX="339.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0"
-                    prefWidth="100.0" text="JARNAC" AnchorPane.leftAnchor="320.0"/>
-            <Button fx:id="passer" layoutX="453.0" layoutY="164.0" mnemonicParsing="false" onAction="#passer"
-                    prefHeight="50.0" prefWidth="100.0" text="PASSER" AnchorPane.rightAnchor="320.0"/>
-            <Button fx:id="piocher" layoutX="339.0" layoutY="225.0" mnemonicParsing="false" onAction="#piocher"
-                    prefHeight="50.0" prefWidth="100.0" text="PIOCHER" AnchorPane.leftAnchor="320.0"/>
-            <Button fx:id="echanger" layoutX="453.0" layoutY="225.0" mnemonicParsing="false" onAction="#echanger"
-                    prefHeight="50.0" prefWidth="100.0" text="ECHANGER" AnchorPane.rightAnchor="320.0"/>
-            <Button fx:id="abandonner" layoutX="397.0" layoutY="291.0" mnemonicParsing="false" onAction="#abandonner" prefHeight="50.0"
-                    prefWidth="100.0" text="ABANDONNER" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0"/>
-            <Button fx:id="aide" alignment="CENTER" layoutX="788.0" layoutY="14.0" mnemonicParsing="false"
-                    onAction="#show_regles" onMouseClicked="#show_regles" prefHeight="50.0" prefWidth="50.0"
-                    style="-fx-background-color: transparent; -fx-border-color: black;" text="?" textAlignment="CENTER"
-                    AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <Button fx:id="jarnac" layoutX="339.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="JARNAC" AnchorPane.leftAnchor="320.0" />
+            <Button fx:id="passer" layoutX="453.0" layoutY="164.0" mnemonicParsing="false" onAction="#passer" prefHeight="50.0" prefWidth="100.0" text="PASSER" AnchorPane.rightAnchor="320.0" />
+            <Button fx:id="piocher" layoutX="339.0" layoutY="225.0" mnemonicParsing="false" onAction="#piocher" prefHeight="50.0" prefWidth="100.0" text="PIOCHER" AnchorPane.leftAnchor="320.0" />
+            <Button fx:id="echanger" layoutX="453.0" layoutY="225.0" mnemonicParsing="false" onAction="#echanger" prefHeight="50.0" prefWidth="100.0" text="ECHANGER" AnchorPane.rightAnchor="320.0" />
+            <Button fx:id="abandonner" layoutX="397.0" layoutY="291.0" mnemonicParsing="false" onAction="#abandonner" prefHeight="50.0" prefWidth="100.0" text="ABANDONNER" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0" />
+            <Button fx:id="aide" alignment="CENTER" layoutX="788.0" layoutY="14.0" mnemonicParsing="false" onAction="#show_regles" onMouseClicked="#show_regles" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="?" textAlignment="CENTER" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                 <font>
                     <Font size="18.0" />
                 </font>
@@ -101,6 +92,8 @@
             <Label fx:id="P2M6" layoutX="596.0" layoutY="247.0" prefHeight="17.0" prefWidth="248.0" style="-fx-font-weight: bold;" />
             <Label fx:id="P2M7" layoutX="596.0" layoutY="271.0" prefHeight="17.0" prefWidth="246.0" style="-fx-font-weight: bold;" />
             <Label fx:id="P2M8" layoutX="596.0" layoutY="295.0" prefHeight="17.0" prefWidth="253.0" style="-fx-font-weight: bold;" />
+         <Circle fill="#11ff00" layoutX="34.0" layoutY="44.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+         <Circle fill="#11ff00" layoutX="555.0" layoutY="44.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
         </children>
     </AnchorPane>
 </Scene>
