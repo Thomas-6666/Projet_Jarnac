@@ -3,6 +3,7 @@ package Controlleur;
 import java.net.URL;
 import java.sql.SQLOutput;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import Modele.*;
@@ -74,6 +75,9 @@ public class Controller {
 
     @FXML
     private Button piocher;
+
+    @FXML
+    private Button modifier;
 
     /*@FXML
     private TableView<?> plateau_j1;
@@ -370,6 +374,7 @@ public class Controller {
         jarnac.setDisable(b);
         piocher.setDisable(b);
         echanger.setDisable(b);
+        modifier.setDisable(b);
         updateLettresRestantes();
     }
 
@@ -429,6 +434,7 @@ public class Controller {
         input_j1.setDisable(b);
         input_j2.setDisable(b);
         aide.setDisable(b);
+        modifier.setDisable(b);
     }
 
     public void modifier(){
@@ -436,7 +442,7 @@ public class Controller {
     }
 
     public boolean modifierMot(int l, String m){
-        return Partie.getInstance().getCurrentPlayer().modifier(l,m);
+        return Partie.getInstance().getCurrentPlayer().modifier(l,m.toUpperCase());
     }
 
 }
