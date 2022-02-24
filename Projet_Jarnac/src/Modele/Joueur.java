@@ -216,4 +216,5 @@ public class Joueur {
     public Plateau getPlateau() {
         return plateau;
     }
+
 }

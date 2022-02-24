@@ -5,3 +5,5 @@
 *.xml
 *.xml
 Projet_Jarnac/out/*
+*.iml
+*.xml
