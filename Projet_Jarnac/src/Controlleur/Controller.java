@@ -252,6 +252,7 @@ public class Controller {
                 input_j1.setText("");
                 j.piocher(1);
                 updatePlateau(1);
+                updatePoints(Partie.getInstance());
             }
             else{
                 new ErreurMot(primaryStage);
@@ -269,6 +270,7 @@ public class Controller {
                 input_j2.setText("");
                 j.piocher(1);
                 updatePlateau(2);
+                updatePoints(Partie.getInstance());
             }
             else{
                 new ErreurMot(primaryStage);
