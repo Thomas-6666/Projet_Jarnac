@@ -366,7 +366,17 @@ public class Controller {
     }
 
     public void abandonner(){
-        System.exit(0);
+        String current = Partie.getInstance().getCurrentPlayer().getNom();
+        List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
+        String other = "";
+        if (listjoueurs.get(0).getNom() == current){
+            other = listjoueurs.get(1).getNom();
+        }
+        else {
+            other = listjoueurs.get(0).getNom();
+        }
+        new AbandonJoueur(primaryStage, current, other);
+        Partie.getInstance().setFini(true);
     }
 
 }

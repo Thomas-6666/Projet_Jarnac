@@ -2,8 +2,6 @@ package Modele;
 
 import Controlleur.Controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -281,6 +279,10 @@ public class Partie {
 
     public List<Joueur> getJoueurs(){
         return List.of(j1, j2);
+    }
+
+    public void setFini(boolean f){
+        this.fini = f;
     }
 }
 
