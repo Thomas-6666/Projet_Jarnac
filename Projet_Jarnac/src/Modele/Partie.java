@@ -81,6 +81,7 @@ public class Partie {
         ctrl.disable1erTour(true);
 
         ctrl.disableChampMot(1);
+        ctrl.indicateur(1);
         System.out.println("La partie commence");
 
         /*while (!fini) {

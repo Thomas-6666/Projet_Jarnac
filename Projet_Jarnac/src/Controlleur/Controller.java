@@ -314,6 +314,7 @@ public class Controller {
             if (current == Partie.getInstance().getJoueurs().get(0)) {
                 Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(1));
                 disableChampMot(2);
+                indicateur(2);
                 if (!Partie.getInstance().isFirstRound()){
                     Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
                     disable1erTour(false);
@@ -321,6 +322,7 @@ public class Controller {
             } else if (current == Partie.getInstance().getJoueurs().get(1)) {
                 Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(0));
                 disableChampMot(1);
+                indicateur(1);
                 Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
                 if (Partie.getInstance().isFirstRound()){
                     Partie.getInstance().setFirstRound(false);
@@ -393,7 +395,7 @@ public class Controller {
         Partie.getInstance().setFini(true);
     }
 
-    public void indicateur(){
+    public void indicateur(int i){
         Joueur current = Partie.getInstance().getCurrentPlayer();
         List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
         if (listjoueurs.get(0) == current){
