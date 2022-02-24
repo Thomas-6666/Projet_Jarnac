@@ -430,4 +430,13 @@ public class Controller {
         input_j2.setDisable(b);
         aide.setDisable(b);
     }
+
+    public void modifier(){
+        new Modifier(primaryStage);
+    }
+
+    public boolean modifierMot(int l, String m){
+        return Partie.getInstance().getCurrentPlayer().modifier(l,m);
+    }
+
 }

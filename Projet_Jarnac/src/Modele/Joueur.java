@@ -190,6 +190,49 @@ public class Joueur {
 
     }
 
+    public boolean modifier(int l, String m){
+        ArrayList<String> saveMots = new ArrayList<>(getPlateau().getMot());
+        ArrayList<String> saveReserve = new ArrayList<>(getReserve().getLettres());
+        int ligneNb = l-1;
+        String lignePlateau = getPlateau().getMot().get(ligneNb);
+        System.out.println(lignePlateau);
+        if (m.length() <= lignePlateau.length()){
+            return false;
+        }
+        System.out.println("1");
+        ArrayList<String> lettreLP = stringToArray(lignePlateau);
+        ArrayList<String> lettreM = stringToArray(m);
+        for (String lettre : lettreLP){
+            if (lettreM.contains(lettre)){
+                System.out.println("2");
+                lettreM.remove(lettre);
+            } else {
+                return false;
+            }
+        }
+        System.out.println("3");
+        for (char lettre : lignePlateau.toCharArray()){
+            getReserve().ajouterLettre(String.valueOf(lettre));
+        }
+        getPlateau().getMot().remove(ligneNb);
+        if (jouer(m)){
+            return true;
+        } else {
+            System.out.println("Injouable");
+            getPlateau().setMot(saveMots);
+            getReserve().setLettre(saveReserve);
+            return false;
+        }
+    }
+
+    private ArrayList<String> stringToArray(String s){
+        ArrayList<String> res = new ArrayList<>();
+        for (char c : s.toCharArray()){
+            res.add(String.valueOf(c));
+        }
+        return res;
+    }
+
     @Override
     public String toString() {
         return "Joueur{" +

@@ -69,4 +69,8 @@ public class Plateau {
         }
         return mots;
     }
+
+    public void setMot(List<String> mot) {
+        this.mot = mot;
+    }
 }
