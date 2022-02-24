@@ -382,6 +382,7 @@ public class Controller {
     }
 
     public void abandonner(){
+        disableAll(true);
         String current = Partie.getInstance().getCurrentPlayer().getNom();
         List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
         String other = "";
@@ -419,7 +420,14 @@ public class Controller {
         }
     }
 
-    public void disableAll(){
-        //TODO
+    public void disableAll(boolean b){
+        jarnac.setDisable(b);
+        passer.setDisable(b);
+        piocher.setDisable(b);
+        echanger.setDisable(b);
+        abandonner.setDisable(b);
+        input_j1.setDisable(b);
+        input_j2.setDisable(b);
+        aide.setDisable(b);
     }
 }
