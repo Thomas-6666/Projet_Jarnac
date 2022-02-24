@@ -245,6 +245,7 @@ public class Controller {
         String j2reserve = listjoueurs.get(1).getReserve().LettresReserve();
         lettres_j1.setText(j1reserve);
         lettres_j2.setText(j2reserve);
+        updateLettresRestantes();
     }
 
     public void player1jouer(){
