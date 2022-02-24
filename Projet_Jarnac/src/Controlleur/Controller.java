@@ -364,4 +364,9 @@ public class Controller {
             new Echange(primaryStage, current);
         }
     }
+
+    public void abandonner(){
+        System.exit(0);
+    }
+
 }
