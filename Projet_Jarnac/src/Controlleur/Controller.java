@@ -393,4 +393,14 @@ public class Controller {
         Partie.getInstance().setFini(true);
     }
 
+    public void indicateur(){
+        Joueur current = Partie.getInstance().getCurrentPlayer();
+        List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
+        if (listjoueurs.get(0) == current){
+            Joueur other = listjoueurs.get(1);
+        }
+        else {
+            Joueur other = listjoueurs.get(0);
+        }
+    }
 }
