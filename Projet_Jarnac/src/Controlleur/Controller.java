@@ -67,6 +67,9 @@ public class Controller {
     private TextArea lettres_j2;
 
     @FXML
+    private Label lettres_pioche;
+
+    @FXML
     private Button passer;
 
     @FXML
@@ -173,6 +176,7 @@ public class Controller {
         assert joueur2 != null : "fx:id=\"joueur2\" was not injected: check your FXML file 'Interface.fxml'.";
         assert lettres_j1 != null : "fx:id=\"lettres_j1\" was not injected: check your FXML file 'Interface.fxml'.";
         assert lettres_j2 != null : "fx:id=\"lettres_j2\" was not injected: check your FXML file 'Interface.fxml'.";
+        assert lettres_pioche != null : "fx:id=\"lettres_pioche\" was not injected: check your FXML file 'Interface.fxml'.";
         assert passer != null : "fx:id=\"passer\" was not injected: check your FXML file 'Interface.fxml'.";
         assert piocher != null : "fx:id=\"piocher\" was not injected: check your FXML file 'Interface.fxml'.";
         //assert plateau_j1 != null : "fx:id=\"plateau_j1\" was not injected: check your FXML file 'Interface.fxml'.";
@@ -185,6 +189,7 @@ public class Controller {
     public void initplateau(){
         P1L0.setText("\t\t9\t16\t25\t36\t49\t64\t81");
         P2L0.setText("\t\t9\t16\t25\t36\t49\t64\t81");
+        updateLettresRestantes();
     }
 
     public void AppelRegles(View v) {
@@ -330,7 +335,13 @@ public class Controller {
         if (current.getFirstChoice()){
             current.piocher(1);
             current.setFirstChoice(false);
+            updateLettresRestantes();
         }
+    }
+
+    public void updateLettresRestantes(){
+        int nb_lettres = Partie.getInstance().getReserve().size();
+        lettres_pioche.setText("Lettres restantes dans la pioche :\n" + nb_lettres);
     }
 
     public void updatePoints(Partie p) {
@@ -356,12 +367,14 @@ public class Controller {
         jarnac.setDisable(b);
         piocher.setDisable(b);
         echanger.setDisable(b);
+        updateLettresRestantes();
     }
 
     public void echanger(){
         Joueur current = Partie.getInstance().getCurrentPlayer();
         if (current.getFirstChoice()){
             new Echange(primaryStage, current);
+            updateLettresRestantes();
         }
     }
 

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
 
 <Scene xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="480.0" prefWidth="853.0" style="-fx-background-image: url(background.jpg);">
@@ -39,7 +43,7 @@
                     <Font size="14.0" />
                 </font>
             </Label>
-            <Label alignment="CENTER" layoutX="315.0" layoutY="371.0" style="-fx-font-weight: bold;" text="Lettres restantes dans la pioche :" textAlignment="CENTER" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
+            <Label fx:id="lettres_pioche" alignment="CENTER" layoutX="315.0" layoutY="371.0" style="-fx-font-weight: bold;" text="Lettres restantes dans la pioche :" textAlignment="CENTER" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
                 <font>
                     <Font size="16.0" />
                 </font>
