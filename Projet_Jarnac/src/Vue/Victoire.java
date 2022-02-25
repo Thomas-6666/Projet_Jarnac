@@ -10,15 +10,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AbandonJoueur extends Stage {
-    public AbandonJoueur(Stage primaryStage, String current, String other) {
+public class Victoire extends Stage {
+    public Victoire(Stage primaryStage, String current, String other) {
         super();
         Controller c = Controller.getInstance();
         c.setStage(primaryStage);
         this.initModality(Modality.APPLICATION_MODAL);
         this.initOwner(primaryStage);
         VBox nom = new VBox(20);
-        Label label = new Label(current + " a perdu par abandon.");
+        Label label = new Label("Fin de la partie !");
+        Label label1 = new Label(current + " a perdu.");
         Label label2 = new Label(other + " a gagné !");
         Button restart = new Button("Recommencer");
         Button findujeu = new Button("Fermer le jeu");
@@ -34,7 +35,7 @@ public class AbandonJoueur extends Stage {
                 primaryStage.close();
             }
         });
-        nom.getChildren().addAll(label, label2, restart, findujeu);
+        nom.getChildren().addAll(label, label1, label2, restart, findujeu);
         Scene dialogScene = new Scene(nom);
         this.setScene(dialogScene);
         this.show();

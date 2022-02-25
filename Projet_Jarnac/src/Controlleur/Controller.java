@@ -323,6 +323,23 @@ public class Controller {
                     Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
                     disable1erTour(false);
                 }
+                if (P1M8.getText() != ""){
+                    /*disableAll(true);
+                    jarnac.setDisable(false);
+                    passer.setDisable(false);
+                }
+                if (P2M8.getText() != ""){*/
+                    disableAll(true);
+                    List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
+                    String other = "";
+                    if (listjoueurs.get(0).getNom() == current.getNom()){
+                        other = listjoueurs.get(1).getNom();
+                    }
+                    else {
+                        other = listjoueurs.get(0).getNom();
+                    }
+                    new Victoire(primaryStage, current.getNom(), other);
+                }
             } else if (current == Partie.getInstance().getJoueurs().get(1)) {
                 Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(0));
                 disableChampMot(1);
@@ -331,6 +348,23 @@ public class Controller {
                 if (Partie.getInstance().isFirstRound()){
                     Partie.getInstance().setFirstRound(false);
                     disable1erTour(false);
+                }
+                if (P2M8.getText() != ""){
+                    /*disableAll(true);
+                    jarnac.setDisable(false);
+                    passer.setDisable(false);
+                }
+                if (P1M8.getText() != ""){*/
+                    disableAll(true);
+                    List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
+                    String other = "";
+                    if (listjoueurs.get(0).getNom() == current.getNom()){
+                        other = listjoueurs.get(1).getNom();
+                    }
+                    else {
+                        other = listjoueurs.get(0).getNom();
+                    }
+                    new Victoire(primaryStage, current.getNom(), other);
                 }
             }
             current.setFirstChoice(true);
@@ -465,5 +499,4 @@ public class Controller {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
-
 }
