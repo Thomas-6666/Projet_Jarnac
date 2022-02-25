@@ -78,7 +78,10 @@ public class Partie {
         Controller ctrl = Controller.getInstance();
         ctrl.updateReserve(instance);
         ctrl.updatePoints(instance);
+        ctrl.updatePlateau(1);
+        ctrl.updatePlateau(2);
         ctrl.disable1erTour(true);
+        setFirstRound(true);
 
         ctrl.disableChampMot(1);
         ctrl.indicateur(1);
