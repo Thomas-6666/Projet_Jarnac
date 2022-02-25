@@ -1,19 +1,19 @@
 package Controlleur;
 
 import java.net.URL;
-import java.sql.SQLOutput;
+import java.nio.file.Paths;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 import Modele.*;
 import Vue.*;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class Controller {
@@ -386,7 +386,7 @@ public class Controller {
         }
     }
 
-    public void abandonner(){
+    public void abandonner() throws Exception {
         disableAll(true);
         String current = Partie.getInstance().getCurrentPlayer().getNom();
         List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
@@ -443,6 +443,27 @@ public class Controller {
 
     public boolean modifierMot(int l, String m){
         return Partie.getInstance().getCurrentPlayer().modifier(l,m.toUpperCase());
+    }
+
+    public void restart(){
+        primaryStage.close();
+        primaryStage.show();
+        mediaPlayer.stop();
+        startMusic();
+        Controller.getInstance().initplateau();
+        new Vue.Popup(primaryStage, 1);
+        disableAll(false);
+        disable1erTour(true);
+    }
+
+    MediaPlayer mediaPlayer;
+    public void startMusic(){
+        String s = "src/ressources/music.mp3";
+        Media m = new Media(Paths.get(s).toUri().toString());
+        mediaPlayer = new MediaPlayer(m);
+        mediaPlayer.setVolume(0.1);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
     }
 
 }
