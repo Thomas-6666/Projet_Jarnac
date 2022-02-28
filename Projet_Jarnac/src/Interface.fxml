@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<Scene xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<Scene xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="480.0" prefWidth="853.0" style="-fx-background-image: url(background.jpg);">
         <children>
-            <Button fx:id="jarnac" layoutX="339.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="JARNAC" AnchorPane.leftAnchor="320.0" />
-            <Button fx:id="passer" layoutX="453.0" layoutY="164.0" mnemonicParsing="false" onAction="#passer" prefHeight="50.0" prefWidth="100.0" text="PASSER" AnchorPane.rightAnchor="320.0" />
-            <Button fx:id="piocher" layoutX="339.0" layoutY="225.0" mnemonicParsing="false" onAction="#piocher" prefHeight="50.0" prefWidth="100.0" text="PIOCHER" AnchorPane.leftAnchor="320.0" />
-            <Button fx:id="echanger" layoutX="453.0" layoutY="225.0" mnemonicParsing="false" onAction="#echanger" prefHeight="50.0" prefWidth="100.0" text="ECHANGER" AnchorPane.rightAnchor="320.0" />
-            <Button fx:id="abandonner" layoutX="397.0" layoutY="291.0" mnemonicParsing="false" onAction="#abandonner" prefHeight="50.0" prefWidth="100.0" text="ABANDONNER" AnchorPane.rightAnchor="320.0" />
-            <Button fx:id="aide" alignment="CENTER" layoutX="788.0" layoutY="14.0" mnemonicParsing="false" onAction="#show_regles" onMouseClicked="#show_regles" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="?" textAlignment="CENTER" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <Button fx:id="jarnac" layoutX="320.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="JARNAC" AnchorPane.rightAnchor="433.0" AnchorPane.topAnchor="160.0" />
+            <Button fx:id="passer" layoutX="433.0" layoutY="160.0" mnemonicParsing="false" onAction="#passer" prefHeight="50.0" prefWidth="100.0" text="PASSER" AnchorPane.leftAnchor="433.0" AnchorPane.topAnchor="160.0" />
+            <Button fx:id="piocher" layoutX="320.0" layoutY="225.0" mnemonicParsing="false" onAction="#piocher" prefHeight="50.0" prefWidth="100.0" text="PIOCHER" AnchorPane.rightAnchor="433.0" AnchorPane.topAnchor="220.0" />
+            <Button fx:id="echanger" layoutX="433.0" layoutY="225.0" mnemonicParsing="false" onAction="#echanger" prefHeight="50.0" prefWidth="100.0" text="ECHANGER" AnchorPane.leftAnchor="433.0" AnchorPane.topAnchor="220.0" />
+            <Button fx:id="abandonner" layoutX="433.0" layoutY="280.0" mnemonicParsing="false" onAction="#abandonner" prefHeight="50.0" prefWidth="100.0" text="ABANDONNER" AnchorPane.leftAnchor="433.0" AnchorPane.topAnchor="280.0" />
+            <Button fx:id="aide" alignment="CENTER" layoutX="787.0" layoutY="14.0" mnemonicParsing="false" onAction="#show_regles" onMouseClicked="#show_regles" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: white; -fx-border-color: black;" text="?" textAlignment="CENTER" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                 <font>
                     <Font size="18.0" />
                 </font>
@@ -23,75 +27,75 @@
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label fx:id="joueur2" layoutX="569.0" layoutY="30.0" style="-fx-font-weight: bold;" text="Joueur 2" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="30.0">
+            <Label fx:id="joueur2" layoutX="569.0" layoutY="30.0" style="-fx-font-weight: bold;" text="Joueur 2" AnchorPane.rightAnchor="210.4" AnchorPane.topAnchor="30.0">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label fx:id="points_j1" layoutX="50.0" layoutY="76.0" style="-fx-font-weight: bold;" text="Points : X" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="70.0">
+            <Label fx:id="points_j1" layoutX="50.0" layoutY="70.0" style="-fx-font-weight: bold;" text="Points : X" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="70.0">
                 <font>
                     <Font size="14.0" />
                 </font>
             </Label>
-            <Label fx:id="points_j2" layoutX="563.0" layoutY="70.0" style="-fx-font-weight: bold;" text="Points : X" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="70.0">
+            <Label fx:id="points_j2" layoutX="574.0" layoutY="70.0" style="-fx-font-weight: bold;" text="Points : X" AnchorPane.rightAnchor="216.60000000000002" AnchorPane.topAnchor="70.0">
                 <font>
                     <Font size="14.0" />
                 </font>
             </Label>
-            <Label fx:id="lettres_pioche" alignment="CENTER" layoutX="315.0" layoutY="371.0" style="-fx-font-weight: bold;" text="Lettres restantes dans la pioche :" textAlignment="CENTER" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
+            <Label fx:id="lettres_pioche" alignment="CENTER" layoutX="304.0" layoutY="371.0" style="-fx-font-weight: bold;" text="Lettres restantes dans la pioche :" textAlignment="CENTER" AnchorPane.bottomAnchor="83.4" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
                 <font>
                     <Font size="16.0" />
                 </font>
             </Label>
             <Separator layoutX="277.0" layoutY="100.0" orientation="VERTICAL" prefHeight="315.0" prefWidth="6.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="100.0" />
             <Separator layoutX="550.0" layoutY="120.0" orientation="VERTICAL" prefHeight="275.0" prefWidth="3.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="100.0" />
-            <TextField fx:id="input_j1" layoutX="52.0" layoutY="328.0" maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="630.0" />
-            <TextField fx:id="input_j2" layoutX="601.0" layoutY="328.0" maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="601.0" AnchorPane.rightAnchor="81.0" />
-            <TextArea fx:id="lettres_j2" editable="false" layoutX="604.0" layoutY="365.0" prefHeight="90.0" prefWidth="200.0" promptText="[LETTRES]" />
+            <TextField fx:id="input_j1" layoutX="52.0" layoutY="328.0" maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.6" AnchorPane.leftAnchor="52.0" />
+            <TextField fx:id="input_j2" layoutX="601.0" layoutY="328.0" maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="171.0" promptText="Insérer un mot" AnchorPane.bottomAnchor="125.6" AnchorPane.rightAnchor="80.80000000000001" />
+            <TextArea fx:id="lettres_j2" editable="false" layoutX="604.0" layoutY="365.0" prefHeight="90.0" prefWidth="200.0" promptText="[LETTRES]" AnchorPane.bottomAnchor="24.599999999999994" AnchorPane.rightAnchor="49.0" />
             <Separator layoutX="333.0" layoutY="465.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-            <Label alignment="CENTER" layoutX="232.0" layoutY="457.0" style="-fx-font-weight: bold;" text="JARNAC © - Fait par ALLART Kevin, L'HÔTE Basil, PILIA Zoé, SCREVE Thomas" textAlignment="CENTER" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+            <Label alignment="CENTER" layoutX="240.0" layoutY="465.0" style="-fx-font-weight: bold;" text="JARNAC © - Fait par ALLART Kevin, L'HÔTE Basil, PILIA Zoé, SCREVE Thomas" textAlignment="CENTER" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0">
                 <font>
                     <Font size="10.0" />
                 </font>
             </Label>
-            <Button layoutX="223.0" layoutY="329.0" mnemonicParsing="false" onAction="#player1jouer" text="✅" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="600.0" />
-            <Button layoutX="773.0" layoutY="329.0" mnemonicParsing="false" onAction="#player2jouer" text="✅" AnchorPane.leftAnchor="773.0" AnchorPane.rightAnchor="52.0" />
-            <TextArea fx:id="lettres_j1" editable="false" layoutX="50.0" layoutY="365.0" prefHeight="90.0" prefWidth="207.0" promptText="[LETTRES]" />
-            <Label fx:id="P1L0" layoutX="34.0" layoutY="116.0" style="-fx-font-weight: bold;" text="toInit" />
-            <Label fx:id="P1L1" layoutX="10.0" layoutY="133.0" style="-fx-font-weight: bold;" text="L1" />
-            <Label fx:id="P1L2" layoutX="10.0" layoutY="157.0" style="-fx-font-weight: bold;" text="L2" />
-            <Label fx:id="P1L3" layoutX="10.0" layoutY="181.0" style="-fx-font-weight: bold;" text="L3" />
-            <Label fx:id="P1L4" layoutX="10.0" layoutY="205.0" style="-fx-font-weight: bold;" text="L4" />
-            <Label fx:id="P1L5" layoutX="10.0" layoutY="229.0" style="-fx-font-weight: bold;" text="L5" />
-            <Label fx:id="P1L6" layoutX="10.0" layoutY="253.0" style="-fx-font-weight: bold;" text="L6" />
-            <Label fx:id="P1L7" layoutX="10.0" layoutY="277.0" style="-fx-font-weight: bold;" text="L7" />
-            <Label fx:id="P1L8" layoutX="10.0" layoutY="301.0" style="-fx-font-weight: bold;" text="L8" />
-            <Label fx:id="P1M1" layoutX="34.0" layoutY="133.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="232.0" style="-fx-font-weight: bold;" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="133.0" />
-            <Label fx:id="P1M2" layoutX="34.0" layoutY="157.0" prefHeight="17.0" prefWidth="244.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P1M3" layoutX="34.0" layoutY="181.0" prefHeight="17.0" prefWidth="244.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P1M4" layoutX="34.0" layoutY="205.0" prefHeight="17.0" prefWidth="245.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P1M5" layoutX="34.0" layoutY="229.0" prefHeight="17.0" prefWidth="239.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P1M6" layoutX="34.0" layoutY="253.0" prefHeight="17.0" prefWidth="248.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P1M7" layoutX="34.0" layoutY="277.0" prefHeight="17.0" prefWidth="246.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P1M8" layoutX="34.0" layoutY="301.0" prefHeight="17.0" prefWidth="253.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P2L0" layoutX="596.0" layoutY="110.0" style="-fx-font-weight: bold;" text="toInit" />
-            <Label fx:id="P2L1" layoutX="572.0" layoutY="127.0" style="-fx-font-weight: bold;" text="L1" />
-            <Label fx:id="P2L2" layoutX="572.0" layoutY="151.0" style="-fx-font-weight: bold;" text="L2" />
-            <Label fx:id="P2L3" layoutX="572.0" layoutY="175.0" style="-fx-font-weight: bold;" text="L3" />
-            <Label fx:id="P2L4" layoutX="572.0" layoutY="199.0" style="-fx-font-weight: bold;" text="L4" />
-            <Label fx:id="P2L5" layoutX="572.0" layoutY="223.0" style="-fx-font-weight: bold;" text="L5" />
-            <Label fx:id="P2L6" layoutX="572.0" layoutY="247.0" style="-fx-font-weight: bold;" text="L6" />
-            <Label fx:id="P2L7" layoutX="572.0" layoutY="271.0" style="-fx-font-weight: bold;" text="L7" />
-            <Label fx:id="P2L8" layoutX="573.0" layoutY="295.0" style="-fx-font-weight: bold;" text="L8" />
-            <Label fx:id="P2M1" layoutX="596.0" layoutY="127.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="232.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P2M2" layoutX="596.0" layoutY="151.0" prefHeight="17.0" prefWidth="244.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P2M3" layoutX="596.0" layoutY="175.0" prefHeight="17.0" prefWidth="244.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P2M4" layoutX="596.0" layoutY="199.0" prefHeight="17.0" prefWidth="245.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P2M5" layoutX="596.0" layoutY="223.0" prefHeight="17.0" prefWidth="239.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P2M6" layoutX="596.0" layoutY="247.0" prefHeight="17.0" prefWidth="248.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P2M7" layoutX="596.0" layoutY="271.0" prefHeight="17.0" prefWidth="246.0" style="-fx-font-weight: bold;" />
-            <Label fx:id="P2M8" layoutX="596.0" layoutY="295.0" prefHeight="17.0" prefWidth="253.0" style="-fx-font-weight: bold;" />
-         <Button fx:id="modifier" layoutX="320.0" layoutY="291.0" mnemonicParsing="false" onAction="#modifier" prefHeight="50.0" prefWidth="100.0" text="MODIFIER" AnchorPane.leftAnchor="320.0" />
+            <Button layoutX="223.0" layoutY="329.0" mnemonicParsing="false" onAction="#player1jouer" text="✅" AnchorPane.bottomAnchor="125.4" AnchorPane.leftAnchor="223.0" />
+            <Button layoutX="773.0" layoutY="329.0" mnemonicParsing="false" onAction="#player2jouer" text="✅" AnchorPane.bottomAnchor="125.4" AnchorPane.rightAnchor="52.0" />
+            <TextArea fx:id="lettres_j1" editable="false" layoutX="50.0" layoutY="365.0" prefHeight="90.0" prefWidth="207.0" promptText="[LETTRES]" AnchorPane.bottomAnchor="24.599999999999994" AnchorPane.leftAnchor="50.0" />
+            <Label fx:id="P1L0" layoutX="34.0" layoutY="116.0" style="-fx-font-weight: bold;" text="toInit" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="116.0" />
+            <Label fx:id="P1L1" layoutX="10.0" layoutY="133.0" style="-fx-font-weight: bold;" text="L1" AnchorPane.leftAnchor="10.0" />
+            <Label fx:id="P1L2" layoutX="10.0" layoutY="157.0" style="-fx-font-weight: bold;" text="L2" AnchorPane.leftAnchor="10.0" />
+            <Label fx:id="P1L3" layoutX="10.0" layoutY="181.0" style="-fx-font-weight: bold;" text="L3" AnchorPane.leftAnchor="10.0" />
+            <Label fx:id="P1L4" layoutX="10.0" layoutY="205.0" style="-fx-font-weight: bold;" text="L4" AnchorPane.leftAnchor="10.0" />
+            <Label fx:id="P1L5" layoutX="10.0" layoutY="229.0" style="-fx-font-weight: bold;" text="L5" AnchorPane.leftAnchor="10.0" />
+            <Label fx:id="P1L6" layoutX="10.0" layoutY="253.0" style="-fx-font-weight: bold;" text="L6" AnchorPane.leftAnchor="10.0" />
+            <Label fx:id="P1L7" layoutX="10.0" layoutY="277.0" style="-fx-font-weight: bold;" text="L7" AnchorPane.leftAnchor="10.0" />
+            <Label fx:id="P1L8" layoutX="10.0" layoutY="301.0" style="-fx-font-weight: bold;" text="L8" AnchorPane.leftAnchor="10.0" />
+            <Label fx:id="P1M1" layoutX="34.0" layoutY="133.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="232.0" style="-fx-font-weight: bold;" AnchorPane.leftAnchor="34.0" />
+            <Label fx:id="P1M2" layoutX="34.0" layoutY="157.0" prefHeight="17.0" prefWidth="244.0" style="-fx-font-weight: bold;" AnchorPane.leftAnchor="34.0" />
+            <Label fx:id="P1M3" layoutX="34.0" layoutY="181.0" prefHeight="17.0" prefWidth="244.0" style="-fx-font-weight: bold;" AnchorPane.leftAnchor="34.0" />
+            <Label fx:id="P1M4" layoutX="34.0" layoutY="205.0" prefHeight="17.0" prefWidth="245.0" style="-fx-font-weight: bold;" AnchorPane.leftAnchor="34.0" />
+            <Label fx:id="P1M5" layoutX="34.0" layoutY="229.0" prefHeight="17.0" prefWidth="239.0" style="-fx-font-weight: bold;" AnchorPane.leftAnchor="34.0" />
+            <Label fx:id="P1M6" layoutX="34.0" layoutY="253.0" prefHeight="17.0" prefWidth="248.0" style="-fx-font-weight: bold;" AnchorPane.leftAnchor="34.0" />
+            <Label fx:id="P1M7" layoutX="34.0" layoutY="277.0" prefHeight="17.0" prefWidth="246.0" style="-fx-font-weight: bold;" AnchorPane.leftAnchor="34.0" />
+            <Label fx:id="P1M8" layoutX="34.0" layoutY="301.0" prefHeight="17.0" prefWidth="253.0" style="-fx-font-weight: bold;" AnchorPane.leftAnchor="34.0" />
+            <Label fx:id="P2L0" layoutX="590.0" layoutY="116.0" style="-fx-font-weight: bold;" text="toInit" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="116.0" />
+            <Label fx:id="P2L1" layoutX="572.0" layoutY="133.0" style="-fx-font-weight: bold;" text="L1" AnchorPane.rightAnchor="267.4" />
+            <Label fx:id="P2L2" layoutX="572.0" layoutY="157.0" style="-fx-font-weight: bold;" text="L2" AnchorPane.rightAnchor="267.4" />
+            <Label fx:id="P2L3" layoutX="572.0" layoutY="181.0" style="-fx-font-weight: bold;" text="L3" AnchorPane.rightAnchor="267.4" />
+            <Label fx:id="P2L4" layoutX="572.0" layoutY="205.0" style="-fx-font-weight: bold;" text="L4" AnchorPane.rightAnchor="267.4" />
+            <Label fx:id="P2L5" layoutX="572.0" layoutY="229.0" style="-fx-font-weight: bold;" text="L5" AnchorPane.rightAnchor="267.4" />
+            <Label fx:id="P2L6" layoutX="572.0" layoutY="253.0" style="-fx-font-weight: bold;" text="L6" AnchorPane.rightAnchor="267.4" />
+            <Label fx:id="P2L7" layoutX="572.0" layoutY="277.0" style="-fx-font-weight: bold;" text="L7" AnchorPane.rightAnchor="267.4" />
+            <Label fx:id="P2L8" layoutX="572.0" layoutY="301.0" style="-fx-font-weight: bold;" text="L8" AnchorPane.rightAnchor="267.4" />
+            <Label fx:id="P2M1" layoutX="599.0" layoutY="133.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="250.0" style="-fx-font-weight: bold;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="133.0" />
+            <Label fx:id="P2M2" layoutX="601.0" layoutY="157.0" prefHeight="18.0" prefWidth="250.0" style="-fx-font-weight: bold;" AnchorPane.rightAnchor="15.0" />
+            <Label fx:id="P2M3" layoutX="593.0" layoutY="181.0" prefHeight="18.0" prefWidth="250.0" style="-fx-font-weight: bold;" AnchorPane.rightAnchor="15.0" />
+            <Label fx:id="P2M4" layoutX="600.0" layoutY="205.0" prefHeight="18.0" prefWidth="250.0" style="-fx-font-weight: bold;" AnchorPane.rightAnchor="15.0" />
+            <Label fx:id="P2M5" layoutX="595.0" layoutY="229.0" prefHeight="18.0" prefWidth="250.0" style="-fx-font-weight: bold;" AnchorPane.rightAnchor="15.0" />
+            <Label fx:id="P2M6" layoutX="591.0" layoutY="253.0" prefHeight="18.0" prefWidth="250.0" style="-fx-font-weight: bold;" AnchorPane.rightAnchor="15.0" />
+            <Label fx:id="P2M7" layoutX="592.0" layoutY="277.0" prefHeight="18.0" prefWidth="250.0" style="-fx-font-weight: bold;" AnchorPane.rightAnchor="15.0" />
+            <Label fx:id="P2M8" layoutX="599.0" layoutY="300.0" prefHeight="18.0" prefWidth="250.0" style="-fx-font-weight: bold;" AnchorPane.rightAnchor="15.0" />
+         <Button fx:id="modifier" layoutX="320.0" layoutY="280.0" mnemonicParsing="false" onAction="#modifier" prefHeight="50.0" prefWidth="100.0" text="MODIFIER" AnchorPane.rightAnchor="433.0" AnchorPane.topAnchor="280.0" />
         </children>
     </AnchorPane>
 </Scene>
