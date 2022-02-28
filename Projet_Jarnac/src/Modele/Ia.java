@@ -3,6 +3,7 @@ package Modele;
 import Controlleur.Controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Ia extends Joueur{
@@ -14,6 +15,18 @@ public class Ia extends Joueur{
         super(n);
         bdd = BaseDeDonnee.getInstance();
     }
+
+   /* public static void main(String[] args) {
+        Ia ia = new Ia();
+        System.out.println("Réserve de l'IA : " + ia.reserve);
+        String wordPlayed = ia.generateWord(ia.reserve);
+        if (wordPlayed.equalsIgnoreCase("/passer")){
+            System.out.println("L'IA va passer son tour en faisant : " + wordPlayed);
+        }
+        else {
+            System.out.println("L'IA va jouer le mot : " + wordPlayed);
+        }
+    }*/
 
     public void generateWord() {
         ArrayList<String> temp = new ArrayList<>();
@@ -37,11 +50,10 @@ public class Ia extends Joueur{
         if (!wordsPlayable.isEmpty()) {
             System.out.println("Voici tous les mots que l'IA pourrait jouer : " + wordsPlayable);
             int nombreRandom = genererateRandom(0, wordsPlayable.size());
-            Controller.getInstance().piocher();
             jouer(wordsPlayable.get(nombreRandom));
+            Controller.getInstance().passer();
         }
         else {
-            Controller.getInstance().piocher();
             Controller.getInstance().passer();
         }
 

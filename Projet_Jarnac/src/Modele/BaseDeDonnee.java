@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseDeDonnee {
-    private List<String> mots;
-
     private static BaseDeDonnee instance;
+    private List<String> mots;
 
     private BaseDeDonnee() {
         mots = new ArrayList<>();
@@ -32,8 +31,8 @@ public class BaseDeDonnee {
         }
     }
 
-    public static BaseDeDonnee getInstance(){
-        if (instance == null){
+    public static BaseDeDonnee getInstance() {
+        if (instance == null) {
             instance = new BaseDeDonnee();
         }
         return instance;
@@ -49,7 +48,7 @@ public class BaseDeDonnee {
     }
 
     //RAJOUTER PAR MOI POUR TEST IA
-    public List<String> getBdd(){
+    public List<String> getBdd() {
         return mots;
     }
 }

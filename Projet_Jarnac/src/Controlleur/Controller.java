@@ -3,14 +3,13 @@ package Controlleur;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import Modele.*;
 import Vue.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -223,6 +222,7 @@ public class Controller {
             } else {
                 if (j == 1)
                     joueur1.setText("IA1");
+                    p.setJoueur(new Ia("IA" + j), j);
                 if (j == 2) {
                     joueur2.setText("IA2");
                     p.setJoueur(new Ia("IA" + j), j);
@@ -324,11 +324,6 @@ public class Controller {
                     disable1erTour(false);
                 }
                 if (P1M8.getText() != ""){
-                    /*disableAll(true);
-                    jarnac.setDisable(false);
-                    passer.setDisable(false);
-                }
-                if (P2M8.getText() != ""){*/
                     disableAll(true);
                     List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
                     String other = "";
@@ -350,11 +345,6 @@ public class Controller {
                     disable1erTour(false);
                 }
                 if (P2M8.getText() != ""){
-                    /*disableAll(true);
-                    jarnac.setDisable(false);
-                    passer.setDisable(false);
-                }
-                if (P1M8.getText() != ""){*/
                     disableAll(true);
                     List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
                     String other = "";
@@ -368,6 +358,7 @@ public class Controller {
                 }
             }
             current.setFirstChoice(true);
+
         }
     }
 

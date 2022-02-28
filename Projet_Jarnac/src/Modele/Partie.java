@@ -2,15 +2,17 @@ package Modele;
 
 import Controlleur.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Partie {
+    private static Partie instance;
     private Joueur j1;
     private Joueur j2;
     private Reserve reserve;
     private boolean fini;
-    private static Partie instance;
     private Joueur currentPlayer;
     private boolean firstRound = true;
 
@@ -43,18 +45,18 @@ public class Partie {
 
     }
 
-    public static Partie getInstance(){
-        if (instance == null){
-            instance = new Partie();
-        }
-        return instance;
-    }
-
     //constructeur pour test
-    public Partie(int i){
+    public Partie(int i) {
         reserve = new Reserve();
         j1 = new Joueur("j1");
         j2 = new Joueur("j2");
+    }
+
+    public static Partie getInstance() {
+        if (instance == null) {
+            instance = new Partie();
+        }
+        return instance;
     }
 
     public boolean isFirstRound() {
@@ -75,6 +77,8 @@ public class Partie {
         j2.piocher(6);
         currentPlayer = j1;
 
+
+
         Controller ctrl = Controller.getInstance();
         ctrl.updateReserve(instance);
         ctrl.updatePoints(instance);
@@ -87,36 +91,11 @@ public class Partie {
         ctrl.indicateur(1);
         System.out.println("La partie commence");
 
-        /*while (!fini) {
+        if (currentPlayer instanceof Ia) {
+            Ia iaplayer = (Ia) currentPlayer;
+            iaplayer.generateWord();
+        }
 
-            if (i % 2 == 0) {
-                currentPlayer = j1;
-                otherPlayer = j2;
-            } else {
-                currentPlayer = j2;
-                otherPlayer = j1;
-            }
-
-            System.out.println("C'est au tour de " + currentPlayer.getNom());
-            System.out.println("Lettres : " + currentPlayer.getReserve());
-            ctrl.updateReserve(this);
-            afficherPlateau(currentPlayer);
-            afficherPlateau(otherPlayer);
-            if (currentPlayer instanceof  Ia) {
-                //jouerIA
-                String motJouer = ((Ia) currentPlayer).generateWord();
-                if  (!motJouer.equalsIgnoreCase("/passer")){
-                    currentPlayer.jouer(motJouer);
-                }
-                currentPlayer.piocher(1);
-                i +=1 ;
-            }else{
-                play(currentPlayer);
-                currentPlayer.piocher(1);
-                i += 1;
-            }
-
-        }*/
 
     }
 
@@ -142,7 +121,7 @@ public class Partie {
             System.out.println("Ecrire /passer pour passer votre tour");
             System.out.println("Ecrire /modif pour modifier un mot");
             if (!echange)
-            System.out.println("Ecrire /echange pour echanger 3 lettres");
+                System.out.println("Ecrire /echange pour echanger 3 lettres");
             System.out.println("Ecrire /jarnac pour voler un mot");
             String choix = in.next();
 
@@ -170,22 +149,22 @@ public class Partie {
             } else if (choix.equalsIgnoreCase("/passer")) {
                 flag = true;
                 break;
-            } else if (choix.equalsIgnoreCase("/modif")){
-                if(modifier(in, j) != -1){
+            } else if (choix.equalsIgnoreCase("/modif")) {
+                if (modifier(in, j) != -1) {
                     flag = true;
                     break;
                 }
                 flag = false;
-            } else if (choix.equalsIgnoreCase("/jarnac")){
+            } else if (choix.equalsIgnoreCase("/jarnac")) {
                 flag = j.crierJarnac();
-            } else if (choix.equalsIgnoreCase("/echange") && !echange){
+            } else if (choix.equalsIgnoreCase("/echange") && !echange) {
                 System.out.println("Quelles sont les lettre à échanger ?");
                 System.out.println("/retour");
                 String lettres = in.next();
-                 if (!lettres.equalsIgnoreCase("/retour")){
-                     echange = j.echangerLettre(lettres);
-                     System.out.println("echange terminé "+echange);
-                 }
+                if (!lettres.equalsIgnoreCase("/retour")) {
+                    echange = j.echangerLettre(lettres);
+                    System.out.println("echange terminé " + echange);
+                }
 
             }
 
@@ -196,10 +175,10 @@ public class Partie {
 
     public void arreter(Joueur j) {
         fini = true;
-        if (j == j1){
-            System.out.println(j2.getNom()+" à gagner par forfait !");
+        if (j == j1) {
+            System.out.println(j2.getNom() + " à gagner par forfait !");
         } else {
-            System.out.println(j1.getNom()+" à gagner par forfait !");
+            System.out.println(j1.getNom() + " à gagner par forfait !");
         }
     }
 
@@ -208,26 +187,26 @@ public class Partie {
     }
 
 
-    public void annoncerGagnant(){
+    public void annoncerGagnant() {
         fini = true;
-        if (j1.getScore() == j2.getScore()){
+        if (j1.getScore() == j2.getScore()) {
             System.out.println("Match nul !");
-        } else if (j1.getScore() > j2.getScore()){
-            System.out.println(j1.getNom() + "à gagner avec: "+j1.getScore() + "points !");
+        } else if (j1.getScore() > j2.getScore()) {
+            System.out.println(j1.getNom() + "à gagner avec: " + j1.getScore() + "points !");
         } else {
-            System.out.println(j2.getNom() + "à gagner avec: "+j2.getScore() + "points !");
+            System.out.println(j2.getNom() + "à gagner avec: " + j2.getScore() + "points !");
         }
     }
 
-    public void afficherPlateau(Joueur j){
-        Plateau p  = j.getPlateau();
-        System.out.println("Plateau de "+j.getNom());
+    public void afficherPlateau(Joueur j) {
+        Plateau p = j.getPlateau();
+        System.out.println("Plateau de " + j.getNom());
         System.out.println("\t\t\t9\t16\t25\t36\t49\t64\t81");
-        for (int i = 0; i < 8; i++){
+        for (int i = 0; i < 8; i++) {
             StringBuilder line = new StringBuilder("L" + (i + 1) + "\t");
-            if (p.getMot().size() > i){
+            if (p.getMot().size() > i) {
                 String mot = p.getMot().get(i);
-                for (char lettre : mot.toCharArray()){
+                for (char lettre : mot.toCharArray()) {
                     line.append(lettre).append("\t");
                 }
             }
@@ -235,58 +214,58 @@ public class Partie {
         }
     }
 
-    public int modifier(Scanner in, Joueur j){
-        while (true){
+    public int modifier(Scanner in, Joueur j) {
+        while (true) {
             System.out.println("Donner le numéro de la ligne à modifier");
             System.out.println("Ecrire /retour pour annuler l'action");
             String ligne = in.next();
 
-            if (ligne.equalsIgnoreCase("/retour")){
+            if (ligne.equalsIgnoreCase("/retour")) {
                 return -1;
             }
-            try{
+            try {
                 int ligneNb = Integer.parseInt(ligne) - 1;
                 String lignePlateau = j.getPlateau().getMot().get(ligneNb);
-                for (char lettre : lignePlateau.toCharArray()){
+                for (char lettre : lignePlateau.toCharArray()) {
                     j.getReserve().ajouterLettre(String.valueOf(lettre));
                 }
                 j.getPlateau().getMot().remove(ligneNb);
                 String nouveauMot = ".";
-                while (!j.jouer(nouveauMot)){
+                while (!j.jouer(nouveauMot)) {
                     System.out.println("Ecrire le nouveau mot");
                     nouveauMot = in.next();
-                    if (ligne.equalsIgnoreCase("/retour")){
+                    if (ligne.equalsIgnoreCase("/retour")) {
                         return -1;
                     }
                 }
                 return ligneNb;
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Impossible de modifier cette ligne");
             }
         }
 
     }
 
-    public boolean getFini(){
+    public boolean getFini() {
         return fini;
     }
 
-    public void setJoueur(Joueur j, int nb){
-        if (nb == 1){
+    public void setFini(boolean f) {
+        this.fini = f;
+    }
+
+    public void setJoueur(Joueur j, int nb) {
+        if (nb == 1) {
             j1 = j;
-        } else if (nb == 2){
+        } else if (nb == 2) {
             j2 = j;
         } else {
             System.out.println("Impossible de changer ce joueur");
         }
     }
 
-    public List<Joueur> getJoueurs(){
+    public List<Joueur> getJoueurs() {
         return List.of(j1, j2);
-    }
-
-    public void setFini(boolean f){
-        this.fini = f;
     }
 }
 

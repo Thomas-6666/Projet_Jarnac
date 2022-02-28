@@ -1,18 +1,19 @@
 import Controlleur.Controller;
-import Modele.Partie;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.stage.*;
-import javafx.util.Duration;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 
 
 public class Main extends Application {
+
+    public static void main(String[] args) {
+        Controlleur.Controller ctrl = Controller.getInstance();
+        ctrl.initialize();
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -33,12 +34,6 @@ public class Main extends Application {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-    }
-
-    public static void main(String[] args) {
-        Controlleur.Controller ctrl = Controller.getInstance();
-        ctrl.initialize();
-        launch(args);
     }
 
 }

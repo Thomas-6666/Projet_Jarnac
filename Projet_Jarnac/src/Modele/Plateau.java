@@ -20,7 +20,7 @@ public class Plateau {
         if (BDD.verification(m)) {
             mot.add(m);
             joueur.setScore(compterScore());
-            if (mot.size() == 8){
+            if (mot.size() == 8) {
                 joueur.getPartie().annoncerGagnant();
             }
             return true;
@@ -30,9 +30,9 @@ public class Plateau {
 
     }
 
-    public int compterScore(){
+    public int compterScore() {
         int score = 0;
-        for (String curmot : mot){
+        for (String curmot : mot) {
             score += curmot.length() * curmot.length();
         }
         return score;
@@ -51,26 +51,26 @@ public class Plateau {
         return mot;
     }
 
-    public List<String> getMotEspace(){
+    public void setMot(List<String> mot) {
+        this.mot = mot;
+    }
+
+    public List<String> getMotEspace() {
         List<String> mots = new ArrayList<>();
-        for(String curmot : mot){
+        for (String curmot : mot) {
             StringBuilder motespace = new StringBuilder();
-            for(char lettre : curmot.toCharArray()){
+            for (char lettre : curmot.toCharArray()) {
                 motespace.append(lettre);
                 motespace.append("\t");
             }
-            motespace.substring(0,motespace.length()-3);
+            motespace.substring(0, motespace.length() - 3);
             mots.add(motespace.toString());
         }
-        if (mots.size() < 8){
-            for (int i = 0; i < 8 - mot.size(); i++){
+        if (mots.size() < 8) {
+            for (int i = 0; i < 8 - mot.size(); i++) {
                 mots.add("");
             }
         }
         return mots;
-    }
-
-    public void setMot(List<String> mot) {
-        this.mot = mot;
     }
 }
