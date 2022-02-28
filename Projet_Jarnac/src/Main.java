@@ -6,6 +6,7 @@ import javafx.scene.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.*;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -27,7 +28,7 @@ public class Main extends Application {
             Controller.getInstance().initplateau();
 
             new Vue.Popup(primaryStage, 1);
-            startMusic();
+            Controller.getInstance().startMusic();
 
         } catch (IOException exception) {
             throw new RuntimeException(exception);
@@ -39,17 +40,5 @@ public class Main extends Application {
         ctrl.initialize();
         launch(args);
     }
-
-    MediaPlayer mediaPlayer;
-    public void startMusic(){
-        String s = "src/ressources/music.mp3";
-        Media m = new Media(Paths.get(s).toUri().toString());
-        mediaPlayer = new MediaPlayer(m);
-        mediaPlayer.setVolume(0.1);
-        mediaPlayer.play();
-    }
-
-
-
 
 }
