@@ -289,8 +289,7 @@ public class Controller {
     }
 
     public void updatePlateau(int i){
-        Joueur j = Partie.getInstance().getCurrentPlayer();
-        List<String> mots = j.getPlateau().getMotEspace();
+        List<String> mots = Partie.getInstance().getJoueurs().get(i-1).getPlateau().getMotEspace();
         if (i == 1){
             P1M1.setText(mots.get(0));
             P1M2.setText(mots.get(1));
