@@ -1,7 +1,8 @@
 package Modele;
 
+import Controlleur.Controller;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 public class Ia extends Joueur{
@@ -14,24 +15,11 @@ public class Ia extends Joueur{
         bdd = BaseDeDonnee.getInstance();
     }
 
-   /* public static void main(String[] args) {
-        Ia ia = new Ia();
-        System.out.println("Réserve de l'IA : " + ia.reserve);
-        String wordPlayed = ia.generateWord(ia.reserve);
-        if (wordPlayed.equalsIgnoreCase("/passer")){
-            System.out.println("L'IA va passer son tour en faisant : " + wordPlayed);
-        }
-        else {
-            System.out.println("L'IA va jouer le mot : " + wordPlayed);
-        }
-    }*/
-
-    public String generateWord() {
+    public void generateWord() {
         ArrayList<String> temp = new ArrayList<>();
         for (String words : bdd.getBdd()) {
             ArrayList<String> reserve = new ArrayList<>(getReserve().getLettres());
             temp.clear();
-            boolean flag = true;
             for (char c : words.toCharArray()){
                 String lettre = String.valueOf(c);
                 lettre= lettre.toUpperCase();
@@ -41,17 +29,6 @@ public class Ia extends Joueur{
                 }
             }
 
-
-
-           /* for (String size : reserve) {
-                size = size.toUpperCase();
-                if (!words.contains(size)) {
-                    temp.add(size);
-                    flag = false;
-                }
-            }*/
-            //TROUVER UN MOYEN DE CORRIGER ICI
-            //Ok j'ai trouvé ça vient du equals, ça prendra pas OUI car il aura que OUI et pas toute la réserve
             if (temp.size() == words.length()) {
                 wordsPlayable.add(words);
             }
@@ -60,10 +37,12 @@ public class Ia extends Joueur{
         if (!wordsPlayable.isEmpty()) {
             System.out.println("Voici tous les mots que l'IA pourrait jouer : " + wordsPlayable);
             int nombreRandom = genererateRandom(0, wordsPlayable.size());
-            return wordsPlayable.get(nombreRandom);
+            Controller.getInstance().piocher();
+            jouer(wordsPlayable.get(nombreRandom));
         }
         else {
-            return "/passer";
+            Controller.getInstance().piocher();
+            Controller.getInstance().passer();
         }
 
     }
