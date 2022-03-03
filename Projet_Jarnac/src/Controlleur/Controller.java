@@ -247,8 +247,14 @@ public class Controller {
         List<Joueur> listjoueurs = p.getJoueurs();
         String j1reserve = listjoueurs.get(0).getReserve().LettresReserve();
         String j2reserve = listjoueurs.get(1).getReserve().LettresReserve();
-        lettres_j1.setText(j1reserve);
-        lettres_j2.setText(j2reserve);
+        if (lettres_j1 != null){
+
+            lettres_j1.setText(j1reserve);
+        }
+        if (lettres_j2 != null){
+
+            lettres_j2.setText(j2reserve);
+        }
         updateLettresRestantes();
     }
 
@@ -381,7 +387,9 @@ public class Controller {
 
     public void updateLettresRestantes(){
         int nb_lettres = Partie.getInstance().getReserve().size();
-        lettres_pioche.setText("Lettres restantes dans la pioche :\n" + nb_lettres);
+        if (lettres_pioche != null){
+            lettres_pioche.setText("Lettres restantes dans la pioche :\n" + nb_lettres);
+        }
     }
 
     public void updatePoints(Partie p) {
