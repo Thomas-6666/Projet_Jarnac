@@ -35,7 +35,6 @@ public class Ia extends Joueur{
             }
 
         }
-        System.out.println("l'ia a fait sa liste de mot");
 
     }
 

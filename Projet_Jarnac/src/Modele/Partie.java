@@ -1,6 +1,7 @@
 package Modele;
 
 import Controlleur.Controller;
+import Vue.Victoire;
 
 import java.util.List;
 import java.util.Scanner;
@@ -81,6 +82,9 @@ public class Partie {
         ctrl.updatePlateau();
         ctrl.disable1erTour(true);
         setFirstRound(true);
+        j1.setFirstChoice(false);
+        j2.setFirstChoice(false);
+        fini = false;
 
         ctrl.disableChampMot(1);
         ctrl.indicateur(1);
@@ -218,10 +222,13 @@ public class Partie {
         fini = true;
         if (j1.getScore() == j2.getScore()){
             System.out.println("Match nul !");
+            Controller.getInstance().annonceWinner(j1,j2);
         } else if (j1.getScore() > j2.getScore()){
             System.out.println(j1.getNom() + "à gagner avec: "+j1.getScore() + "points !");
+            Controller.getInstance().annonceWinner(j1, j2);
         } else {
             System.out.println(j2.getNom() + "à gagner avec: "+j2.getScore() + "points !");
+            Controller.getInstance().annonceWinner(j2,j1);
         }
     }
 
@@ -293,6 +300,10 @@ public class Partie {
 
     public void setFini(boolean f){
         this.fini = f;
+    }
+
+    public void resetReserve(){
+        reserve = new Reserve();
     }
 }
 
