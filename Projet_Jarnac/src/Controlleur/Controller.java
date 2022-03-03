@@ -223,6 +223,7 @@ public class Controller {
             } else {
                 if (j == 1)
                     joueur1.setText("IA1");
+                    p.setJoueur(new Ia("IA" + j), j);
                 if (j == 2) {
                     joueur2.setText("IA2");
                     p.setJoueur(new Ia("IA" + j), j);
@@ -267,7 +268,7 @@ public class Controller {
             if (j.jouer(mot)){
                 input_j1.setText("");
                 j.piocher(1);
-                updatePlateau(1);
+                updatePlateau();
                 updatePoints(Partie.getInstance());
             }
             else{
@@ -277,15 +278,18 @@ public class Controller {
     }
 
     public void player2jouer(){
+        System.out.println("OUI1");
         Partie p = Partie.getInstance();
         Joueur current = p.getCurrentPlayer();
         Joueur j = p.getJoueurs().get(1);
         if (current == j && !j.getFirstChoice()){
+            System.out.println("OUI2");
             String mot = input_j2.getText();
             if (j.jouer(mot)){
+                System.out.println("OUI3");
                 input_j2.setText("");
                 j.piocher(1);
-                updatePlateau(2);
+                updatePlateau();
                 updatePoints(Partie.getInstance());
             }
             else{
@@ -294,34 +298,33 @@ public class Controller {
         }
     }
 
-    public void updatePlateau(int i){
-        List<String> mots = Partie.getInstance().getJoueurs().get(i-1).getPlateau().getMotEspace();
-        if (i == 1){
-            P1M1.setText(mots.get(0));
-            P1M2.setText(mots.get(1));
-            P1M3.setText(mots.get(2));
-            P1M4.setText(mots.get(3));
-            P1M5.setText(mots.get(4));
-            P1M6.setText(mots.get(5));
-            P1M7.setText(mots.get(6));
-            P1M8.setText(mots.get(7));
-        } else if (i == 2){
-            P2M1.setText(mots.get(0));
-            P2M2.setText(mots.get(1));
-            P2M3.setText(mots.get(2));
-            P2M4.setText(mots.get(3));
-            P2M5.setText(mots.get(4));
-            P2M6.setText(mots.get(5));
-            P2M7.setText(mots.get(6));
-            P2M8.setText(mots.get(7));
-        }
+    public void updatePlateau(){
+        List<String> mots = Partie.getInstance().getJoueurs().get(0).getPlateau().getMotEspace();
+        P1M1.setText(mots.get(0));
+        P1M2.setText(mots.get(1));
+        P1M3.setText(mots.get(2));
+        P1M4.setText(mots.get(3));
+        P1M5.setText(mots.get(4));
+        P1M6.setText(mots.get(5));
+        P1M7.setText(mots.get(6));
+        P1M8.setText(mots.get(7));
+        mots = Partie.getInstance().getJoueurs().get(1).getPlateau().getMotEspace();
+        P2M1.setText(mots.get(0));
+        P2M2.setText(mots.get(1));
+        P2M3.setText(mots.get(2));
+        P2M4.setText(mots.get(3));
+        P2M5.setText(mots.get(4));
+        P2M6.setText(mots.get(5));
+        P2M7.setText(mots.get(6));
+        P2M8.setText(mots.get(7));
     }
 
     public void passer(){
         Joueur current = Partie.getInstance().getCurrentPlayer();
-        if (!current.getFirstChoice()) {
+        if (!current.getFirstChoice() && !Partie.getInstance().getFini()) {
             if (current == Partie.getInstance().getJoueurs().get(0)) {
                 Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(1));
+                current = Partie.getInstance().getCurrentPlayer();
                 disableChampMot(2);
                 indicateur(2);
                 if (!Partie.getInstance().isFirstRound()){
@@ -343,10 +346,12 @@ public class Controller {
                     else {
                         other = listjoueurs.get(0).getNom();
                     }
+                    Partie.getInstance().setFini(true);
                     new Victoire(primaryStage, current.getNom(), other);
                 }
             } else if (current == Partie.getInstance().getJoueurs().get(1)) {
                 Partie.getInstance().setCurrentPlayer(Partie.getInstance().getJoueurs().get(0));
+                current = Partie.getInstance().getCurrentPlayer();
                 disableChampMot(1);
                 indicateur(1);
                 Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
@@ -369,10 +374,22 @@ public class Controller {
                     else {
                         other = listjoueurs.get(0).getNom();
                     }
+                    Partie.getInstance().setFini(true);
                     new Victoire(primaryStage, current.getNom(), other);
                 }
             }
+            if (current instanceof Ia){
+                Ia playerIa = (Ia) current;
+                if (playerIa.getFirstChoice() && !Partie.getInstance().isFirstRound()){
+                    System.out.println("ia pioche debut round");
+                    piocher();
+                }
+                System.out.println("ia va jouer");
+                playerIa.jouerRandom();
+            }
             current.setFirstChoice(true);
+        } else {
+            System.out.println("WHAT");
         }
     }
 

@@ -16,6 +16,7 @@ public class Ia extends Joueur{
     }
 
     public void generateWord() {
+        wordsPlayable.clear();
         ArrayList<String> temp = new ArrayList<>();
         for (String words : bdd.getBdd()) {
             ArrayList<String> reserve = new ArrayList<>(getReserve().getLettres());
@@ -34,23 +35,17 @@ public class Ia extends Joueur{
             }
 
         }
-        if (!wordsPlayable.isEmpty()) {
-            System.out.println("Voici tous les mots que l'IA pourrait jouer : " + wordsPlayable);
-            int nombreRandom = genererateRandom(0, wordsPlayable.size());
-            Controller.getInstance().piocher();
-            jouer(wordsPlayable.get(nombreRandom));
-        }
-        else {
-            Controller.getInstance().piocher();
-            Controller.getInstance().passer();
-        }
+        System.out.println("l'ia a fait sa liste de mot");
 
     }
 
-    public int genererateRandom(int borneInf, int borneSup) {
-        Random random = new Random();
-        int nb;
-        nb = random.nextInt(borneSup - borneInf) + borneInf;
-        return nb;
+    public void jouerRandom(){
+        generateWord();
+        while (!wordsPlayable.isEmpty()) {
+            jouer(wordsPlayable.get(new Random().nextInt(wordsPlayable.size())));
+            piocher(1);
+            generateWord();
+        }
+        Controller.getInstance().passer();
     }
 }

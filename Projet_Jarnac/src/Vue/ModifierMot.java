@@ -42,7 +42,7 @@ public class ModifierMot extends Stage {
                     } else {
                         i = 2;
                     }
-                    c.updatePlateau(i);
+                    c.updatePlateau();
                     c.updateReserve(Partie.getInstance());
                     fermer();
                 }

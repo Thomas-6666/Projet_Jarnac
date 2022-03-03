@@ -78,14 +78,20 @@ public class Partie {
         Controller ctrl = Controller.getInstance();
         ctrl.updateReserve(instance);
         ctrl.updatePoints(instance);
-        ctrl.updatePlateau(1);
-        ctrl.updatePlateau(2);
+        ctrl.updatePlateau();
         ctrl.disable1erTour(true);
         setFirstRound(true);
 
         ctrl.disableChampMot(1);
         ctrl.indicateur(1);
         System.out.println("La partie commence");
+
+        if (currentPlayer instanceof Ia){
+            Ia iaplayer = (Ia) currentPlayer;
+            iaplayer.jouerRandom();
+            getCurrentPlayer().setFirstChoice(false);
+            //Controller.getInstance().disable1erTour(false);
+        }
 
         /*while (!fini) {
 

@@ -118,6 +118,8 @@ public class Joueur {
         if (plateau.ajouterMot(mot)){
             reserve.setLettre(reserveTemp);
             Controller.getInstance().updateReserve(partie);
+            Controller.getInstance().updatePlateau();
+            Controller.getInstance().updatePoints(partie);
             return true;
         } else {
             System.out.println("Le mot n'existe pas");
