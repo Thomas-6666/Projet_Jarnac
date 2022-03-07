@@ -93,7 +93,6 @@ public class Partie {
         if (currentPlayer instanceof Ia){
             Ia iaplayer = (Ia) currentPlayer;
             iaplayer.jouerRandom();
-            getCurrentPlayer().setFirstChoice(false);
             //Controller.getInstance().disable1erTour(false);
         }
 

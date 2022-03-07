@@ -278,7 +278,6 @@ public class Controller {
     }
 
     public void player2jouer(){
-        System.out.println("OUI1");
         Partie p = Partie.getInstance();
         Joueur current = p.getCurrentPlayer();
         Joueur j = p.getJoueurs().get(1);
@@ -350,12 +349,13 @@ public class Controller {
                 }
                 playerIa.jouerRandom();
             }
-            current.setFirstChoice(true);
         }
     }
 
     public void piocher(){
         Joueur current = Partie.getInstance().getCurrentPlayer();
+        System.out.println("current fc :" +current.getFirstChoice());
+        System.out.println("first round = " + Partie.getInstance().isFirstRound());
         if (current.getFirstChoice()){
             current.piocher(1);
             current.setFirstChoice(false);
