@@ -317,6 +317,7 @@ public class Controller {
     }
 
     public void passer(){
+        Partie.getInstance().setJarnac(false);
         Joueur current = Partie.getInstance().getCurrentPlayer();
         if (!current.getFirstChoice() && !Partie.getInstance().getFini()) {
             if (current == Partie.getInstance().getJoueurs().get(0)) {
@@ -453,12 +454,26 @@ public class Controller {
     }
 
     public void modifier(){
+        if (Partie.getInstance().isJarnacEnCours())
+            Partie.getInstance().setJarnac(false);
         if (!Partie.getInstance().isFirstRound() && !Partie.getInstance().getCurrentPlayer().getFirstChoice())
-        new Modifier(primaryStage);
+            new Modifier(primaryStage, Partie.getInstance().getCurrentPlayer());
     }
 
-    public boolean modifierMot(int l, String m){
-        return Partie.getInstance().getCurrentPlayer().modifier(l,m.toUpperCase());
+    public boolean modifierMot(int l, String m, Joueur j){
+        boolean res = j.modifier(l,m.toUpperCase());
+        if (Partie.getInstance().isJarnacEnCours() && res){
+            Joueur other = null;
+            for (Joueur joueur : Partie.getInstance().getJoueurs()){
+                if (j != joueur){
+                    other = joueur;
+                }
+            }
+            String mot = j.getPlateau().retirerLast();
+            other.getPlateau().ajouterMot(mot);
+            Partie.getInstance().setJarnac(false);
+        }
+        return res;
     }
 
     public void restart(){
@@ -486,5 +501,19 @@ public class Controller {
     public void annonceWinner(Joueur los, Joueur win){
         disableAll(true);
         new Victoire(primaryStage, win.getNom(), los.getNom());
+    }
+
+    public void jarnac(){
+        Partie p = Partie.getInstance();
+        Joueur current = p.getCurrentPlayer();
+        Joueur other = null;
+        for (Joueur j : p.getJoueurs()){
+            if (j != current)
+                other = j;
+        }
+        p.setJarnac(true);
+        if (!p.isFirstRound() && !current.getFirstChoice()){
+            new Modifier(primaryStage, other);
+        }
     }
 }

@@ -17,8 +17,11 @@ import java.util.List;
 
 public class ModifierMot extends Stage {
 
-    public ModifierMot(Stage primaryStage, int ligne){
+    private Joueur j;
+
+    public ModifierMot(Stage primaryStage, int ligne, Joueur joueur){
         super();
+        j = joueur;
         Controller c = Controller.getInstance();
         c.setStage(primaryStage);
         this.initModality(Modality.APPLICATION_MODAL);
@@ -32,16 +35,8 @@ public class ModifierMot extends Stage {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 String mot = input.getText();
-                if (c.modifierMot(ligne, mot)){
+                if (c.modifierMot(ligne, mot, j)){
                     c.updatePoints(Partie.getInstance());
-                    Joueur j = Partie.getInstance().getCurrentPlayer();
-                    List<Joueur> joueurs = Partie.getInstance().getJoueurs();
-                    int i;
-                    if (j == joueurs.get(0)){
-                        i = 1;
-                    } else {
-                        i = 2;
-                    }
                     c.updatePlateau();
                     c.updateReserve(Partie.getInstance());
                     fermer();

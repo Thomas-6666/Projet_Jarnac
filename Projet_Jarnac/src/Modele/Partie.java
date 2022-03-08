@@ -14,6 +14,7 @@ public class Partie {
     private static Partie instance;
     private Joueur currentPlayer;
     private boolean firstRound = true;
+    private boolean jarnacEnCours = false;
 
     private Partie() {
         fini = false;
@@ -64,6 +65,14 @@ public class Partie {
 
     public void setFirstRound(boolean firstRound) {
         this.firstRound = firstRound;
+    }
+
+    public void setJarnac(boolean bool){
+        jarnacEnCours = bool;
+    }
+
+    public boolean isJarnacEnCours(){
+        return jarnacEnCours;
     }
 
     public void lancer() {

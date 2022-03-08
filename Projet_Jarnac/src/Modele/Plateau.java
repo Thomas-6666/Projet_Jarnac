@@ -73,4 +73,10 @@ public class Plateau {
     public void setMot(List<String> mot) {
         this.mot = mot;
     }
+
+    public String retirerLast(){
+        String res = mot.get(mot.size()-1);
+        mot.remove(mot.size()-1);
+        return res;
+    }
 }

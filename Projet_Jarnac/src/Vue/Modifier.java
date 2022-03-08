@@ -1,6 +1,7 @@
 package Vue;
 
 import Controlleur.Controller;
+import Modele.Joueur;
 import Modele.Partie;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -14,8 +15,11 @@ import javafx.stage.Stage;
 
 public class Modifier extends Stage {
 
-    public Modifier(Stage primaryStage){
+    private Joueur j;
+
+    public Modifier(Stage primaryStage, Joueur joueur){
         super();
+        j = joueur;
         Controller c = Controller.getInstance();
         c.setStage(primaryStage);
         this.initModality(Modality.APPLICATION_MODAL);
@@ -31,8 +35,8 @@ public class Modifier extends Stage {
                 String num = input.getText().replaceAll("[^0-9]", "");
                 if (!num.equals("")) {
                     int ligne = Integer.parseInt(num);
-                    if ((ligne > 0 && ligne < 9) && ligne <= Partie.getInstance().getCurrentPlayer().getPlateau().getMot().size()) {
-                        new ModifierMot(primaryStage, ligne);
+                    if ((ligne > 0 && ligne < 9) && ligne <= j.getPlateau().getMot().size()) {
+                        new ModifierMot(primaryStage, ligne, j);
                         fermer();
                     }
                 }
