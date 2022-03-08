@@ -35,7 +35,7 @@ public class Modifier extends Stage {
                 String num = input.getText().replaceAll("[^0-9]", "");
                 if (!num.equals("")) {
                     int ligne = Integer.parseInt(num);
-                    if ((ligne > 0 && ligne < 9) && ligne <= j.getPlateau().getMot().size()) {
+                    if ((ligne > 0 && ligne < 9) && (ligne <= j.getPlateau().getMot().size() || Partie.getInstance().isJarnacEnCours())) {
                         new ModifierMot(primaryStage, ligne, j);
                         fermer();
                     }

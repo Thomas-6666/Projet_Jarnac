@@ -196,7 +196,12 @@ public class Joueur {
         ArrayList<String> saveMots = new ArrayList<>(getPlateau().getMot());
         ArrayList<String> saveReserve = new ArrayList<>(getReserve().getLettres());
         int ligneNb = l-1;
-        String lignePlateau = getPlateau().getMot().get(ligneNb);
+        String lignePlateau;
+        try{
+            lignePlateau = getPlateau().getMot().get(ligneNb);
+        } catch (Exception e){
+            lignePlateau = "";
+        }
         System.out.println(lignePlateau);
         if (m.length() <= lignePlateau.length()){
             return false;
@@ -216,7 +221,8 @@ public class Joueur {
         for (char lettre : lignePlateau.toCharArray()){
             getReserve().ajouterLettre(String.valueOf(lettre));
         }
-        getPlateau().getMot().remove(ligneNb);
+        if (!lignePlateau.equals(""))
+            getPlateau().getMot().remove(ligneNb);
         if (jouer(m)){
             return true;
         } else {
