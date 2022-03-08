@@ -282,10 +282,8 @@ public class Controller {
         Joueur current = p.getCurrentPlayer();
         Joueur j = p.getJoueurs().get(1);
         if (current == j && !j.getFirstChoice()){
-            System.out.println("OUI2");
             String mot = input_j2.getText();
             if (j.jouer(mot)){
-                System.out.println("OUI3");
                 input_j2.setText("");
                 j.piocher(1);
                 updatePlateau();
@@ -354,8 +352,6 @@ public class Controller {
 
     public void piocher(){
         Joueur current = Partie.getInstance().getCurrentPlayer();
-        System.out.println("current fc :" +current.getFirstChoice());
-        System.out.println("first round = " + Partie.getInstance().isFirstRound());
         if (current.getFirstChoice()){
             current.piocher(1);
             current.setFirstChoice(false);
@@ -457,6 +453,7 @@ public class Controller {
     }
 
     public void modifier(){
+        if (!Partie.getInstance().isFirstRound() && !Partie.getInstance().getCurrentPlayer().getFirstChoice())
         new Modifier(primaryStage);
     }
 
