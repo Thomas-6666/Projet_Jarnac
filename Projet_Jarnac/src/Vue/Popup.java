@@ -29,11 +29,11 @@ public class Popup extends Stage {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Controller ctrl = Controller.getInstance();
-                if(ctrl.Recup(input.getText(), j)){
-                    if (j == 1){
+                if (ctrl.Recup(input.getText(), j)) {
+                    if (j == 1) {
                         fermer();
                         new Popup(primaryStage, 2);
-                    } else if (j == 2){
+                    } else if (j == 2) {
                         fermer();
                         Partie.getInstance().lancer();
                     }
@@ -46,7 +46,7 @@ public class Popup extends Stage {
         this.show();
     }
 
-    public void fermer(){
+    public void fermer() {
         this.close();
     }
 }

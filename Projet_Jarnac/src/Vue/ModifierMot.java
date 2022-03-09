@@ -19,7 +19,7 @@ public class ModifierMot extends Stage {
 
     private Joueur j;
 
-    public ModifierMot(Stage primaryStage, int ligne, Joueur joueur){
+    public ModifierMot(Stage primaryStage, int ligne, Joueur joueur) {
         super();
         j = joueur;
         Controller c = Controller.getInstance();
@@ -35,7 +35,7 @@ public class ModifierMot extends Stage {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 String mot = input.getText();
-                if (c.modifierMot(ligne, mot, j)){
+                if (c.modifierMot(ligne, mot, j)) {
                     c.updatePoints(Partie.getInstance());
                     c.updatePlateau();
                     c.updateReserve(Partie.getInstance());
@@ -49,7 +49,7 @@ public class ModifierMot extends Stage {
         this.show();
     }
 
-    public void fermer(){
+    public void fermer() {
         this.close();
     }
 }

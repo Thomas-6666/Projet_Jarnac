@@ -32,7 +32,7 @@ public class ErreurMot extends Stage {
         this.show();
     }
 
-    public void fermer(){
+    public void fermer() {
         this.close();
     }
 }

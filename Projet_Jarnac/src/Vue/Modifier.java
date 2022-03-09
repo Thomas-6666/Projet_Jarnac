@@ -17,7 +17,7 @@ public class Modifier extends Stage {
 
     private Joueur j;
 
-    public Modifier(Stage primaryStage, Joueur joueur){
+    public Modifier(Stage primaryStage, Joueur joueur) {
         super();
         j = joueur;
         Controller c = Controller.getInstance();
@@ -48,7 +48,7 @@ public class Modifier extends Stage {
         this.show();
     }
 
-    public void fermer(){
+    public void fermer() {
         this.close();
     }
 

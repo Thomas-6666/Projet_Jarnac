@@ -6,10 +6,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class Regles extends Stage{
+public class Regles extends Stage {
     private String regle;
 
-    public Regles(Stage primaryStage){
+    public Regles(Stage primaryStage) {
         super();
         regle = "Règles du Jarnac :\n\n" +
                 "Premier tour\n" +

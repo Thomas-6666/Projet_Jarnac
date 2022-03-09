@@ -9,8 +9,6 @@ import Modele.*;
 import Vue.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -22,7 +20,8 @@ public class Controller {
     private Stage primaryStage;
 
 
-    private Controller(){ }
+    private Controller() {
+    }
 
     public static Controller getInstance() {
         if (controller == null) {
@@ -78,12 +77,6 @@ public class Controller {
 
     @FXML
     private Button modifier;
-
-    /*@FXML
-    private TableView<?> plateau_j1;
-
-    @FXML
-    private TableView<?> plateau_j2;*/
 
     @FXML
     private Label P1L0;
@@ -183,29 +176,14 @@ public class Controller {
         assert lettres_pioche != null : "fx:id=\"lettres_pioche\" was not injected: check your FXML file 'Interface.fxml'.";
         assert passer != null : "fx:id=\"passer\" was not injected: check your FXML file 'Interface.fxml'.";
         assert piocher != null : "fx:id=\"piocher\" was not injected: check your FXML file 'Interface.fxml'.";
-        //assert plateau_j1 != null : "fx:id=\"plateau_j1\" was not injected: check your FXML file 'Interface.fxml'.";
-        //assert plateau_j2 != null : "fx:id=\"plateau_j2\" was not injected: check your FXML file 'Interface.fxml'.";
         assert points_j1 != null : "fx:id=\"points_j1\" was not injected: check your FXML file 'Interface.fxml'.";
         assert points_j2 != null : "fx:id=\"points_j2\" was not injected: check your FXML file 'Interface.fxml'.";
-        //initplateau();
     }
 
-    public void initplateau(){
+    public void initplateau() {
         P1L0.setText("\t\t9\t16\t25\t36\t49\t64\t81");
         P2L0.setText("\t\t9\t16\t25\t36\t49\t64\t81");
         updateLettresRestantes();
-    }
-
-    public void AppelRegles(View v) {
-        v.afficherRegles();
-    }
-
-    public void AppelPartie(View v, Joueur j1, Joueur j2, Reserve r, Partie p, Plateau pl1, Plateau pl2) {
-        v.afficherPartie(j1, j2, r, p, pl1, pl2);
-    }
-
-    public void AppelResultat(View v, Partie p) {
-        v.afficherResultat(p);
     }
 
     public boolean Recup(String n, int j) {
@@ -223,7 +201,7 @@ public class Controller {
             } else {
                 if (j == 1)
                     joueur1.setText("IA1");
-                    p.setJoueur(new Ia("IA" + j), j);
+                p.setJoueur(new Ia("IA" + j), j);
                 if (j == 2) {
                     joueur2.setText("IA2");
                     p.setJoueur(new Ia("IA" + j), j);
@@ -248,54 +226,52 @@ public class Controller {
         List<Joueur> listjoueurs = p.getJoueurs();
         String j1reserve = listjoueurs.get(0).getReserve().LettresReserve();
         String j2reserve = listjoueurs.get(1).getReserve().LettresReserve();
-        if (lettres_j1 != null){
+        if (lettres_j1 != null) {
 
             lettres_j1.setText(j1reserve);
         }
-        if (lettres_j2 != null){
+        if (lettres_j2 != null) {
 
             lettres_j2.setText(j2reserve);
         }
         updateLettresRestantes();
     }
 
-    public void player1jouer(){
+    public void player1jouer() {
         Partie p = Partie.getInstance();
         Joueur current = p.getCurrentPlayer();
         Joueur j = p.getJoueurs().get(0);
-        if (j == current && !j.getFirstChoice()){
+        if (j == current && !j.getFirstChoice()) {
             String mot = input_j1.getText();
-            if (j.jouer(mot)){
+            if (j.jouer(mot)) {
                 input_j1.setText("");
                 j.piocher(1);
                 updatePlateau();
                 updatePoints(Partie.getInstance());
-            }
-            else{
+            } else {
                 new ErreurMot(primaryStage);
             }
         }
     }
 
-    public void player2jouer(){
+    public void player2jouer() {
         Partie p = Partie.getInstance();
         Joueur current = p.getCurrentPlayer();
         Joueur j = p.getJoueurs().get(1);
-        if (current == j && !j.getFirstChoice()){
+        if (current == j && !j.getFirstChoice()) {
             String mot = input_j2.getText();
-            if (j.jouer(mot)){
+            if (j.jouer(mot)) {
                 input_j2.setText("");
                 j.piocher(1);
                 updatePlateau();
                 updatePoints(Partie.getInstance());
-            }
-            else{
+            } else {
                 new ErreurMot(primaryStage);
             }
         }
     }
 
-    public void updatePlateau(){
+    public void updatePlateau() {
         List<String> mots = Partie.getInstance().getJoueurs().get(0).getPlateau().getMotEspace();
         P1M1.setText(mots.get(0));
         P1M2.setText(mots.get(1));
@@ -316,7 +292,7 @@ public class Controller {
         P2M8.setText(mots.get(7));
     }
 
-    public void passer(){
+    public void passer() {
         Partie.getInstance().setJarnac(false);
         Joueur current = Partie.getInstance().getCurrentPlayer();
         if (!current.getFirstChoice() && !Partie.getInstance().getFini()) {
@@ -325,7 +301,7 @@ public class Controller {
                 current = Partie.getInstance().getCurrentPlayer();
                 disableChampMot(2);
                 indicateur(2);
-                if (!Partie.getInstance().isFirstRound()){
+                if (!Partie.getInstance().isFirstRound()) {
                     Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
                     disable1erTour(false);
                 }
@@ -335,15 +311,15 @@ public class Controller {
                 disableChampMot(1);
                 indicateur(1);
                 Partie.getInstance().getCurrentPlayer().setFirstChoice(true);
-                if (Partie.getInstance().isFirstRound()){
+                if (Partie.getInstance().isFirstRound()) {
                     Partie.getInstance().setFirstRound(false);
                     disable1erTour(false);
                 }
 
             }
-            if (current instanceof Ia){
+            if (current instanceof Ia) {
                 Ia playerIa = (Ia) current;
-                if (playerIa.getFirstChoice() && !Partie.getInstance().isFirstRound()){
+                if (playerIa.getFirstChoice() && !Partie.getInstance().isFirstRound()) {
                     piocher();
                 }
                 playerIa.jouerRandom();
@@ -351,18 +327,18 @@ public class Controller {
         }
     }
 
-    public void piocher(){
+    public void piocher() {
         Joueur current = Partie.getInstance().getCurrentPlayer();
-        if (current.getFirstChoice()){
+        if (current.getFirstChoice()) {
             current.piocher(1);
             current.setFirstChoice(false);
             updateLettresRestantes();
         }
     }
 
-    public void updateLettresRestantes(){
+    public void updateLettresRestantes() {
         int nb_lettres = Partie.getInstance().getReserve().size();
-        if (lettres_pioche != null){
+        if (lettres_pioche != null) {
             lettres_pioche.setText("Lettres restantes dans la pioche :\n" + nb_lettres);
         }
     }
@@ -375,18 +351,18 @@ public class Controller {
         points_j2.setText("Points : " + j2pts);
     }
 
-    public void disableChampMot(int i){
-        if (i == 1){
+    public void disableChampMot(int i) {
+        if (i == 1) {
             input_j1.setDisable(false);
             input_j2.setDisable(true);
         }
-        if (i == 2){
+        if (i == 2) {
             input_j1.setDisable(true);
             input_j2.setDisable(false);
         }
     }
 
-    public void disable1erTour(boolean b){
+    public void disable1erTour(boolean b) {
         jarnac.setDisable(b);
         piocher.setDisable(b);
         echanger.setDisable(b);
@@ -394,9 +370,9 @@ public class Controller {
         updateLettresRestantes();
     }
 
-    public void echanger(){
+    public void echanger() {
         Joueur current = Partie.getInstance().getCurrentPlayer();
-        if (current.getFirstChoice()){
+        if (current.getFirstChoice()) {
             new Echange(primaryStage, current);
             updateLettresRestantes();
         }
@@ -407,33 +383,30 @@ public class Controller {
         String current = Partie.getInstance().getCurrentPlayer().getNom();
         List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
         String other = "";
-        if (listjoueurs.get(0).getNom() == current){
+        if (listjoueurs.get(0).getNom() == current) {
             other = listjoueurs.get(1).getNom();
-        }
-        else {
+        } else {
             other = listjoueurs.get(0).getNom();
         }
         new AbandonJoueur(primaryStage, current, other);
         Partie.getInstance().setFini(true);
     }
 
-    public void indicateur(int i){
+    public void indicateur(int i) {
         String current = Partie.getInstance().getCurrentPlayer().getNom();
         List<Joueur> listjoueurs = Partie.getInstance().getJoueurs();
         String other = "";
-        if (listjoueurs.get(0).getNom() == current){
+        if (listjoueurs.get(0).getNom() == current) {
             other = listjoueurs.get(1).getNom();
-        }
-        else {
+        } else {
             other = listjoueurs.get(0).getNom();
         }
-        if (i == 1){
+        if (i == 1) {
             joueur1.setDisable(false);
             joueur1.setText("⫸ " + current);
             joueur2.setDisable(true);
             joueur2.setText(other);
-        }
-        else if (i == 2){
+        } else if (i == 2) {
             joueur2.setDisable(false);
             joueur2.setText("⫸ " + current);
             joueur1.setDisable(true);
@@ -441,7 +414,7 @@ public class Controller {
         }
     }
 
-    public void disableAll(boolean b){
+    public void disableAll(boolean b) {
         jarnac.setDisable(b);
         passer.setDisable(b);
         piocher.setDisable(b);
@@ -453,19 +426,19 @@ public class Controller {
         modifier.setDisable(b);
     }
 
-    public void modifier(){
+    public void modifier() {
         if (Partie.getInstance().isJarnacEnCours())
             Partie.getInstance().setJarnac(false);
         if (!Partie.getInstance().isFirstRound() && !Partie.getInstance().getCurrentPlayer().getFirstChoice())
             new Modifier(primaryStage, Partie.getInstance().getCurrentPlayer());
     }
 
-    public boolean modifierMot(int l, String m, Joueur j){
-        boolean res = j.modifier(l,m.toUpperCase());
-        if (Partie.getInstance().isJarnacEnCours() && res){
+    public boolean modifierMot(int l, String m, Joueur j) {
+        boolean res = j.modifier(l, m.toUpperCase());
+        if (Partie.getInstance().isJarnacEnCours() && res) {
             Joueur other = null;
-            for (Joueur joueur : Partie.getInstance().getJoueurs()){
-                if (j != joueur){
+            for (Joueur joueur : Partie.getInstance().getJoueurs()) {
+                if (j != joueur) {
                     other = joueur;
                 }
             }
@@ -476,7 +449,7 @@ public class Controller {
         return res;
     }
 
-    public void restart(){
+    public void restart() {
         primaryStage.close();
         primaryStage.show();
         mediaPlayer.stop();
@@ -489,7 +462,8 @@ public class Controller {
     }
 
     MediaPlayer mediaPlayer;
-    public void startMusic(){
+
+    public void startMusic() {
         String s = "src/ressources/music.mp3";
         Media m = new Media(Paths.get(s).toUri().toString());
         mediaPlayer = new MediaPlayer(m);
@@ -498,21 +472,21 @@ public class Controller {
         mediaPlayer.play();
     }
 
-    public void annonceWinner(Joueur los, Joueur win){
+    public void annonceWinner(Joueur los, Joueur win) {
         disableAll(true);
         new Victoire(primaryStage, win.getNom(), los.getNom());
     }
 
-    public void jarnac(){
+    public void jarnac() {
         Partie p = Partie.getInstance();
         Joueur current = p.getCurrentPlayer();
         Joueur other = null;
-        for (Joueur j : p.getJoueurs()){
+        for (Joueur j : p.getJoueurs()) {
             if (j != current)
                 other = j;
         }
         p.setJarnac(true);
-        if (!p.isFirstRound() && !current.getFirstChoice()){
+        if (!p.isFirstRound() && !current.getFirstChoice()) {
             new Modifier(primaryStage, other);
         }
     }

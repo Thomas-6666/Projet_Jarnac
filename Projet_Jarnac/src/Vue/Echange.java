@@ -28,7 +28,7 @@ public class Echange extends Stage {
         valider.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (j.echangerLettre(input.getText())){
+                if (j.echangerLettre(input.getText())) {
                     Partie.getInstance().getCurrentPlayer().setFirstChoice(false);
                     fermer();
                 }
@@ -40,7 +40,7 @@ public class Echange extends Stage {
         this.show();
     }
 
-    public void fermer(){
+    public void fermer() {
         this.close();
     }
 }
